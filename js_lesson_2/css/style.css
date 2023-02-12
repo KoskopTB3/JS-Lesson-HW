@@ -1,0 +1,35 @@
+body{
+	background-color: rgb(65, 138, 134);
+	color: rgb(247, 245, 139);
+}
+
+a{
+	font-size: 25px;
+}
+.task{
+	margin-bottom: 20px;
+	border: 2px solid black;
+	padding: 20px;
+}
+h2{
+	font-size: 18px;
+}
+
+table{
+	border: 1px solid black;
+}
+
+tr{
+	border: 1px solid black;
+}
+
+th{
+	border: 1px solid black;
+}
+
+.taskas_additionally{
+	font-size: 25px;
+	text-transform: uppercase;
+	color: black;
+	font-weight: 900;
+}

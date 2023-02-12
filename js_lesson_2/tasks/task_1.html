@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача №4</title>
+</head>
+
+<body>
+	<h2>Задача 1. Знайти суму, добуток та частку двох дійсних чисел. Результат вивести у формі таблиці</h2>
+
+
+	<script>
+		// ВВедення необхідних даних
+		let a = parseFloat(prompt('Введіть перше число:', '0'))
+		let b = parseFloat(prompt('Введіть друге число:', '0'))
+
+		// Обчислення результату
+		let sum = a + b
+		let mult = a * b
+		let segm = a / b
+
+		// Виведення результату
+		document.write(`
+		<table>
+			<tbody>
+				<tr>
+					<th>Метод</th>
+					<th>Перше введене число ${a}</th>
+					<th>Друге введене число ${b}</th>
+				</tr>
+				<tr>
+					<th>Сума</th>
+					<th colspan="2">${sum}</th>
+				</tr>
+				<tr>
+					<th>Добуток</th>
+					<th colspan="2">${mult.toFixed(3).replace(/\.0+/, '')}</th>
+				</tr>
+				<tr>
+					<th>Частка</th>
+					<th colspan="2">${segm.toFixed(3).replace(/\.0+/, '')}</th>
+				</tr>
+			</tbody>
+		</table>
+		`)
+	</script>
+</body>
+
+</html>
