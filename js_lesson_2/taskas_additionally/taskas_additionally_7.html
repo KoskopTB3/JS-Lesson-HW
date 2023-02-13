@@ -21,7 +21,7 @@
 		// Обчислення результату
 		const integer = Math.trunc(number)
 		// const remainder = parseFloat(Math.round(number - integer))
-		const remainder = ((number - integer).toFixed(10).replace(/\.0+/, ''))
+		const remainder = (number - integer).toFixed(5)
 
 		// Виведення результату
 		document.write(`Введене число: ${number} <br> Ціла частина: ${integer} <br> Дробова частина: ${remainder}`)
