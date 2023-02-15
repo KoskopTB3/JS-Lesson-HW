@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №7 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 7 ДОПОЛНИТЕЛЬНО. Скласти алгоритм, який обчислює цілу і дробову частину даного числа х. 
+		Наприклад: число 23,56  => ціла: 23, дробова: 0,56.
+	</h2>
+	
+	<script>
+		// ВВедення необхідних даних
+			let number = parseFloat(prompt('Введіть дробне число', '0'))
+
+		// Обчислення результату
+		const integer = Math.trunc(number)
+		// const remainder = parseFloat(Math.round(number - integer))
+		const remainder = (number - integer).toFixed(5)
+
+		// Виведення результату
+		document.write(`Введене число: ${number} <br> Ціла частина: ${integer} <br> Дробова частина: ${remainder}`)
+		
+	</script>
+</body>
+
+</html>
+
+					
+					

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №8 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 8 ДОПОЛНИТЕЛЬНО. Розробити програму (не використовувати if), 
+		яка за номером року Y визначає номер століття C (врахувати, що початком XX століття був 1901, а не 1900 рік). 
+
+	</h2>
+	
+	<script>
+		// ВВедення необхідних даних
+			let year = parseFloat(prompt('Введіть рік', '1920'))
+
+		// Обчислення результату
+		const centry = Math.ceil(year / 100)
+
+		// Виведення результату
+		document.write(`Введений рік: ${year} <br> Століття : ${centry}`)
+		
+	</script>
+</body>
+
+</html>
+
+					
+					

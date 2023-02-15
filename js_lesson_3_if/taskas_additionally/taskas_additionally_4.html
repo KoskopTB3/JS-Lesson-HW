@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №4 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 4 ДОПОЛНИТЕЛЬНО. З клавіатури вводиться рік народження дитини. Вивести на екран через скільки років вона
+		буде відвідувати садочок, піде у школу, закінчить школу, вступить і закінчить університет.
+	</h2>
+
+	<script>
+	
+		// ВВедення необхідних даних
+		let birthday = parseFloat(prompt('Введіть рік народження', '0'))
+		let date = new Date()
+		let nowYear = date.getFullYear()
+		// Обчислення результату
+		const age = nowYear - birthday
+		const playschool = Math.max(0, parseFloat(2 - age))
+		const school = Math.max(0, parseFloat(6 - age))
+		const schoolFinish = university = Math.max(0, parseFloat(16 - age))
+		const universityFinish = Math.max(0, parseFloat(23 - age))
+		// const 
+		// const universityFinish =
+
+		// Виведення результату
+		document.write(`Рік народження: ${birthday} <br> До садочку залишилось: ${playschool}
+		<br> До школи залишилось: ${school} <br> Школу буде закінчено: ${schoolFinish} <br>
+		До університету залишилось: ${university} <br> Університет буде закінчено: ${universityFinish}`)
+
+	</script>
+</body>
+
+</html>

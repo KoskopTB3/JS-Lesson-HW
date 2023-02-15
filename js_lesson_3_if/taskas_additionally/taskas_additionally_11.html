@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №11 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 11 ДОПОЛНИТЕЛЬНО. Дано поточну кількість годин, хвилин, секунд (як на годиннику).
+		Визначити 1) яка кількість секунд буде на годиннику через N секунд.
+		2) яка кількість хвилин буде на годиннику через N секунд, X хвилин.
+	</h2>
+	
+	<script>
+		// ВВедення необхідних даних
+		let minutesPlus = parseInt(prompt('Введіть кількість хвилин', '10'))
+		let secondPlus = parseInt(prompt('Введіть кількість секунд', '10'))
+		let timeNow = new Date()                 //1995, 11, 17, 1, 30, 30
+		let hour = timeNow.getHours()
+		let minutes = timeNow.getMinutes()
+		let second= timeNow.getSeconds()
+			
+		// Обчислення результату
+		// let secondQuantity = Math.round((((((((hour * 3600) + (minutes * 60) + second) + secondPlus) / 3600) %1) *60) %1) *60)
+		timeNow.setMinutes(minutes + minutesPlus)
+		timeNow.setSeconds(second + secondPlus)
+
+		const minutesNew = timeNow.getMinutes()
+		const secondNew = timeNow.getSeconds()
+
+		// Виведення результату
+		// document.write(`Сейчас: ${hour} часов ${minutes} минут ${second} секунд <br> ${secondQuantity} <br>
+		// Через ${secondPlus} секунд на часах будет ${secondQuantity} секунд`)
+		
+		document.write(`Сейчас: ${hour} часов ${minutes} минут ${second} секунд <br> 
+		Через ${minutesPlus} минут на часах будет ${minutesNew} минут <br> 
+		Через ${secondPlus} секунд на часах будет ${secondNew} секунд`)
+	</script>
+</body>
+
+</html>
+
+					
+					
