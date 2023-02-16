@@ -20,6 +20,7 @@ a:hover{
 	border: 2px solid black;
 	padding: 20px;
 	background-color: rgb(87, 124, 141);
+	line-height: 27px;
 }
 h2{
 	font-size: 18px;

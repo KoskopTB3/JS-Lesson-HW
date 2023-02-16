@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №2 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 2 ДОПОЛНИТЕЛЬНО. Комп’ютер випадковим чином вибирає початок і кінець проміжку (проміжок повинен знаходитися в межах від 1 до 100).
+		Користувач вводить число і виграє, якщо число знаходиться у цьому проміжку, або розташоване від нього (від лівого або правого краю)
+		не більше ніж на 10.
+	</h2>
+	
+	<script>
+		// ВВедення необхідних даних
+		
+		const enteredNumber = parseInt(prompt('Введіть число', '50'))
+		let minNum = 1, maxNum = 100
+		let randomNum=minNum + Math.floor(Math.random()*(maxNum-minNum+1))
+		const permissibleError = 10
+
+		// Обчислення результату
+		let differenceNumber = Math.abs(enteredNumber - randomNum)
+		if (differenceNumber<=permissibleError)
+			document.write(`Ви вгадали число <br> Введене число ${enteredNumber} <br> Загадане число ${randomNum}`)
+		else if(differenceNumber>permissibleError)
+			document.write(`Ви не вгадали число <br> Загадане число ${randomNum}`)
+
+		// Виведення результату
+		
+		
+
+		
+	</script>
+</body>
+
+</html>
+
+					
+					

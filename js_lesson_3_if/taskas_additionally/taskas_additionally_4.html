@@ -10,29 +10,60 @@
 </head>
 
 <body>
-	<h2>Задача 4 ДОПОЛНИТЕЛЬНО. З клавіатури вводиться рік народження дитини. Вивести на екран через скільки років вона
-		буде відвідувати садочок, піде у школу, закінчить школу, вступить і закінчить університет.
+	<h2>Задача 4 ДОПОЛНИТЕЛЬНО. Морський бій. Ворожий корабель, може знаходитись в одному із квадратів
+		(кількість квадратів вводиться з клавіатури), які розташовані лінійно (один за одним) на річці. 
+
+		Позиція корабля визначається комп’ютером випадковим чином.
+		Гра відбувається за правилами: 
+		1) якщо користувач стріляє у заданий квадрат (тобто вводиться номер квадрата), то корабель потоплено;
+		2) якщо корабель знаходиться у сусідньому по відношенню до квадрата, де знаходиться корабель, то корабель пошкоджено
+		(про це повідомляємо користувача).
+		За два постріли спробувати потопити корабель.
+		
 	</h2>
 
 	<script>
 	
 		// ВВедення необхідних даних
-		let birthday = parseFloat(prompt('Введіть рік народження', '0'))
-		let date = new Date()
-		let nowYear = date.getFullYear()
+		
+		const battleField = parseInt(prompt('Введіть скільки кліток морської битви','5'))
+		let minNum = 1, maxNum = battleField
+		let shipPosition=minNum + Math.floor(Math.random()*(maxNum-minNum+1))
+		const shot = parseInt(prompt('Введіть в яку клітину треба вистрелили','3'))
+		let shotError = Math.abs(shot - shipPosition)
+		console.log(`выстрел - позиция корабля = ${shotError}`)
+		console.log(`позиция корабля ${shipPosition}`)
+		
 		// Обчислення результату
-		const age = nowYear - birthday
-		const playschool = Math.max(0, parseFloat(2 - age))
-		const school = Math.max(0, parseFloat(6 - age))
-		const schoolFinish = university = Math.max(0, parseFloat(16 - age))
-		const universityFinish = Math.max(0, parseFloat(23 - age))
-		// const 
-		// const universityFinish =
+		if((shot!==shipPosition) && (shotError!==1)){
+			alert(`Мимо`)
+			const optionShot = parseInt(prompt('У вас є ще одна спроба, введіть в яку клітину треба вистрелили','5'))
+			if(Math.abs(optionShot-shipPosition)===1)
+				alert(`Ви майже влучили! Але нажаль снаряди закінчилися, корабель був у клітині ${shipPosition}`)
+			else if(optionShot===shipPosition)
+				document.write(`Ви знищили корабель`)
+			else
+				document.write(`Ви промахнулись, корабель був у клітині ${shipPosition}`)
+			
+		}else if (shotError===1) {
+			alert(`Ви майже влучили у корабель`)
+			const optionShot = parseInt(prompt('У вас є ще одна спроба, введіть в яку клітину треба вистрелили','5'))
+			if(Math.abs(optionShot-shipPosition)===1)
+				alert(`Ви майже влучили! Але нажаль снаряди закінчилися, корабель був у клітині ${shipPosition}`)
+			else if(optionShot===shipPosition)
+				document.write(`Ви знищили корабель`)
+			else
+				document.write(`Ви промахнулись, корабель був у клітині ${shipPosition}`)
+		
+		}else if(shot===shipPosition)
+				document.write(`Ви знищили корабель`)
+		
+		else
+			document.write(`Ви промахнулись, корабель був у клітині ${shipPosition}`)
+
 
 		// Виведення результату
-		document.write(`Рік народження: ${birthday} <br> До садочку залишилось: ${playschool}
-		<br> До школи залишилось: ${school} <br> Школу буде закінчено: ${schoolFinish} <br>
-		До університету залишилось: ${university} <br> Університет буде закінчено: ${universityFinish}`)
+		
 
 	</script>
 </body>
