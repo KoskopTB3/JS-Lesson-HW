@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №9 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 9 ДОПОЛНИТЕЛЬНО. З клавіатури вводиться перша літера розширення файлу («html», «doc», «jpeg», «mp3»,
+		«xls»).
+		Вивести на екран назву програми, яка може відкрити цей тип файлу.
+	</h2>
+
+	<script>
+		// ВВедення необхідних даних
+		// alert(`З клавіатури вводиться перша літера розширення файлу («html», «doc», «jpeg», «mp3», «xls»).
+		// Вивести на екран назву програми, яка може відкрити цей тип файлу.`)
+		// const letters = prompt('Введіть літеру h, d, m, j, x','h')
+		// const html = 'h'
+		// const doc = 'd'
+		// const jpeg = 'j'
+		// const mp3 = 'm'
+		// const xls = 'x'
+		// let result
+
+		// // Обчислення результату
+		// // if(letters!=h||H||d||D||J||j||M||m||X||x)
+		// // result =`Не коректне значення`
+		//  if(letters===html) result = `це формат html відкривається в браузері`
+		//  if(letters==doc) result = `це формат doc відкривається в microsoft word`
+		//  if(letters==jpeg) result = `це формат jpeg відкривається переглядачем зображень`
+		//  if(letters==mp3) result = `це формат mp3 відкривається аудіо чи відео плеєром `
+		//  if(letters==xls) result = `це формат xls відкривається в microsoft exel`
+
+		// Виведення результату
+		// document.write(result)
+
+
+		// АБО
+		const letters = prompt('Введіть літеру h, d, m, j, x', 'h')
+			//Все переводимо в нижній регістр
+			.toLowerCase()
+		let result
+		switch (letters) {
+			case 'h': result = `це формат html відкривається в браузері`
+				break;
+			case 'd': result = `це формат doc відкривається в microsoft word`
+				break;
+			case 'm': result = `це формат jpeg відкривається переглядачем зображень`
+				break;
+			case 'j': result = `це формат mp3 відкривається аудіо чи відео плеєром`
+				break;
+			case 'x': result = `це формат xls відкривається в microsoft exel`
+				break;
+
+			default: result = `Введене не коректне значення`
+				break
+		}
+		document.write(result)
+	</script>
+</body>
+
+</html>

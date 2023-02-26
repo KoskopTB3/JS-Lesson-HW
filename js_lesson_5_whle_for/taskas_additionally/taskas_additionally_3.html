@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №3 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 3 ДОПОЛНИТЕЛЬНО. Комп’ютер загадує число від 1 до 10. Двоє користувачів надають свої відповіді.
+		Виграє той, у кого число знаходиться ближче до загаданого комп’ютером числа.
+
+	</h2>
+	
+	<script>
+		// ВВедення необхідних даних
+		const playerOne = prompt('Імя першого гравця', 'Коля')
+		const NumberOfPlayerOne = parseInt(prompt('Введіть число 1-10', '5'))
+		const playerTwo = prompt('Імя першого гравця', 'Артем')
+		const NumberOfPlayerTwo = parseInt(prompt('Введіть число 1-10', '7'))	
+		
+		const minGuessedNum = 1, maxGuessedNum = 10
+		const randomNumber=minGuessedNum + Math.floor(Math.random()*(maxGuessedNum-minGuessedNum+1))	
+
+
+		// Обчислення результату
+		const answerPlayerOne = Math.abs(NumberOfPlayerOne - randomNumber)
+		const answerPlayerTwo = Math.abs(NumberOfPlayerTwo - randomNumber)
+
+		if(answerPlayerOne>answerPlayerTwo)
+		document.write(`Виграв ${playerTwo}, його число ${NumberOfPlayerTwo} <br> Загадане число ${randomNumber}`)
+		else if(answerPlayerOne===answerPlayerTwo)
+		document.write(`Нічия`)
+		else document.write(`Виграв ${playerOne}, його число ${NumberOfPlayerOne} <br> Загадане число ${randomNumber}`)
+
+		// Виведення результату
+		
+		
+
+		
+	</script>
+</body>
+
+</html>
+
+					
+					

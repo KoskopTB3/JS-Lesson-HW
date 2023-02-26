@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №6 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 6 ДОПОЛНИТЕЛЬНО. Полювання. Заєць знаходиться у верхньому лівому кутку поля. Поле складається з двох
+		рядків і двох стовпців.
+		За один крок заєць може стрибнути у будь-яку із вільних клітинок. Користувач ставить пастку вказуючи номер рядка і
+		стовпця клітинки.
+		Якщо заєць потрапляє у пастку, то користувач виграв і отримав 100 балів. Якщо користувач зловить зайця за другою
+		спробою, то одержує 50 балів.
+
+	</h2>
+
+	<script>
+		// ВВедення необхідних даних
+		//Ставимо пастку для зайця
+		let trapRow = parseInt(prompt('Введіть номер рядка в якому буде пастка 1-2', '1'))
+		let trapColumn = parseInt(prompt('Введіть номер колонки в якій буде пастка 1-2', '1'))
+
+		//стартова позиція зайця
+		let startRowPositionRabbit = 1
+		let startColumnPositionRabbit = 1
+
+		//рандомний прижок зайця
+		const maxRowQuantity = 2, minRowQuantity = 1
+		let randomRabbitJumpRow = minRowQuantity + Math.floor(Math.random() * (maxRowQuantity - minRowQuantity + 1))
+		const maxColumnQuantity = 2, minColumnQuantity = 1
+		let randomRabbitJumpColumn = minColumnQuantity + Math.floor(Math.random() * (maxColumnQuantity - minColumnQuantity + 1))
+
+		//Поточне знахождення зайця
+		rabbitPositionRowNow = startRowPositionRabbit = randomRabbitJumpRow
+		rabbitPositionColumnNow = startColumnPositionRabbit = randomRabbitJumpColumn
+
+		//перевірка де знаходиться заяць
+		console.log(`Рядок ${randomRabbitJumpRow}`);
+		console.log(`Стовбець ${randomRabbitJumpColumn}`);
+
+
+		// Обчислення результату
+		if (trapRow === rabbitPositionRowNow && trapColumn === rabbitPositionColumnNow)
+			document.write(`Ви впіймали зайця`)
+		else if (trapRow !== rabbitPositionRowNow || trapColumn !== rabbitPositionColumnNow) {
+			alert(`Не вгадали, у вас є ще одна спроба зловити зайця`)
+			//Друга спроба зловити зайця
+			trapRow = parseInt(prompt('Введіть номер рядка в якому буде пастка 1-2', '1'))
+			trapColumn = parseInt(prompt('Введіть номер колонки в якій буде пастка 1-2', '1'))
+			if (trapRow === rabbitPositionRowNow && trapColumn === rabbitPositionColumnNow)
+				document.write(`Ви впіймали зайця`)
+			else if (trapRow !== rabbitPositionRowNow || trapColumn !== rabbitPositionColumnNow)
+				alert(`Нажаль ви не змогли зловити зайця`)
+		}
+		// Виведення результату
+
+
+	</script>
+</body>
+
+</html>

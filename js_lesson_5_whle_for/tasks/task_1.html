@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задача №1</title>
+</head>
+
+<body>
+	<h2>Задача 1. Вивести з використанням циклів маркований список з випадковими числами (1-100). Кількість випадкових
+		чисел вводиться користувачем. Приклад: 11, 22, 45, 70</h2>
+
+
+	<script>
+		// ВВедення необхідних даних
+		const quantityRandomNum = parseInt(prompt('Введіть скільки випадкових чисел ви хочете отримати', '4'))
+
+
+		// Обчислення результату
+		for (let i = 0; i < quantityRandomNum; i++) {
+			let minNum = 1, maxNum = 100
+			let randomNumber = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+			document.write(`<ul><li>${randomNumber}</li></ul>`)
+		}
+
+		// Виведення результату
+
+
+	</script>
+</body>
+
+</html>

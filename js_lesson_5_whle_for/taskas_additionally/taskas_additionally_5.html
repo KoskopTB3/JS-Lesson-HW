@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №4 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 4 ДОПОЛНИТЕЛЬНО. Модифікувати попередню задачу з можливістю після пострілу переміщення корабля у
+		випадковим чином вибрану сусідню клітинку
+		(якщо звичайно корабель не було потоплено за першим разом).
+
+
+	</h2>
+
+	<script>
+
+		// ВВедення необхідних даних
+
+		const battleField = parseInt(prompt('Введіть скільки кліток морської битви', '5'))
+		let minNum = 1, maxNum = battleField
+		//Края поля битви
+		const battleFieldEdgeMin = 1
+		const battleFieldEdgeMax = battleField
+		//рандомна позиція корабля
+		let shipPosition = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+		//нова позиція корабля
+		let shipPositionNew
+		//здвиг корабля
+		let shipShiftPositionRandom = Math.floor(Math.random() * 2)
+		const SHIP_SHIFT = 1
+		//вистріл по кораблю
+		let shot = parseInt(prompt('Введіть в яку клітину треба вистрелили', '3'))
+		//погрешность выстрела
+		let shotError = Math.abs(shot - shipPosition)
+
+		//проверка позиции
+		console.log(`выстрел - позиция корабля = ${shotError}`)
+		console.log(`позиция корабля ${shipPosition}`)
+
+
+		// Обчислення результату
+		if ((shot !== shipPosition) && (shotError !== 1)) {
+			alert(`Мимо`)
+
+			//сдвиг корабля
+			if (shipPosition === battleFieldEdgeMin)
+				shipPositionNew = shipPosition + SHIP_SHIFT
+			else if (shipPosition === battleFieldEdgeMax)
+				shipPositionNew = shipPosition - SHIP_SHIFT
+			else
+				if (shipShiftPositionRandom === 0)
+					shipPositionNew = shipPosition - SHIP_SHIFT
+				else
+					shipPositionNew = shipPosition + SHIP_SHIFT
+
+			//проверка позиции
+			console.log(`Новая позиция корабля ${shipPositionNew}`);
+
+			//другий постріл
+			let shot = parseInt(prompt('У вас є ще одна спроба, введіть в яку клітину треба вистрелили', '5'))
+			if (Math.abs(shot - shipPositionNew) === 1)
+				alert(`Ви майже влучили! Але нажаль снаряди закінчилися, корабель був у клітині ${shipPositionNew}`)
+			else if (shot === shipPositionNew)
+				document.write(`Ви знищили корабель`)
+			else
+				document.write(`Ви промахнулись, корабель був у клітині ${shipPositionNew}`)
+
+		} else if (shotError === 1) {
+			alert(`Ви майже влучили у корабель`)
+			//сдвиг корабля
+			if (shipPosition === battleFieldEdgeMin)
+				shipPositionNew = shipPosition + SHIP_SHIFT
+			else if (shipPosition === battleFieldEdgeMax)
+				shipPositionNew = shipPosition - SHIP_SHIFT
+			else
+				if (shipShiftPositionRandom === 0)
+					shipPositionNew = shipPosition - SHIP_SHIFT
+				else
+					shipPositionNew = shipPosition + SHIP_SHIFT
+
+			//проверка позиции
+			console.log(`Новая позиция корабля ${shipPositionNew}`);
+
+			//другий постріл
+			let shot = parseInt(prompt('У вас є ще одна спроба, введіть в яку клітину треба вистрелили', '5'))
+			if (Math.abs(shot - shipPositionNew) === 1)
+				alert(`Ви майже влучили! Але нажаль снаряди закінчилися, корабель був у клітині ${shipPositionNew}`)
+			else if (shot === shipPositionNew)
+				document.write(`Ви знищили корабель`)
+			else
+				document.write(`Ви промахнулись, корабель був у клітині ${shipPositionNew}`)
+
+		} else if (shot === shipPosition)
+			document.write(`Ви знищили корабель`)
+
+		
+
+
+		// Виведення результату
+
+
+	</script>
+</body>
+
+</html>
