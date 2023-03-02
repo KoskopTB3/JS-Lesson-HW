@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>Задача №13</title>
+</head>
+
+<body>
+	<h2>Задача 13. Морський бій. Комп’ютер випадково розташовує одиночний корабель на полі розміром N*M. Маючи К снарядів користувач намагається потопити корабель. </h2>
+	<script>
+// const M = parseInt(prompt('Генеруємо поле по горизонталі, введіть кількість клітин: ','3'))
+// const N = parseInt(prompt('Генеруємо поле по вертикалі, введіть кількість клітин: ','2'))
+// const K = parseInt(prompt('Введіть кількість снарядів для пострілу','3'))
+
+
+// const SHIP_RANDOM_COORDINATE_X= 1 + Math.floor(Math.random() * M)
+// const SHIP_RANDOM_COORDINATE_Y= 1 + Math.floor(Math.random() * N)
+// console.log(SHIP_RANDOM_COORDINATE_X);
+// console.log(SHIP_RANDOM_COORDINATE_Y);
+// let shot
+// do {
+// 	const SHOT_X = parseInt(prompt('Введіть координати для пострілу по горизонталі: ','3'))
+// 	const SHOT_Y = parseInt(prompt('Введіть координати для пострілу по вертикалі: ','3'))
+// 	for (shot = 1; shot <= K; shot++) {
+// 		if(shot===K)
+// 		alert(`Ви програли, корабель знаходився в координаті X=${SHIP_RANDOM_COORDINATE_X}, та по координаті Y=${SHIP_RANDOM_COORDINATE_Y}`)
+		
+// 	}
+	
+// } while (SHOT_X===SHIP_RANDOM_COORDINATE_X && SHOT_Y===SHIP_RANDOM_COORDINATE_Y);
+
+
+
+
+
+
+const M = parseInt(prompt('Генеруємо поле по горизонталі, введіть кількість клітин: ','3'))
+const N = parseInt(prompt('Генеруємо поле по вертикалі, введіть кількість клітин: ','3'))
+const K = parseInt(prompt('Введіть кількість снарядів для пострілу','3'))
+
+const SHIP_RANDOM_COORDINATE_X= 1 + Math.floor(Math.random() * M)
+const SHIP_RANDOM_COORDINATE_Y= 1 + Math.floor(Math.random() * N)
+console.log(SHIP_RANDOM_COORDINATE_X);
+console.log(SHIP_RANDOM_COORDINATE_Y);
+	
+	for (let shot = 1; shot <= K; shot++) {
+		alert(`постріл № ${shot}`)
+		const SHOT_X = parseInt(prompt('Введіть координати для пострілу по горизонталі: ','2'))
+		const SHOT_Y = parseInt(prompt('Введіть координати для пострілу по вертикалі: ','1'))
+		for(SHOT_X, SHOT_Y; SHOT_X>M  || SHOT_Y>N;){
+			alert(`Введіть значеня пострілу в межі поля боя від 1 до ${M} по горизонталі, або від 1 до ${N} по вертикалі `)
+		--shot
+		break
+	}
+		// if(shot===K)
+		// 	alert(`Ви програли, корабель знаходився в координаті X=${SHIP_RANDOM_COORDINATE_X}, та по координаті Y=${SHIP_RANDOM_COORDINATE_Y}`)
+		// else if (SHOT_X===SHIP_RANDOM_COORDINATE_X && SHOT_Y===SHIP_RANDOM_COORDINATE_Y){
+		// 	alert(`Ви потопили корабель`)
+		// 	break
+		// }
+		// else
+		// alert(`МИМО!`)
+
+		if(SHOT_X===SHIP_RANDOM_COORDINATE_X && SHOT_Y===SHIP_RANDOM_COORDINATE_Y){
+			alert(`Ви потопили корабель`)
+			break
+		}
+		else if(shot===K)
+		alert(`Ви програли, корабель знаходився в координаті X=${SHIP_RANDOM_COORDINATE_X}, та по координаті Y=${SHIP_RANDOM_COORDINATE_Y}`)
+		else
+		alert(`МИМО!`)
+	}
+
+		// ВВедення необхідних даних
+
+	
+		// Обчислення результату
+		
+
+		// Виведення результату
+		
+
+	</script>
+</body>
+
+</html>

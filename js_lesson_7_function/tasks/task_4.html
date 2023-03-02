@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 4.Створити окремі функції, які для 4 чисел знаходять:
+      <ul>
+        <li>суму;</li>
+        <li>добуток;</li>
+        <li>середнє арифметичне;</li>
+        <li>мінімальне значення.</li>
+      </ul>
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      function getNumSum(a, b, c, d) {
+        return a + b + c + d;
+      }
+
+      function getMultiplicationNum(a, b, c, d) {
+        return a * b * c * d;
+      }
+
+      function getNumAverege(a, b, c, d) {
+        return (a + b + c + d) / 4;
+      }
+
+      function getMinimalNumber(a, b, c, d) {
+        let minNum = a;
+        if (b < minNum) minNum = b;
+        if (c < minNum) minNum = c;
+        if (d < minNum) minNum = d;
+        return minNum;
+      }
+
+      const a = parseInt(prompt("Введіть значення a", "1"));
+      const b = parseInt(prompt("Введіть значення b", "2"));
+      const c = parseInt(prompt("Введіть значення c", "3"));
+      const d = parseInt(prompt("Введіть значення d", "4"));
+
+      const numSum = getNumSum(a, b, c, d);
+      const multiplicationNum = getMultiplicationNum(a, b, c, d);
+      const numAverege = getNumAverege(a, b, c, d);
+      const minimalNumber = getMinimalNumber(a, b, c, d);
+
+      document.write(
+        `Сумма чисел = ${numSum} <br> Добуток чисел = ${multiplicationNum} <br> Середнє арифметичне чисел = ${numAverege} <br> Мінімальне значення чисел = ${minimalNumber}  `
+      );
+      // Виведення результату
+    </script>
+  </body>
+</html>

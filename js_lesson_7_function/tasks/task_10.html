@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №10</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 10. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить знайти середнє значення для додатних показів
+      температури.
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      function getNegativeTemperature(x1) {
+        const minTemperature = -20,
+          maxTemperature = 30;
+        let positiveTemperatureCounter = 0;
+        let posiviveTemperature = 0;
+
+        for (let i = 0; i < x1; i++) {
+          let randomTemperature = minTemperature + Math.floor(Math.random() * (maxTemperature - minTemperature + 1));
+          console.log(randomTemperature);
+          if (randomTemperature > 0) {
+            positiveTemperatureCounter++;
+            posiviveTemperature += randomTemperature;
+          }
+        }
+        let avaregeTemperature = posiviveTemperature / positiveTemperatureCounter;
+
+        return avaregeTemperature;
+      }
+      const N = parseInt(prompt("Введіть кількість значень температури", "10"));
+      let avaregeTemperature = getNegativeTemperature(N);
+      document.write(`Середня додатна температура ${avaregeTemperature.toFixed(2).replace(/\.0+/, "")}`);
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

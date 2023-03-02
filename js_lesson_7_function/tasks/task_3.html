@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>Задача 3. Створити функцію, яка за номером дня дозволяє з’ясувати чи є цей день робочим.</h2>
+    <script>
+      function getWorkOrRestDay(a) {
+        let dayOfWeek;
+        switch (inputDayNumber) {
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+            dayOfWeek = `Це робочий день`;
+            break;
+          case 6:
+          case 7:
+            dayOfWeek = `Це вихідний день`;
+            break;
+
+          default:
+            dayOfWeek = `Не коректне значення`;
+            break;
+        }
+        return dayOfWeek;
+      }
+
+      const inputDayNumber = parseInt(prompt("Введіть номер дня 1-7, за яким ви хочете дізнатися, вихідний це чи ні", "3"));
+
+      let workOrRestDay = getWorkOrRestDay(inputDayNumber);
+      alert(workOrRestDay);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

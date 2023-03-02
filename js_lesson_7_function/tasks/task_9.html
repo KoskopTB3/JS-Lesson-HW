@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №9</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 9. Дано покази температур (довільна кількість). Розробити функцію, яка дозволить підрахувати кількість від’ємних показів температури.
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      // function getNegativeTemperature(x1) {
+      //   let negativTepmeratureCounter = 0;
+      //   if (x1 < 0) negativTepmeratureCounter++;
+
+      //   return negativTepmeratureCounter;
+      // }
+      // const N = parseInt(prompt("Введіть кількість значень температури", "10"));
+      // const minTemperature = -20,
+      //   maxTemperature = 30;
+      // let randomTemperature;
+      // let negativTepmeratureCounter = 0;
+      // for (let i = 0; i < N; i++) {
+      //   randomTemperature = minTemperature + Math.floor(Math.random() * (maxTemperature - minTemperature + 1));
+      //   console.log(randomTemperature);
+      //   let temperature = getNegativeTemperature(randomTemperature);
+      //   negativTepmeratureCounter += temperature;
+      // }
+      // document.write(negativTepmeratureCounter);
+
+      // =============================================
+
+      function getNegativeTemperature(x1) {
+        const minTemperature = -20,
+          maxTemperature = 30;
+        let negativTepmeratureCounter = 0;
+        for (let i = 0; i < x1; i++) {
+          let randomTemperature = minTemperature + Math.floor(Math.random() * (maxTemperature - minTemperature + 1));
+          console.log(randomTemperature);
+          if (randomTemperature < 0) negativTepmeratureCounter++;
+        }
+
+        return negativTepmeratureCounter;
+      }
+      const N = parseInt(prompt("Введіть кількість значень температури", "10"));
+      let negativTepmeratureCounter = getNegativeTemperature(N);
+      document.write(`Кількість негативних температур ${negativTepmeratureCounter}`);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

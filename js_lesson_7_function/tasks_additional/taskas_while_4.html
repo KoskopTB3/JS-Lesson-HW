@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <title>Задача №4 ДОПОЛНИТЕЛЬНО</title>
+  </head>
+
+  <body>
+    <h2>З клавіатури вводиться початкове значення суми. Поки сума є меншою за 100 додавати до неї числа, які вводяться з клавіатури.</h2>
+
+    <script>
+      // ВВедення необхідних даних
+
+      let totalSum = 0;
+      do {
+        let sumNum = parseInt(prompt("Введіть значення суми", "10"));
+        totalSum += sumNum;
+      } while (totalSum < 100);
+      document.write(`${totalSum}`);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 5. Створити функцію, яка для 3 заданих чисел знаходить одночасно декілька результатів: кількість парних, кількість додатних, кількість
+      більших за 100.
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      function getCalculationResult(x1, x2, x3) {
+        let evenNum = 0;
+        let positiveNum = 0;
+        let over100Num = 0;
+
+        for (let i = 0; i < arguments.length; i++) {
+          if (arguments[i] % 2 === 0) evenNum++;
+          if (arguments[i] >= 0) positiveNum++;
+          if (arguments[i] > 100) over100Num++;
+        }
+        //console.log(evenNum, positiveNum, over100Num);
+
+        return { evenNum, positiveNum, over100Num };
+      }
+
+      const a = parseInt(prompt("Введіть значення a", "1"));
+      const b = parseInt(prompt("Введіть значення b", "2"));
+      const c = parseInt(prompt("Введіть значення c", "3"));
+
+      let calculationResult = getCalculationResult(a, b, c);
+      document.write(
+        `Введені числа ${a}, ${b}, ${c} <br> З них: <br> Кількість парних: ${calculationResult.evenNum}<br> 
+		  Кількість додатних: ${calculationResult.positiveNum}<br> Кількість більших за 100: ${calculationResult.over100Num}<br>`
+      );
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

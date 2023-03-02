@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №8</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 8. Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на
+      зображення (тег img повине знаходитись у середині тега a:
+      <!-- <a> <img src="”шлях”" /> </a> -->
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+
+      // function getBanner() {
+      //   let title = document.write(`<h2>Я заголовок</h2>`);
+      //   let image = document.write(`<a target='_blank' href="https://google.com"><img src="../img/1.jpg" alt="image"></a>`);
+      // }
+
+      // getBanner();
+
+      // =========================================================================
+      function getBanner(x1, x2) {
+        document.write(`${x1} <br> ${x2}`);
+      }
+      let title = `<h2>Я заголовок</h2>`;
+      let image = `<a target='_blank' href="https://google.com"><img src="../img/1.jpg" alt="image"></a>`;
+      let banner = getBanner(title, image);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>
