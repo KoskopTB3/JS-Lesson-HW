@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №8</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 8. Дано одновимірний масив, у якому зберігається певна виграшна сума (елементи заповнюються випадковим чином значеннями від -500 до 500).
+      Надаючи користувачу можливість вибирати номери елементів (поки він не відмовиться). Знаходити сумарний виграш.
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      function getRandomNumbers(inputQuantityWinNum) {
+        let arrNumbers = [];
+        const minSumWin = -500,
+          maxSumWin = 500;
+        for (let i = 0; i < inputQuantityWinNum; i++) {
+          let randomNum = minSumWin + Math.floor(Math.random() * (maxSumWin - minSumWin + 1));
+          arrNumbers.push(randomNum);
+        }
+        console.log(arrNumbers);
+        return arrNumbers;
+      }
+
+      function getChoiceNumElement(randomNumbers) {
+        let choice;
+        let inputChoiceNum;
+        let sum = 0;
+        do {
+          if (inputChoiceNum) {
+            choice = randomNumbers[inputChoiceNum - 1];
+            sum += choice;
+            console.log(`Сума ${sum}`);
+          }
+          console.log(inputChoiceNum);
+          inputChoiceNum = parseInt(prompt("Введіть значення елементу в якому знаходиться якась сумма 1-10", "5"));
+        } while (!isNaN(inputChoiceNum));
+
+        return sum;
+      }
+
+      // function getChoiceNumElement(randomNumbers) {
+      //   let choice;
+      //   let inputChoiceNum = 1;
+      //   let sum = 0;
+      //   do {
+      //     inputChoiceNum = parseInt(prompt("Введіть значення елементу в якому знаходиться якась сумма 1-10", "5"));
+      //     console.log(inputChoiceNum);
+      //     choice = randomNumbers[inputChoiceNum - 1];
+      //     sum += choice;
+      //     console.log(`Сума ${sum}`);
+      //   } while (!isNaN(inputChoiceNum));
+
+      //   return sum;
+      // }
+
+      const inputQuantityWinNum = parseInt(prompt("Введіть значення 1-100", "10"));
+      const randomNumbers = getRandomNumbers(inputQuantityWinNum);
+      const choiceNumElement = getChoiceNumElement(randomNumbers);
+      document.write(`Ваш виграш: ${choiceNumElement}`);
+
+      // Обчислення результату
+
+      // Виведення результату
+
+      // function getChoiceNumElement(randomNumbers) {
+      //   let choiceElement = [];
+      //   let choice1;
+      //   for (let i = 0; i < randomNumbers.length; i++) {
+      //     let choice = parseInt(prompt("Введіть значення елементу в якому знаходиться якась сумма 1-10", "5"));
+      //     if (choice === null) break;
+      //     choice1 = randomNumbers[choice - 1];
+      //     choiceElement.push(choice1);
+      //   }
+      //   console.log(choiceElement);
+      //   return choiceElement;
+      // }
+    </script>
+  </body>
+</html>

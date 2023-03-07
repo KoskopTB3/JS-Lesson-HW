@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №6</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей
+      задається).
+    </h2>
+
+    <script>
+      // ВВедення необхідних даних
+      let productsPrices = [100, 20, 50];
+      let productsTitles = ["cheese", "juice", "bread"];
+      const inputAmountOfMoney = parseInt(prompt("Введіть скільки грошей має покупець", "100"));
+
+      function getWhatCanIBuy(inputAmountOfMoney, productsPrices, productsTitles) {
+        let myPurchases = [];
+        let question;
+        for (let i = 0; i < productsPrices.length; i++) {
+          if (inputAmountOfMoney >= productsPrices[i]) {
+            console.log(productsPrices[i]);
+            alert(`В магазині продається: \nСир, коштує 100 грн \nСок, коштує 20 грн \nХліб, коштує 50 грн`);
+            question = confirm(`Хочете придбати ${productsTitles[i]}?`);
+            if (question === true) {
+              inputAmountOfMoney -= productsPrices[i];
+              alert(`У Вас залишилось коштів ${inputAmountOfMoney}`);
+              console.log(inputAmountOfMoney);
+              myPurchases.push(productsTitles[i]);
+            }
+          }
+        }
+        return myPurchases;
+      }
+
+      let whatCanIBuy = getWhatCanIBuy(inputAmountOfMoney, productsPrices, productsTitles);
+      document.write(`Покупець придбав ${whatCanIBuy}`);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

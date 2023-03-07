@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 5.Дано послідовність оцінок учня. Підрахувати кількість: :
+      <ul>
+        <li>двійок;</li>
+        <li>кількість хороших оцінок (добре, відмінно);</li>
+        <li>кількість оцінок, які нижче середнього;</li>
+      </ul>
+    </h2>
+    <script>
+      // функція створення рандомних оцінок
+      function getStudentScors(quantityScorsStudent) {
+        let scors = [];
+        for (let i = 0; i < quantityScorsStudent; i++) {
+          let randomScors = 1 + Math.floor(Math.random() * 5);
+          scors.push(randomScors);
+        }
+        return scors;
+      }
+      // функція знаходженя кількості двійок у учня
+      function getStudentScorTwo(studentScors) {
+        let scorsTwo = 0;
+        for (let i = 0; i < studentScors.length; i++) {
+          if (studentScors[i] < 3) scorsTwo++;
+        }
+        return scorsTwo;
+      }
+      // функція знаходженя кількості хороших оцінок (добре, відмінно)
+      function getGoodScorsStudent(studentScors) {
+        let counterGoodScors = 0;
+        for (let i = 0; i < studentScors.length; i++) {
+          if (studentScors[i] > 3) counterGoodScors++;
+        }
+        return counterGoodScors;
+      }
+      //фуннкція знаходження середньої оцінки
+      function getAveregeScoreStudent(studentScors) {
+        let sumScores = 0;
+        for (let i = 0; i < studentScors.length; i++) {
+          sumScores += studentScors[i];
+        }
+        console.log(`Сума оцінок = ${sumScores}`);
+        let averegeScore = sumScores / studentScors.length;
+        console.log(`Середня оцінка = ${averegeScore}`);
+        return averegeScore;
+      }
+
+      //функція знаходження кількості оцінок, які нижче середнього
+      function getScoreBelowTheAverage(averegeScoreStudent, studentScors) {
+        let scoreBelowTheAverage = 0;
+        for (let i = 0; i < studentScors.length; i++) {
+          if (studentScors[i] < averegeScoreStudent) scoreBelowTheAverage++;
+        }
+        return scoreBelowTheAverage;
+      }
+      // ==============Виведення результату===================
+      const inputQuantityScorsStudent = parseInt(prompt("Введіть значення", "10")); //количество оценок
+
+      let studentScors = getStudentScors(inputQuantityScorsStudent);
+      document.write(`Оцінки учня: ${studentScors}<br>`);
+      let studentScorTwo = getStudentScorTwo(studentScors);
+      document.write(`Кількість двійок у учня: ${studentScorTwo}<br>`);
+      let goodScorsStudent = getGoodScorsStudent(studentScors);
+      document.write(`Кількість хороших оцінок (добре, відмінно): ${goodScorsStudent}<br>`);
+      let averegeScoreStudent = getAveregeScoreStudent(studentScors);
+      let scoreBelowTheAverage = getScoreBelowTheAverage(averegeScoreStudent, studentScors);
+      document.write(`Кількість оцінок, які нижче середнього: ${scoreBelowTheAverage}`);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван».</h2>
+    <script>
+      // Обчислення результату
+      //функція генерування імен і заповнення масиву
+      function getNames() {
+        let resultName = [];
+        for (let i = 1; i <= 5; i++) {
+          let randomName = 1 + Math.floor(Math.random() * 5);
+          if (randomName === 1) randomName = `Нікіта`;
+          else if (randomName === 2) randomName = `Петро`;
+          else if (randomName === 3) randomName = `Іван`;
+          else if (randomName === 4) randomName = `Артем`;
+          else if (randomName === 5) randomName = `Коля`;
+          resultName.push(randomName);
+        }
+        console.log(resultName);
+        return resultName;
+      }
+      // Функція підрахунку кількості імен Іван
+      function getQuantityNameIvan(names) {
+        let counterNameIvan = 0;
+        for (let i = 0; i < names.length; i++) {
+          if (names[i] === `Іван`) counterNameIvan++;
+        }
+        return counterNameIvan;
+      }
+
+      let names = getNames();
+      let quantityNameIvan = getQuantityNameIvan(names);
+      document.write(`Ім'я Іван зустрічається: ${quantityNameIvan} раз(и)`);
+      // Виведення результату
+    </script>
+  </body>
+</html>

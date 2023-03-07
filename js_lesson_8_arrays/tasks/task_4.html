@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 4.Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+      <ul>
+        <li>починаються на букву «А»;</li>
+        <li>перша і остання літери співпадають;</li>
+        <li>складаються з більше ніш 5 символів;</li>
+      </ul>
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      const autonumbers = ["ВН1234ВК", "КХ1234КХ", "АХ1234ВХ", "АО1234ВА", "АИ1234ВХ", "ВТ1234ВВ", "АХ1234НО", "ДУСЯ"];
+
+      function getAutonumberFirstLetterA(autonumbers) {
+        let counterFirstLetter_A = 0;
+        for (let i = 0; i < autonumbers.length; i++) {
+          if (autonumbers[i][0] === "А") counterFirstLetter_A++;
+          //  console.log(autonumbers[i][0]);
+        }
+        return counterFirstLetter_A;
+      }
+
+      function getCoincidenceFirstAndLastLetter(autonumbers) {
+        let counterFirstAndLastLetter = 0;
+        for (let i = 0; i < autonumbers.length; i++) {
+          if (autonumbers[i][0] === autonumbers[i][autonumbers.length - 1]) counterFirstAndLastLetter++;
+        }
+        return counterFirstAndLastLetter;
+      }
+
+      function getAutonumbersMore_5_Letters(autonumbers) {
+        let counterMore_5_Letters = 0;
+        for (let i = 0; i < autonumbers.length; i++) {
+          if (autonumbers[i].length > 5) counterMore_5_Letters++;
+        }
+        return counterMore_5_Letters;
+      }
+
+      let autonumberFirstLetterA = getAutonumberFirstLetterA(autonumbers);
+      document.write(`Кількість номерів, які починаються на букву «А»:  ${autonumberFirstLetterA} <br>`);
+      let coincidenceFirstAndLastLetter = getCoincidenceFirstAndLastLetter(autonumbers);
+      document.write(`Кількість номерів, у яких перша і остання літери співпадають:  ${coincidenceFirstAndLastLetter} <br>`);
+      let autonumbersMore_5_Letters = getAutonumbersMore_5_Letters(autonumbers);
+      document.write(`Кількість номерів, які складаються з більше ніш 5 символів:  ${autonumbersMore_5_Letters} <br>`);
+      // Виведення результату
+    </script>
+  </body>
+</html>

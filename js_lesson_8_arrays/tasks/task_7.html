@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №7</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 7.Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+      <ul>
+        <li>за весь рік;</li>
+        <li>у першій половині року;</li>
+        <li>у другій половині року;</li>
+        <li>за літо;</li>
+        <li>за ІІ квартал;</li>
+        <li>за парні місяці (з парними номерами);</li>
+        <li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+      </ul>
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      const paymentOrderArr = [1700, 1200, 1050, 1500, 1230, 1770, 1400, 1250, 1800, 1750, 1600, 1900];
+
+      function getAmountOfMonths(paymentOrderArr, startMonthNumber, endMonthNumber, step = 1) {
+        let sum = 0;
+        for (let month = startMonthNumber; month <= endMonthNumber; month += step) {
+          sum += paymentOrderArr[month - 1];
+        }
+        return sum;
+      }
+
+      //1) Знайти сумарну кількість грошей за весь рік
+      const amountOfAllYear = getAmountOfMonths(paymentOrderArr, 1, 12);
+      document.write(`Кількість грошей за весь рік: ${amountOfAllYear}<br>`);
+      //2) Знайти сумарну кількість грошей у першій половині року
+      const amountOfFirstHalfYear = getAmountOfMonths(paymentOrderArr, 1, 6);
+      document.write(`Кількість грошей у першій половині року: ${amountOfFirstHalfYear}<br>`);
+      //3) Знайти сумарну кількість грошей у другій половині року
+      const amountOfSecondHalfYear = amountOfAllYear - amountOfFirstHalfYear;
+      document.write(`Кількість грошей у другій половині року: ${amountOfSecondHalfYear}<br>`);
+      //4) Знайти сумарну кількість грошей за літо
+      const amountOfSummer = getAmountOfMonths(paymentOrderArr, 6, 8);
+      document.write(`Кількість грошей за літо: ${amountOfSummer}<br>`);
+      //5) Знайти сумарну кількість грошей за ІІ квартал
+      const amountSecondQuarter = getAmountOfMonths(paymentOrderArr, 4, 6);
+      document.write(`Кількість грошей за ІІ квартал: ${amountSecondQuarter}<br>`);
+      //6 Знайти сумарну кількість грошей за парні місяці (з парними номерами)
+      const amountDoubleMonths = getAmountOfMonths(paymentOrderArr, 2, 12, 2);
+      document.write(`Кількість грошей за парні місяці (з парними номерами): ${amountDoubleMonths}<br>`);
+      //7) Знайти сумарну кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима)
+      const amountSeasonStartMonth = getAmountOfMonths(paymentOrderArr, 3, 12, 3);
+      document.write(`Кількість грошей за місяці, які є початковими у сезоні (весна, літо, осінь, зима): ${amountSeasonStartMonth}`);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

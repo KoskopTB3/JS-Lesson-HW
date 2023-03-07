@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №9</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує
+      ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач
+      вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      const inputBattleField = parseInt(prompt("Введіть кількість клітинок для поля бою", "10"));
+      const shipQuantity = parseInt(prompt("Введіть кількість кораблів", "5"));
+      // ================================================
+      // функція генерування нулів (поля боя)
+      function getBattlefield(inputBattleField) {
+        let arr = [];
+        for (let i = 0; i < inputBattleField; i++) {
+          arr.push(0);
+        }
+        console.log(arr);
+        return arr;
+      }
+      //функція генерування одиниць (кораблів)
+      function getShip(shipQuantity) {
+        let arr = [];
+        for (let i = 0; i < shipQuantity; i++) {
+          arr.push(1);
+        }
+        console.log(arr);
+        return arr;
+      }
+
+      //функція рандомного генерування
+      function getRandomNum(minNum, maxNum) {
+        let randomNumber = minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+        return randomNumber;
+      }
+      //функція розстановки кораблів
+      function getRandomPositionShip(battlefield, ship) {
+        let randomNumIndex;
+
+        for (let c = 0; c < ship.length; c++) {
+          randomNumIndex = getRandomNum(0, battlefield.length - 1); //рандмний індекс
+          //  while (battlefield[randomNumIndex] === 1) { //якщо в індексі вже записана одиниця, заходим в while і генеруємо новий індекс, у котрого значення не равно одиниці
+          while (battlefield[randomNumIndex]) {
+            //інший варіант true или false, в цій умові while за умовчуванням false
+            // (усі індекси на початку мають значення 0 - false), while працює поки в умові true,
+            // якщо йому прийде індекс зі значенням 1 - це буде true(це означає що цей індекс вже колись був згенерований і йому присвоїли значення 1)
+            // і тоді заходимо в цикл, поки не згенеруємо індекс зі значенням 0, тобто false
+
+            console.log(Boolean(battlefield[randomNumIndex]));
+
+            randomNumIndex = getRandomNum(0, battlefield.length - 1); //перевірка на совпадіння індексів
+          }
+          console.log(Boolean(battlefield[randomNumIndex]));
+          console.log(randomNumIndex);
+          battlefield[randomNumIndex] = 1; // записати корабель в рандомну ячейку
+        }
+        console.log(battlefield);
+        return battlefield;
+      }
+
+      //функція вистрелів
+      function getShot(randomPositionShip, shipQuantity) {
+        let counter = 0;
+        while (counter != shipQuantity) {
+          const shot = parseInt(prompt(`Введіть значення куди хочете вистрілити від 1 до ${inputBattleField}`, "10"));
+          if (randomPositionShip[shot - 1] === 1) {
+            //якщо вистріл = значеню 1 в масиві, то означає що попав в корабель
+            alert(`Ви потопили корабель!`);
+            counter++;
+          } else alert(`Мимо!`);
+        }
+        alert(`Всі кораблі затоплені! Ви вийграли`);
+      }
+
+      const battlefield = getBattlefield(inputBattleField);
+      const ship = getShip(shipQuantity);
+      const randomPositionShip = getRandomPositionShip(battlefield, ship);
+      const shot = getShot(randomPositionShip, shipQuantity);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

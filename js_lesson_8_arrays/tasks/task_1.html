@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 1. Дано масив, який містить оцінки з К предметів. Знайти середній бал і з’ясувати до якої категорії він відноситься (відмінник, двійочник
+      (має хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча би одна трійка)).
+    </h2>
+
+    <script>
+      // ВВедення необхідних даних
+      function getScoreSubject(subjectNum) {
+        let arr = [];
+        for (let i = 0; i < subjectNum; i++) {
+          const score = parseInt(prompt("Введіть оцінку 1-5", "3"));
+          arr.push(score);
+        }
+        //   console.log(arr);
+        return arr;
+      }
+
+      function getAveregeScore(scoreArr, quantitySubject) {
+        let sumScoreArr = 0;
+        for (let i = 0; i < quantitySubject; i++) {
+          sumScoreArr += scoreArr[i];
+        }
+        let averegeSore = sumScoreArr / quantitySubject;
+        return averegeSore;
+      }
+
+      function getStudentCategory(scoreArr, quantitySubject) {
+        let studentCategory;
+        let scoreTwo = 0;
+        let scoreThree = 0;
+        let scoreFour = 0;
+        let scoreFive = 0;
+        for (let i = 0; i < quantitySubject; i++) {
+          if (scoreArr[i] < 3) {
+            scoreTwo++;
+          } else if (scoreArr[i] < 4) {
+            scoreThree++;
+          } else if (scoreArr[i] < 5) {
+            scoreFour++;
+          } else studentCategory;
+          scoreFive++;
+        }
+
+        if (scoreTwo > 0) studentCategory = `двійочник`;
+        else if (scoreThree > 0) studentCategory = `трійочник`;
+        else if (scoreFour > 0 && scoreFive > 0) studentCategory = `хорошист`;
+        else if (scoreFive > 2) studentCategory = `відмінник`;
+        console.log(studentCategory);
+        return studentCategory;
+      }
+
+      const K = parseInt(prompt("Введіть кількість предметів", "3"));
+
+      let scoreSubject = getScoreSubject(K);
+      let averegeScore = getAveregeScore(scoreSubject, K);
+      document.write(`Середня оцінка ${averegeScore}<br>`);
+
+      let studentCategory = getStudentCategory(scoreSubject, K);
+      document.write(`Учень ${studentCategory}`);
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>
