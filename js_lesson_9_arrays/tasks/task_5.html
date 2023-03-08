@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>Задача 5. Дано масив елементів. Знайти добуток додатних елементів</h2>
+    <script>
+      function getArrElements(inputNumElements) {
+        let arr = [];
+        for (let i = 0; i < inputNumElements; i++) {
+          const inputElementNumber = parseInt(prompt("Введіть введіть значення елемента", "10"));
+          arr.push(inputElementNumber);
+        }
+        return arr;
+      }
+
+      function getSumPositiveElements(arrElements) {
+        let sum = 0;
+        for (const iterator of arrElements) {
+          if (iterator > 0) sum += iterator;
+        }
+        return sum;
+      }
+
+      const inputNumElements = parseInt(prompt("Введіть введіть кількість елементів", "5"));
+
+      const arrElements = getArrElements(inputNumElements);
+      console.log(arrElements);
+      const sum = getSumPositiveElements(arrElements);
+      console.log(`Сума = ${sum}`);
+    </script>
+  </body>
+</html>

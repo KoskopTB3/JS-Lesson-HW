@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №15</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 15. Користувача поступово вводить показники температури протягом
+      року. Знайти середню температуру.
+    </h2>
+    <script>
+      // ВВедення необхідних даних
+      let totalTemperature = 0;
+      let averageTemperature;
+      let monthOfTheYear = 0;
+      // Обчислення результату
+      for (let month = 1; month <= 12; month++) {
+        let monthTemperature = parseInt(
+          prompt(`Введіть температуру в ${month} місяці року`)
+        );
+        if (!isFinite(monthTemperature)) {
+          alert(`Введіть коректне значення`);
+          month--;
+          continue;
+        }
+        totalTemperature += monthTemperature;
+        monthOfTheYear++;
+      }
+      averageTemperature = totalTemperature / monthOfTheYear;
+      document.write(`Средняя температура в году ${averageTemperature}`);
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

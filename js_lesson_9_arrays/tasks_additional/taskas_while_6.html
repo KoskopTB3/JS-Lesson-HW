@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <title>Задача №6 ДОПОЛНИТЕЛЬНО</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 6 ДОПОЛНИТЕЛЬНО. З клавіатури вводяться два числа N i M де (N меньше за M) Вивести на екран числа
+      <ul>
+        <li>N---M</li>
+        <li>N+1 --- M-1</li>
+        <li>N+2 --- M-2</li>
+        <li>N+3 --- M-3</li>
+      </ul>
+      Виведення завершити коли число справа стане меншим за число зліва.
+    </h2>
+
+    <script>
+      // ВВедення необхідних даних
+      const M = parseInt(prompt("Введіть значення M", "10"));
+      const N = parseInt(prompt("Введіть значення N", "1"));
+
+      for (M, N; M < N; M--, N++) {
+        //   document.write(`${N} --- ${M}`);
+        document.write(N);
+      }
+      document.write(`N = ${N} --- M = ${M}`);
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

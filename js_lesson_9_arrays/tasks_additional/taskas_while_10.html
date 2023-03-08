@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №10 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 10 ДОПОЛНИТЕЛЬНО. З клавіатури вводиться кількість монет номіналом 1 копійка. 
+		Визначити скільки гривень і копійок є у даній сумі . Наприклад, дано 245 копійок, а вивести 2 грн 45 копійок. 
+
+	</h2>
+	
+	<script>
+		// ВВедення необхідних даних
+			let coins = parseInt(prompt('Введіть кількість монет', '150'))
+			
+		// Обчислення результату
+		const hryvna = Math.floor(coins / 100)
+		const coinsRamain = coins % 100
+		// Виведення результату
+		document.write(`Введена кількість монет: ${coins} <br> Це : ${hryvna} гривень і ${coinsRamain} копійок`)
+		
+	</script>
+</body>
+
+</html>
+
+					
+					

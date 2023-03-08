@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>Задача 1. Користувач вводить кількість елементів. Створити масив, що складається з вказаної кількості елементів заповнених нулями.</h2>
+
+    <script>
+      // ВВедення необхідних даних
+
+      function getNulls(numElements) {
+        return new Array(numElements).fill(0);
+      }
+
+      const numElements = parseInt(prompt("Введіть кількість елементів ", "10"));
+      const elemnentsOfNull = getNulls(numElements);
+      console.log(elemnentsOfNull);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>
