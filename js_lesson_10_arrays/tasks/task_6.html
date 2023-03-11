@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №6</title>
+  </head>
+
+  <body>
+    <h2>Задача 6. Дано масив елементів. Усі елементи, які більші за перший елемент помножити на 2</h2>
+
+    <script>
+      function getArrElements(inputNumElements) {
+        let arr = [];
+        for (let i = 0; i < inputNumElements; i++) {
+          const inputElementNumber = parseInt(prompt("Введіть введіть значення елемента", "10"));
+          arr.push(inputElementNumber);
+        }
+        return arr;
+      }
+      //функція з for..of
+      // function getNumMoreThanFirst(arrElements) {
+      //   let arr = [];
+      //   for (let iterator of arrElements) {
+      //     if (iterator > arrElements[0]) {
+      //       iterator *= 2;
+      //       arr.push(iterator);
+      //     }
+      //   }
+      //   return arr;
+      // }
+
+      // функція з forEach
+      function getNumMoreThanFirst(arrElements) {
+        arrElements.forEach((element, index, array) => {
+          if (element > array[0]) array[index] *= 2;
+        });
+        return arrElements;
+      }
+
+      const inputNumElements = parseInt(prompt("Введіть введіть кількість елементів", "5"));
+
+      const arrElements = getArrElements(inputNumElements);
+      console.log(arrElements);
+      const numMoreThanFirst = getNumMoreThanFirst(arrElements);
+      console.log(numMoreThanFirst);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №8</title>
+  </head>
+
+  <body>
+    <h2>Задача 8. Дано масив номерів авто. Сформувати новий масив тих, які починаються на «А»</h2>
+    <script>
+      let autonumbersArr = ["ВН0000ВХ", "АХ0000НО", "КХ0000КХ", "АО0000ВН", "АТ0000АА"];
+      console.log(autonumbersArr);
+
+      function getAutonumbersFirstLetter_A(autonumber) {
+        return autonumber.filter((element, index, array) => array[index][0] === "А");
+      }
+
+      const autonumbersFirstLetter_A = getAutonumbersFirstLetter_A(autonumbersArr);
+      console.log(autonumbersFirstLetter_A);
+    </script>
+  </body>
+</html>

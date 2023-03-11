@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №8 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 8 ДОПОЛНИТЕЛЬНО. З клавіатури вводиться кількість сторін багатокутника.
+		Необхідно вивести назву фігури («трикутник», «чотирикутник», «п’ятикутинк», «шестикутник»).
+	</h2>
+
+	<script>
+		// // ВВедення необхідних даних
+		// const polygon = parseInt(prompt('Введіть кількість сторін багатоугольника від 3-6','5'))
+		// const triangle = 3
+		// const quadrangle = 4
+		// const pentagon = 5
+		// const hexagon = 6
+		// let result
+
+		// // Обчислення результату
+		// if(polygon < 3 || polygon>6)
+		// result =`Не коректне значення`
+		// else if(polygon<quadrangle) result = `це трикутник`
+		// else if(polygon<pentagon) result = `це чотирикутник`
+		// else if(polygon<hexagon) result = `це п’ятикутинк`
+		// else if(polygon<7) result = `це шестикутник`
+
+		// // Виведення результату
+		// document.write(result)
+
+		// АБО
+		const polygon = parseInt(prompt('Введіть кількість сторін багатоугольника від 3-6', '5'))
+
+		let resultPolygon
+		switch (polygon) {
+			case 3: resultPolygon = `Це трикутник`
+				break
+			case 4: resultPolygon = `Це чотирикутник`
+				break
+			case 5: resultPolygon = `Це п’ятикутинк`
+				break
+			case 6: resultPolygon = `Це шестикутник`
+				break
+			default: resultPolygon = `не вірне значення`
+				break
+		}
+		document.write(resultPolygon)
+	</script>
+</body>
+
+</html>

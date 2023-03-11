@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 2. Задача. Знайти добуток від’ємних елементів масиву
+      <li>Задача. Дано масив. Підрахувати кількість 7</li>
+      <li>Знайти суму елментів</li>
+      <li>Знайти максимальний елемент</li>
+      <li>Знайти максимальний серед від"ємних елемент</li>
+    </h2>
+
+    <script>
+      // let arr = [12, 7, -2, -7, 120, 23, 34, 97]; //
+      //===================reduce========================
+      // let newArr = arr.reduce((prevNum, element, index, array) => (element % 2 === 0 ? prevNum + element : prevNum), 0);
+      // console.log(newArr);
+
+      // let newArr = arr.reduce((prevNum, element, index, array) => (element === 7 ? prevNum + 1 : prevNum), 0);
+      // console.log(newArr);
+
+      // let newArr = arr.reduce((prevNum, element, index, array) => prevNum + element);
+      // console.log(newArr);
+
+      // let newArr = arr.reduce((prevNum, element, index, array) => (element > prevNum ? element : prevNum));
+      // console.log(newArr);
+
+      // let newArr = arr.reduce((prevNum, element, index, array) => (element < 0 ? element : prevNum));
+      // console.log(newArr);
+
+      //===================sort========================
+
+      // function rule(item1, item2) {
+      //   if (item1 > item2) return 1;
+      //   else if (item1 < item2) return -1;
+      //   else return 0;
+      // }
+      // arr.sort(rule);
+      // console.log(arr);
+
+      // function rule(item1, item2) {
+      //   if (item1 < item2) return 1;
+      //   else if (item1 > item2) return -1;
+      //   else return 0;
+      // }
+      // arr.sort((item1, item2) => item2 - item1);
+      // console.log(arr);
+
+      // let names = ["Peter", "Ivan", "Lara"];
+      // function firstLetter(name1, name2) {
+      //   if (name1[0] > name2[0]) return 1;
+      //   else if (name1[0] < name2[0]) return -1;
+      //   return 0;
+      // }
+
+      // names.sort(firstLetter);
+      // names.sort((name1, name2) => {
+      //   if (name1[0] < name2[0]) return 1;
+      //   else if (name1[0] > name2[0]) return -1;
+      //   return 0;
+      // });
+      // console.log(names);
+      //===========================================
+
+      const inputQuantityPrices = parseInt(prompt("Введіть кількість цін", "10"));
+
+      //функція рандомного формування масиву цін від 1 до 10 000
+      function getArrayNum(quantityPrices, minNum, maxNum) {
+        let arr = [];
+        for (i = 0; i < quantityPrices; i++) {
+          let randomPrice = minNum + Math.floor(Math.random() * (maxNum - minNum + 1));
+          arr.push(randomPrice);
+        }
+        return arr;
+      }
+
+      //Визов функції з рандомними числами масиву від 1 до 10 000
+      const arrayNum = getArrayNum(inputQuantityPrices, 1, 10000);
+      console.log(arrayNum);
+      // =======================================
+      //число порівняння
+      const comparisonNumber = 1000;
+      //===========================================
+    </script>
+  </body>
+</html>

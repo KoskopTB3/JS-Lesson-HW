@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 3. Користувач вводить кількість елементів. Створити масив, у якому перші 5 елементів заповнені 1-цями, а інші до кінця масиву заповнені
+      7-ками.
+    </h2>
+    <script>
+      // let a = [1, 2, 5, 7, 0, 15, 23, 14];
+      // let b = Math.max(...a);
+      // //... разбивает массив на отделные елементы
+      // //let b = Math.max(a)  - будет NaN
+      // console.log(b); //результат 23
+
+      // 5)Підрахувати кількість змін цін
+      let arrayNum = [10, 2, 5, 7, 0, 15, 23, 14, 7, 7];
+      // const numberOfPriceChanges = arrayNum.reduce((prevNum, element, index, array) => (element > prevNum ? ++index : prevNum));
+      const numberOfPriceChanges = arrayNum.reduce(
+        (prevNum, element, index, array) => (element !== array[index - 1] && index > 0 ? prevNum + 1 : prevNum),
+        0
+      );
+      // const numberOfPriceChanges = arrayNum.reduce((prevNum, element, index, array) => element + prevNum, 0);
+
+      console.log(numberOfPriceChanges);
+    </script>
+  </body>
+</html>

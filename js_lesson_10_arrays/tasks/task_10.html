@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №10</title>
+  </head>
+
+  <body>
+    <h2>Задача 10. Дано масив цін у грн. Податок складає 20%. Сформувати масив, який буде містити величину сплаченого податку у грн.</h2>
+    <script>
+      let priceProduct = [250, 1700, 500, 1299, 3000, 1002, 600];
+      console.log(priceProduct);
+
+      function getTaxOfProduct(prices) {
+        return prices.map((element) => element * 0.2);
+      }
+
+      const taxOfProduct = getTaxOfProduct(priceProduct);
+      console.log(taxOfProduct);
+    </script>
+  </body>
+</html>

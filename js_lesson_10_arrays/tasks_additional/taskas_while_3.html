@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <title>Задача №3 ДОПОЛНИТЕЛЬНО</title>
+  </head>
+
+  <body>
+    <h2>2.1. З клавіатури поступово вводяться символи поки не буде введено символ «а». Вивести рядок символів у зворотному порядку.</h2>
+
+    <script>
+      // ВВедення необхідних даних
+      let inputSymbol;
+      let symbols = " ";
+      do {
+        inputSymbol = prompt("Введіть символ", "к");
+        symbols = inputSymbol + symbols;
+        //   symbols = symbols + inputSymbol;
+      } while (inputSymbol !== `a` && inputSymbol !== null);
+
+      document.write(`Введені символи ${symbols}`);
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>
