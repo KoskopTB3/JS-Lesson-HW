@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 3. Морський бій. Випадковим чином на двовимірному полі розміром 6*6 розташовується 5 кораблів. Користувач стріляє вказуючи координати.
+      Гра продовжується поки не потоплено усі кораблі або у користувача не закінчаться снаряди.
+    </h2>
+    <script>
+      function getRandomIndex(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+
+      //функція генерування стовбців поля
+      function getBattlefieldColumn(inputBattlefieldColumn) {
+        let arr = []
+        for (let i = 0; i < inputBattlefieldColumn; i++) {
+          arr.push(0)
+        }
+        return arr
+      }
+      //функція генерування рядків і стовбців поля
+      function getBattlefielRow(inputBattlefieldRow, inputBattlefieldColumn) {
+        let arr = []
+        for (let i = 0; i < inputBattlefieldRow; i++) {
+          let column = getBattlefieldColumn(inputBattlefieldColumn)
+          arr.push(column)
+        }
+        return arr
+      }
+      // функція генерування кораблів рандомно у масиві
+      function getRandomPositionShip(battlefield, inputShips, inputBattlefieldRow, inputBattlefieldColumn) {
+        for (let i = 0; i < inputShips; i++) {
+          let randomIndexRow
+          let randomIndexColumn
+          randomIndexRow = getRandomIndex(0, inputBattlefieldRow - 1)
+          randomIndexColumn = getRandomIndex(0, inputBattlefieldColumn - 1)
+          //перевірка на повторне заповнення індесу
+          while (battlefield[randomIndexRow][randomIndexColumn]) {
+            randomIndexRow = getRandomIndex(0, inputBattlefieldRow - 1)
+            randomIndexColumn = getRandomIndex(0, inputBattlefieldColumn - 1)
+          }
+          battlefield[randomIndexRow][randomIndexColumn] = 1
+        }
+        return battlefield
+      }
+      //функція вистрілу
+      function getShot(randomPositionShip, inputShips, inputShotQuantity) {
+        do {
+          const shot_X = parseInt(prompt(`Введіть значення по горизонталі від 0 до ${inputBattlefieldColumn - 1}`, "0"))
+          const shot_Y = parseInt(prompt(`Введіть значення по вертикалі від 0 до ${inputBattlefieldRow - 1}`, "0"))
+
+          if (randomPositionShip[shot_X][shot_Y] === 1) {
+            randomPositionShip[shot_X][shot_Y] = 0
+            inputShips--
+            inputShotQuantity--
+            alert("Ви знищили корабель")
+            if (inputShotQuantity >= 1) {
+              alert(`У вас ще ${inputShotQuantity} вистріли`)
+            } else if (inputShotQuantity === 0) alert("Нема чим стріляти, ви програли")
+            if (inputShips === 0) alert(`Всі кораблі затоплені! Ви вийграли`)
+          } else {
+            inputShotQuantity--
+            if (inputShotQuantity >= 1) alert(`Мимо! У вас ще ${inputShotQuantity} вистріли`)
+            else alert("Нема чим стріляти, ви програли")
+          }
+        } while (inputShotQuantity != 0 && inputShips != 0)
+      }
+      //===========================================
+      //введеня даних
+      const inputBattlefieldColumn = parseInt(prompt("Введіть кількість колонок", "2"))
+      const inputBattlefieldRow = parseInt(prompt("Введіть кількість рядків", "2"))
+      let inputShips = parseInt(prompt("Введіть кількість кораблів", "4"))
+      let inputShotQuantity = parseInt(prompt("Введіть кількість вистрелів", "4"))
+      //===========================================
+      let battlefield = getBattlefielRow(inputBattlefieldRow, inputBattlefieldColumn)
+      console.log(battlefield)
+
+      const randomPositionShip = getRandomPositionShip(battlefield, inputShips, inputBattlefieldRow, inputBattlefieldColumn)
+      console.log(randomPositionShip)
+
+      let shot = getShot(randomPositionShip, inputShips, inputShotQuantity)
+    </script>
+  </body>
+</html>

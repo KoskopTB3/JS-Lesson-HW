@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="../css/style.css"> -->
+	<title>Задача №7 ДОПОЛНИТЕЛЬНО</title>
+</head>
+
+<body>
+	<h2>Задача 7 ДОПОЛНИТЕЛЬНО. Гра в кості. Правила гри:
+		<ul>
+			<li>1) користувач може кинути кості не більше двох разів (користувач сам вирішує чи робити, чи не робити другий
+				кидок);</li>
+			<li>2) якщо випадає парне число, то кількість балів збільшується на це число;</li>
+			<li>3) якщо випадає непарне число, то кількість балів зменшується на це число;</li>
+			<li>4) виграє той, у кого кількість балів більша.</li>
+		</ul>
+	</h2>
+
+	<script>
+		// ВВедення необхідних даних
+		alert(`Кубики кидає перший гравець`)
+		let resultPlayerOne
+		//рандомні числа кубиків
+		const minNum = 1, maxNum = 6
+		let playerOneDiceOne = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+
+		alert(`На першому кубіку випало ${playerOneDiceOne}`)
+		resultPlayerOne = playerOneDiceOne
+		if (confirm(`Бажаєте кинути кубики ще раз?`)) {
+			playerOneDiceTwo = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+			alert(`На першому кубіку випало ${playerOneDiceOne} \nНа другому кубіку випало ${playerOneDiceTwo}`)
+			if (playerOneDiceOne === playerOneDiceTwo)
+				resultPlayerOne = playerOneDiceOne * 3
+			else if (playerOneDiceOne !== playerOneDiceTwo)
+				resultPlayerOne = playerOneDiceOne - playerOneDiceTwo
+			if (resultPlayerOne < 0)
+				resultPlayerOne = 0
+			document.write(`Результат першого гравця ${resultPlayerOne}<br>`)
+		} else
+			document.write(`Результат першого гравця ${resultPlayerOne} <br>`)
+
+
+		//Грає другий учасник
+		alert(`Кубики кидає другий гравець`)
+		let resultPlayerTwo
+		//рандомні числа кубиків
+
+		let playerTwoDiceOne = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+
+		alert(`На першому кубіку випало ${playerTwoDiceOne}`)
+		resultPlayerTwo = playerTwoDiceOne
+		if (confirm(`Бажаєте кинути кубики ще раз?`)) {
+			playerTwoDiceTwo = minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+			alert(`На першому кубіку випало ${playerTwoDiceOne} \nНа другому кубіку випало ${playerTwoDiceTwo}`)
+			if (playerTwoDiceOne === playerTwoDiceTwo)
+				resultPlayerTwo = playerTwoDiceOne * 3
+			else if (playerTwoDiceOne !== playerTwoDiceTwo)
+				resultPlayerTwo = playerTwoDiceOne - playerTwoDiceTwo
+			if (resultPlayerTwo < 0)
+				resultPlayerTwo = 0
+			document.write(`Результат другого гравця ${resultPlayerTwo}<br>`)
+		} else
+			document.write(`Результат другого гравця ${resultPlayerTwo}<br>`)
+
+
+		// Обчислення результату
+		if(resultPlayerOne===resultPlayerTwo)
+		document.write(`Ничья`)
+		else if(resultPlayerOne>resultPlayerTwo)
+		document.write(`Первый игрок победил`)
+		else
+		document.write(`Второй игрок победил`)
+
+		// Виведення результату
+
+
+	</script>
+</body>
+
+</html>

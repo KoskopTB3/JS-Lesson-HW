@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>Задача 1. Знайти суми елементів у вказаній області</h2>
+
+    <script>
+      let array = [
+        [1, 2, 3, 4], //2+4
+        [5, 6, 7, 8], //5+7
+        [9, 10, 11, 12], //10+12
+        [13, 14, 15, 16], //13+15
+      ]
+
+      //знаходить суму від 0 рядків до половини рядків, і від 0 стовбців до половини стовбців
+      let sum1 = 0
+      for (let rowIndex = 0; rowIndex < Math.floor(array.length / 2); rowIndex++) {
+        for (let columnIndex = 0; columnIndex < Math.floor(array[rowIndex].length / 2); columnIndex++) {
+          sum1 += array[rowIndex][columnIndex]
+        }
+      }
+
+      //знаходить суму від 0 рядків до половини рядків, і від половини стовбців до кінця
+      let sum2 = 0
+      for (let rowIndex = 0; rowIndex < Math.floor(array.length / 2); rowIndex++) {
+        for (let columnIndex = Math.floor(array[rowIndex].length / 2); columnIndex < array[rowIndex].length; columnIndex++) {
+          sum2 += array[rowIndex][columnIndex]
+        }
+      }
+
+      //знаходить суму від половини рядків до кінця рядків, і від 0 стовбців до половини стовбців
+      let sum3 = 0
+      for (let rowIndex = Math.floor(array.length / 2); rowIndex < array.length; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < Math.floor(array[rowIndex].length / 2); columnIndex++) {
+          sum3 += array[rowIndex][columnIndex]
+        }
+      }
+
+      //знаходить суму від половини рядків до кінця рядків, і від половини стовбців до кінця
+      let sum4 = 0
+      for (let rowIndex = Math.floor(array.length / 2); rowIndex < array.length; rowIndex++) {
+        for (let columnIndex = Math.floor(array[rowIndex].length / 2); columnIndex < array[rowIndex].length; columnIndex++) {
+          sum4 += array[rowIndex][columnIndex]
+        }
+      }
+
+      //знаходить суму парних рядків
+      let sumDoubleRows = 0
+      for (let rowIndex = 0; rowIndex < array.length; rowIndex += 2) {
+        for (let columnIndex = 0; columnIndex < array[rowIndex].length; columnIndex++) {
+          sumDoubleRows += array[rowIndex][columnIndex]
+        }
+      }
+      //знаходить суму не парних рядків
+      let sumNotPairedRows = 0
+      for (let rowIndex = 1; rowIndex < array.length; rowIndex += 2) {
+        for (let columnIndex = 0; columnIndex < array[rowIndex].length; columnIndex++) {
+          sumNotPairedRows += array[rowIndex][columnIndex]
+        }
+      }
+
+      //У парних рядках – непарні стовпці, у непарних – парні.
+      let sum_PairedRow_NoPairedColumn = 0
+      let sum_NoPairedRow_PairedColumn = 0
+      for (let rowIndex = 0; rowIndex < array.length; rowIndex++) {
+        if (rowIndex % 2 === 0)
+          for (let columnIndex = 1; columnIndex < array[rowIndex].length; columnIndex += 2) {
+            sum_PairedRow_NoPairedColumn += array[rowIndex][columnIndex]
+          }
+        else
+          for (let columnIndex = 0; columnIndex < array[rowIndex].length; columnIndex += 2) {
+            sum_NoPairedRow_PairedColumn += array[rowIndex][columnIndex]
+          }
+      }
+
+      //===========================================
+      console.log(sum1, sum2, sum3, sum4, sumDoubleRows, sumNotPairedRows, sum_PairedRow_NoPairedColumn, sum_NoPairedRow_PairedColumn)
+    </script>
+  </body>
+</html>

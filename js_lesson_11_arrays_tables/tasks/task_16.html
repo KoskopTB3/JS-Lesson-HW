@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №16</title>
+  </head>
+
+  <body>
+    <h2>загальний прибуток за робочі дні</h2>
+    <script>
+      //===========================================
+
+      let shot = []
+      const shot_X = parseInt(prompt(`Введіть значення по горизонталі від `, "3"))
+      const shot_Y = parseInt(prompt(`Введіть значення по вертикалі від `, "2"))
+      shot.push(shot_X, shot_Y)
+      console.log(shot)
+
+      // let inputShips = parseInt(prompt("Введіть кількість кораблів", "5"))
+      // do {
+      //   inputShips--
+      //   console.log(inputShips)
+      // } while (inputShips !== 0)
+
+      // arrBattle = [
+      //   [0, 0, 0, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 0],
+      //   [0, 0, 0, 0, 0, 0],
+      // ]
+
+      // function getRandomIndex(minNum, maxNum) {
+      //   return (randomNumber = minNum + Math.floor(Math.random() * (maxNum - minNum + 1)))
+      // }
+
+      // function getRandomPositionShip(arrBattle) {
+      //   for (let i = 0; i < 5; i++) {
+      //     let randomIndexRow = getRandomIndex(0, 6)
+      //     console.log(randomIndexRow)
+      //     let randomIndexColumn = getRandomIndex(0, 6)
+      //     arrBattle[randomIndexRow][randomIndexColumn] = 1
+      //   }
+      //   return arrBattle
+      // }
+
+      // let a = getRandomPositionShip(arrBattle)
+      // console.log(a)
+
+      // let arrayShopsIncome = [
+      //   [10, 20, 30, 40, 50, 60, 70],
+      //   [1, 1, 1, 1, 1, 1, 1],
+      //   [2, 2, 2, 2, 2, 2, 2],
+      // ]
+
+      // let arrayShopsIncome = [
+      //   [10, 0, 0, 0, 0, 0, 0],
+      //   [1, 1, 1, 1, 1, 1, 1],
+      //   [2, 2, 2, 2, 2, 2, 2],
+      // ]
+
+      // function getSumOfShop(arrayShopsIncome) {
+      //   let sumArr = []
+
+      //   for (let shop = 0; shop < arrayShopsIncome.length; shop++) {
+      //     let sum = 0
+      //     for (let day = 0; day < arrayShopsIncome[shop].length; day++) {
+      //       sum += arrayShopsIncome[shop][day]
+      //     }
+      //     sumArr.push(sum)
+      //   }
+      //   return sumArr
+      // }
+
+      // function getSumOfShop(arrayShopsIncome) {
+      //   let sum = 0
+      //   for (let shop = 0; shop < arrayShopsIncome.length; shop++) {
+      //     for (let day = 0; day < arrayShopsIncome[shop].length; day++) {
+      //       sum += arrayShopsIncome[shop][day]
+      //     }
+      //   }
+      //   return sum
+      // }
+      //===========================================
+      // function getSumOfShop(arrayShopsIncome) {
+      //   let sum = 0
+      //   for (let day = 0; day < arrayShopsIncome.length; day++) {
+      //     sum += arrayShopsIncome[day]
+      //   }
+      //   return sum
+      // }
+
+      // const sumOfShop = getSumOfShop(arrayShopsIncome)
+      // console.log(sumOfShop)
+
+      // let sumMaxToLow = arrayShopsIncome.sort((el1, el2) => getSumOfShop(el2) - getSumOfShop(el1))
+
+      // // let sumMaxToLow = sumOfShop.sort((el1, el2) => el2 - el1)
+
+      // console.log(sumMaxToLow)
+      //===========================================
+      // let sumShopMaxToLow = arrayShopsIncome.sort((el1, el2) => {
+      //   return el2.reduce((prevSum, el) => prevSum + el) - el1.reduce((prevSum, el) => prevSum + el)
+      // })
+      // console.log(sumShopMaxToLow)
+
+      // let a = [1, 2, 3]
+      // let newA = a.reduce((prevSum, el) => prevSum + el)
+      // console.log(newA)
+
+      // let max = arrayShopsIncome.reduce((maxNum, el, index, arr) => {
+      //   for (let i = 0; i < arr.length; i++) {
+      //     for (let j = 0; j < arr[i].length; j++) {
+      //       if (j > maxNum) maxNum = j
+      //     }
+      //   }
+      //   return maxNum
+      // }, [])
+
+      // let arrayShopsIncome = [10, 20, 30, 1, 1, 1, 1]
+
+      // let totalSumForEachShop = []
+      // let sum = 0
+      // arrayShopsIncome.forEach((row) =>
+      //   totalSumForEachShop.push(
+      //     row.forEach((element, index, arr) => {
+      //       sum += element
+      //     })
+      //   )
+      // )
+      // console.log(totalSumForEachShop)
+    </script>
+  </body>
+</html>

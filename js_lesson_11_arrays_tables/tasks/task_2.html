@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+  </head>
+
+  <body>
+    <h2>Задача 2. Дано інформацію про прибуток К магазинів протягом тижня. Знайти :</h2>
+
+    <script>
+      //функція рандомного числа   totalAmountOfMoneyStoresForTheWeek
+      const randomSumOfDay = function getRandomNumber(minSum, maxSum) {
+        return minSum + Math.floor(Math.random() * (maxSum - minSum + 1))
+      }
+      //функція створення рандомного масиву прибутку за тиждень
+      function getIncomePerWeek(day) {
+        let arrWeeklyProfit = []
+        const minSum = 10
+        const maxSum = 500
+        for (let i = 0; i < day; i++) {
+          let randomSum = randomSumOfDay(minSum, maxSum)
+          arrWeeklyProfit.push(randomSum)
+        }
+        return arrWeeklyProfit
+      }
+      //функція створення масиву магазинів і масиву їх прибутку за тиждень
+      function getArrayShopsIncome(shopQuantity, day) {
+        let arrShop = []
+        for (let i = 0; i < shopQuantity; i++) {
+          let shopProfitOfWeek = getIncomePerWeek(day)
+          arrShop.push(shopProfitOfWeek)
+        }
+        return arrShop
+      }
+      let arrayShopsIncome = getArrayShopsIncome(3, 7)
+      console.log(arrayShopsIncome)
+      //===========================================
+      // 1) загальний прибуток кожного масиву за тиждень;
+
+      for (let shop = 0; shop < arrayShopsIncome.length; shop++) {
+        let shopProfitPerWeek = 0 // изначальная сумма и обнуляем сумму для последующих итераций
+        for (let profitPerDay = 0; profitPerDay < arrayShopsIncome[shop].length; profitPerDay++) {
+          shopProfitPerWeek += arrayShopsIncome[shop][profitPerDay]
+        }
+        console.log(`Сума ${shop + 1}-го магазина за тиждень: ${shopProfitPerWeek}`)
+      }
+
+      //===========================================
+      // 2) загальний прибуток усіх магазинів по дням (загальний прибуток усіх магазинів за понеділок, за вівторок, і т.д.);
+
+      let sumAllMonday = 0
+      let sumAllTuesday = 0
+      let sumAllWensday = 0
+      let sumAllThursday = 0
+      let sumAllFriday = 0
+      let sumAllSaturday = 0
+      let sumAllSunday = 0
+
+      for (let rowIndex = 0; rowIndex < arrayShopsIncome.length; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < arrayShopsIncome[rowIndex].length; columnIndex++) {
+          if (columnIndex === 0) sumAllMonday += arrayShopsIncome[rowIndex][columnIndex]
+          else if (columnIndex === 1) sumAllTuesday += arrayShopsIncome[rowIndex][columnIndex]
+          else if (columnIndex === 2) sumAllWensday += arrayShopsIncome[rowIndex][columnIndex]
+          else if (columnIndex === 3) sumAllThursday += arrayShopsIncome[rowIndex][columnIndex]
+          else if (columnIndex === 4) sumAllFriday += arrayShopsIncome[rowIndex][columnIndex]
+          else if (columnIndex === 5) sumAllSaturday += arrayShopsIncome[rowIndex][columnIndex]
+          else if (columnIndex === 6) sumAllSunday += arrayShopsIncome[rowIndex][columnIndex]
+        }
+      }
+
+      console.log(`загальний прибуток усіх магазинів за понеділок: ${sumAllMonday}`)
+      console.log(`загальний прибуток усіх магазинів за вівторок: ${sumAllTuesday}`)
+      console.log(`загальний прибуток усіх магазинів за середу: ${sumAllWensday}`)
+      console.log(`загальний прибуток усіх магазинів за четверг: ${sumAllThursday}`)
+      console.log(`загальний прибуток усіх магазинів за пятницю: ${sumAllFriday}`)
+      console.log(`загальний прибуток усіх магазинів за суботу: ${sumAllSaturday}`)
+      console.log(`загальний прибуток усіх магазинів за неділю: ${sumAllSunday}`)
+
+      //===========================================
+      // 3) загальний прибуток за робочі дні
+      // -----функція-----
+      function getProfitPerWorkingDay(arrayShopsIncome) {
+        let sum = 0
+        for (let rowIndex = 0; rowIndex < arrayShopsIncome.length; rowIndex++) {
+          for (let columnIndex = 0; columnIndex < arrayShopsIncome[rowIndex].length - 2; columnIndex++) {
+            sum += arrayShopsIncome[rowIndex][columnIndex]
+          }
+        }
+        return sum
+      }
+      const profitPerWorkingDay = getProfitPerWorkingDay(arrayShopsIncome)
+      console.log(`загальний прибуток за робочі дні: ${profitPerWorkingDay}`)
+      // -----reduce-----
+      // let profitPerWorkingDay = arrayShopsIncome.reduce(
+      //   (prevSum, row) =>
+      //     prevSum +
+      //     row.reduce((prevRowSum, el, index, arr) => {
+      //       if (index < 5) prevRowSum = prevRowSum + el
+      //       return prevRowSum
+      //     }, 0),
+      //   0
+      // )
+      // -----reduce-----
+      // let profitPerWorkingDay = arrayShopsIncome.reduce((prevSum, row) => {
+      //   for (let i = 0; i < 5; i++) {
+      //     prevSum = prevSum + row[i]
+      //   }
+      //   return prevSum
+      // }, 0)
+
+      //===========================================
+      // 4) загальний прибуток за вихідні дні
+
+      function getProfitPerHoliday(arrayShopsIncome) {
+        let sum = 0
+        for (let rowIndex = 0; rowIndex < arrayShopsIncome.length; rowIndex++) {
+          for (let columnIndex = 5; columnIndex < arrayShopsIncome[rowIndex].length; columnIndex++) {
+            sum += arrayShopsIncome[rowIndex][columnIndex]
+          }
+        }
+        return sum
+      }
+      const profitPerHoliday = getProfitPerHoliday(arrayShopsIncome)
+      console.log(`загальний прибуток за вихідні дні: ${profitPerHoliday}`)
+      //===========================================
+      //5) максимальний прибуток за середу
+      let allNumInWensdey = []
+      for (let rowIndex = 0; rowIndex < arrayShopsIncome.length; rowIndex++) {
+        for (let columnIndex = 2; columnIndex < 3; columnIndex++) {
+          if (columnIndex === 2) allNumInWensdey.push(arrayShopsIncome[rowIndex][columnIndex])
+        }
+      }
+      const maxProfitInWensdey = Math.max(...allNumInWensdey)
+      console.log(allNumInWensdey)
+      console.log(`максимальний прибуток за середу серед магазинів ${maxProfitInWensdey}`)
+      //===========================================
+      // 6) сформувати загальний список (одновимірний масив) зі значенням, які що більші за 200
+
+      let profitMore_200 = []
+      for (const rowIndex of arrayShopsIncome) {
+        for (const columnIndex of rowIndex) {
+          if (columnIndex > 200) profitMore_200.push(columnIndex)
+        }
+      }
+      console.log(`масив зі значенням, які більші за 200 ${arrayShopsIncome}`)
+      //===========================================
+      // 7) відсортувати кожен тиждень за зростанням
+
+      let arrGrow = JSON.parse(JSON.stringify(arrayShopsIncome)) //робимо копію масиву, адже без копії базовий масив теж сортується
+      for (const rowIndex of arrGrow) {
+        for (const columnIndex of rowIndex) {
+          rowIndex.sort((el1, el2) => el1 - el2)
+        }
+      }
+      console.log(arrGrow)
+      //===========================================
+      //8) відсортувати тижні (рядки) за спаданням максимального елементу у цьому тижні (рядку), тобто при
+      //порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+      let growToLower = JSON.parse(JSON.stringify(arrayShopsIncome))
+      growToLower.sort((el1, el2) => Math.max(...el2) - Math.max(...el1))
+      console.log(growToLower)
+
+      //===========================================
+      //9) упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба
+      //знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло,
+      //який з елементів повинен іти раніше).
+      let sumShopMaxToLow = JSON.parse(JSON.stringify(arrayShopsIncome))
+      sumShopMaxToLow.sort((el1, el2) => {
+        return el2.reduce((prevSum, el) => prevSum + el) - el1.reduce((prevSum, el) => prevSum + el)
+      })
+      console.log(sumShopMaxToLow)
+    </script>
+  </body>
+</html>

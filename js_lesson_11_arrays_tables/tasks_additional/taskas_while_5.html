@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <title>Задача №4 ДОПОЛНИТЕЛЬНО</title>
+  </head>
+
+  <body>
+    <h2>Задача 4 ДОПОЛНИТЕЛЬНО. З клавіатури поступово вводяться числа. Знайти суму перших N парних чисел.</h2>
+
+    <script>
+      // ВВедення необхідних даних
+
+      let countDoubleNum = 0;
+      let totalSum = 0;
+      while (countDoubleNum < 5) {
+        let inputNum = parseInt(prompt("Введіть число", "10"));
+        console.log(inputNum);
+        if (!isFinite(inputNum)) break;
+        if (inputNum % 2 === 0) {
+          totalSum += inputNum;
+          countDoubleNum++;
+        }
+      }
+
+      document.write(`Сума пяти непарних чисел = ${totalSum}`);
+
+      // Обчислення результату
+
+      // Виведення результату
+    </script>
+  </body>
+</html>

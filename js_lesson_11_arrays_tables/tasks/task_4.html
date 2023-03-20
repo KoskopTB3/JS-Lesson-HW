@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>Задача 4. Дано масив елементів. Вивести на екран елементи, що більші за 100</h2>
+    <script>
+      function getArrElements(inputNumElements) {
+        let arr = [];
+        for (let i = 0; i < inputNumElements; i++) {
+          const inputElementNumber = parseInt(prompt("Введіть введіть значення елемента", "10"));
+          arr.push(inputElementNumber);
+        }
+        return arr;
+      }
+
+      function getNumMore_100(arrElements) {
+        let arr = [];
+        for (const iterator of arrElements) {
+          if (iterator > 100) arr.push(iterator);
+        }
+        return arr;
+      }
+      const inputNumElements = parseInt(prompt("Введіть введіть кількість елементів", "5"));
+
+      const arrElements = getArrElements(inputNumElements);
+      console.log(arrElements);
+
+      const numMore_100 = getNumMore_100(arrElements);
+      console.log(numMore_100);
+    </script>
+  </body>
+</html>
