@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>Задача 3. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування включеннями.</h2>
+    <script>
+      //функція генерування рандомного числа
+      function getRandomNum(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+
+      //функція генерування рандомного масиву
+      function getRandomArr(inputQuantityNum, minNum, maxNum) {
+        let arr = []
+        for (let i = 0; i < inputQuantityNum; i++) {
+          let randomNum = getRandomNum(minNum, maxNum)
+          arr.push(randomNum)
+        }
+        return arr
+      }
+      //функція сортування вставками
+      function getInsertSorting(array) {
+        let counter = 0
+        for (let k = 1; k < array.length; k++) {
+          let currentElement = array[k]
+          let i = k - 1 //в первом цикле будет нулевой индекс K0
+          while (i >= 0 && array[i] > currentElement) {
+            array[i + 1] = array[i] //в первом цикле, индексу 1 присваиваем значение индекса 0 (предыдущего значения)
+            i = i - 1 // в первом цикле i = -1 (индекс меньше нуля, выходим из цикла while)
+            counter++
+          }
+          array[i + 1] = currentElement //array[-1+1] - в первом цикле индексу 0, присвоено значение индекса 1
+        }
+        console.log(`перестановок було: ${counter}`)
+        return array
+      }
+      //===========================================
+
+      const inputQuantityNum = parseInt(prompt("Введіть кількість значень", "10"))
+
+      const randomArr = getRandomArr(inputQuantityNum, -10, 30)
+      console.log(randomArr)
+
+      const insertSorting = getInsertSorting(randomArr)
+      console.log(insertSorting)
+    </script>
+  </body>
+</html>

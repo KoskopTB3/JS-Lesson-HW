@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №6</title>
+  </head>
+
+  <body>
+    <h2>
+      Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким індексом.
+    </h2>
+
+    <script>
+      let arrNames = ["Oleg", "Oleksandr", "Olga", "Olesya", "Nikita", "Orest", "Marija", "Ivanka"]
+      console.log(arrNames)
+      arrNames.sort((el1, el2) => el1.length - el2.length)
+      console.log(arrNames)
+      //===========================================
+      //пошук через for
+      // for (let i = 0; i < arrNames.length; i++) {
+      //   if (arrNames[i].length === 5) console.log(arrNames[i], [i])
+      // }
+      //===========================================
+      function binarySearch(array, searchElement) {
+        let start = 0
+        let end = array.length - 1
+        while (start <= end) {
+          let middle = Math.floor((start + end) / 2)
+          if (array[middle].length === searchElement) return middle
+          if (array[middle].length > searchElement) end = middle - 1
+          if (array[middle].length < searchElement) start = middle + 1
+        }
+        return -1
+      }
+
+      const searchNameLength_5 = binarySearch(arrNames, 5)
+      if (searchNameLength_5 !== -1) console.log(`Ім'я з довжиною 5 букв знаходиться під індексом: ${searchNameLength_5}`)
+      else "Ім`я з довжиною 5 букв не знайдено"
+    </script>
+  </body>
+</html>

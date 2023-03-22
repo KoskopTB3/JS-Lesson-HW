@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+  </head>
+
+  <body>
+    <h2>Задача 2. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування змішуванням.</h2>
+
+    <script>
+      //функція генерування рандомного числа
+      function getRandomNum(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+
+      //функція генерування рандомного масиву
+      function getRandomArr(inputQuantityNum, minNum, maxNum) {
+        let arr = []
+        for (let i = 0; i < inputQuantityNum; i++) {
+          let randomNum = getRandomNum(minNum, maxNum)
+          arr.push(randomNum)
+        }
+        return arr
+      }
+      //функція сортування змішуванням
+      function getShakeSorting(array) {
+        let numberPermutationCounter = 0
+        let leftIndex = 0
+        let rigtnIndex = array.length - 1
+        while (leftIndex < rigtnIndex) {
+          //идем от 0 до конца массива, если последние значения не больше
+          for (let i = leftIndex; i < rigtnIndex; i++) {
+            if (array[i] > array[i + 1]) {
+              // к примеру в начале такие значения[6,2], то меняем местами
+              numberPermutationCounter++
+              let temp = array[i]
+              array[i] = array[i + 1]
+              array[i + 1] = temp
+            }
+          }
+          rigtnIndex-- //знайшли максимальне на почтаку масиву і переставили його в кінець і вичеркнули останній індекс, т.к. ми знаємо шо там точно максимальне значення
+
+          //идем от конца массива до начала массаива, если начальные значения не меньше
+          for (let j = rigtnIndex; j > leftIndex; j--) {
+            if (array[j] < array[j - 1]) {
+              // к примеру в конце такие значения [7,3], то меняем местами
+              numberPermutationCounter++
+              let temp = array[j]
+              array[j] = array[j - 1]
+              array[j - 1] = temp
+            }
+          }
+
+          leftIndex++ //знайшли мінімальне в кінці масиву і переставили його на почтаток і вичеркнули останній перший індекс, т.к. ми знаємо шо там точно мінімальне значення
+        }
+        console.log(`счетчик перестановок = ${numberPermutationCounter}`)
+        return array
+      }
+      //===========================================
+      const inputQuantityNum = parseInt(prompt("Введіть кількість значень", "10"))
+
+      const randomArr = getRandomArr(inputQuantityNum, -10, 30)
+      console.log(randomArr)
+
+      const shakeSorting = getShakeSorting(randomArr)
+      console.log(shakeSorting)
+    </script>
+  </body>
+</html>

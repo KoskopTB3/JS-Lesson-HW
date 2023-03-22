@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>Задача 5. Дано масив імен. Застосовуючи відповідне сортування та бінарний пошук визначити, чи є у масиві ім’я «Olga» і під яким індексом.</h2>
+    <script>
+      let arr = ["Oleg", "Oleksandr", "Olga", "Olesya", "Orest", "Olena", "Kolya"]
+      console.log(arr)
+      //===========================================
+      // arr.includes("Olga")
+      // let a = arr.findIndex((el) => el === "Olga")
+      // console.log(a)
+      // console.log(arr.includes("Olga"))
+      //===========================================
+      function findIndexName_BinarySearch(arr, searhName) {
+        let start = 0
+        let end = arr.length - 1
+        while (start <= end) {
+          const middle = Math.floor((start + end) / 2)
+          //  if (arr[middle] === searhName) return arr.findIndex((el) => el === "Olga")
+          if (arr[middle] === searhName) return middle
+          if (arr[middle] > searhName) end = middle - 1
+          if (arr[middle] < searhName) start = middle + 1
+        }
+        return -1
+      }
+
+      arr.sort()
+      console.log(arr)
+      const binarySearchName = findIndexName_BinarySearch(arr, "Olga")
+      if (binarySearchName !== -1) console.log(`В масиві є ім'я Olga, під індексом ${binarySearchName}`)
+      else console.log("Такого ім`я в масиві не знайдено")
+    </script>
+  </body>
+</html>

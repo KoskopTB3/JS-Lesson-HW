@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>Задача 1. Дано масив 30 випадкових цілих чисел. Підрахувати скільки було обмінів під час сортування бульбашкою</h2>
+
+    <script>
+      //функція генерування рандомного числа
+      function getRandomNum(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+
+      //функція генерування рандомного масиву
+      function getRandomArr(inputQuantityNum, minNum, maxNum) {
+        let arr = []
+        for (let i = 0; i < inputQuantityNum; i++) {
+          let randomNum = getRandomNum(minNum, maxNum)
+          arr.push(randomNum)
+        }
+        return arr
+      }
+
+      //функція сортування бульбашкою
+      function getBulbSorting(array) {
+        let changed
+        let numberPermutationCounter = 0
+        do {
+          changed = false
+          for (let i = 1; i < array.length; i++) {
+            if (array[i - 1] > array[i]) {
+              numberPermutationCounter++
+              let temp = array[i - 1]
+              array[i - 1] = array[i]
+              array[i] = temp
+              changed = true
+            }
+          }
+          //  console.log(changed)
+        } while (changed)
+        console.log(`счетчик перестановок = ${numberPermutationCounter}`)
+        return array
+      }
+
+      //===========================================
+      const inputQuantityNum = parseInt(prompt("Введіть кількість значень", "10"))
+
+      const randomArr = getRandomArr(inputQuantityNum, -10, 30)
+      console.log(randomArr)
+
+      const bulbSorting = getBulbSorting(randomArr)
+      console.log(bulbSorting)
+    </script>
+  </body>
+</html>
