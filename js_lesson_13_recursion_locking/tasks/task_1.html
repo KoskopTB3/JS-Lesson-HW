@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 1. Нехай x_0 = 1, x_i = x_i_1 + 2*i, де i = 1,2,... Визначити x_10. Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+    </h2>
+
+    <script>
+      //функція з використанням рукурсії
+      function getRecursion(i) {
+        if (i === 0) return 1
+        else {
+          return getRecursion(i - 1) + 2 * i
+        }
+      }
+
+      console.log(getRecursion(10))
+      //===========================================
+      //функція з використанням for
+      function getFor(i) {
+        if (i === 0) return 1
+        let x_0 = 1
+        let x_i_1 = x_0
+        let result
+        for (let index = 1; index <= i; index++) {
+          result = x_i_1 + 2 * index
+          x_i_1 = result
+        }
+        return result
+      }
+      console.log(getFor(10))
+    </script>
+  </body>
+</html>

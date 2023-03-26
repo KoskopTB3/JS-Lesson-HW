@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 4.З використанням замикань розробити ітератор, тобто функцію, що буде поступово за окремими викликами видавати по одній букві наперед
+      заданого слова. З використанням нього розробити гру «Прекладач». Виводимо для користувача опис цього слова і по одну букву користувач вводить
+      переклад цього слова. Підрахувати кількість вгаданих букв.
+    </h2>
+    <script>
+      alert("Вгадайте слово та перекладіть його англійською, вводячи з клавіатури по одній букві.\nЗагадка:\n'Не лає, не кусає, а в дім не пускає'")
+
+      function getLetter(word, numberIndex) {
+        function letter() {
+          return word[numberIndex++]
+        }
+        return letter
+      }
+
+      const hiddenWord = "lock"
+      let oneLetter = getLetter(hiddenWord, 0)
+
+      function guessTheWordByLetter(hiddenWord, oneLetter) {
+        let inputLetter
+        let correctLetterCounter = 0
+        let inputLetterCounter = 0
+        do {
+          inputLetter = prompt("Введіть букву")
+          console.log(`введена буква ${inputLetter}`)
+
+          let letterFromWord = oneLetter()
+          if (inputLetter === letterFromWord) {
+            correctLetterCounter++
+            if (correctLetterCounter === hiddenWord.length) alert(`Вітаємо! Ви вгадали, це слово "${hiddenWord}"`)
+          }
+          inputLetterCounter++
+          if (inputLetterCounter === hiddenWord.length && correctLetterCounter !== hiddenWord.length)
+            alert(`Нажаль ви вгадали тілки ${correctLetterCounter} букви, це було слово "${hiddenWord}"`)
+        } while (inputLetterCounter < hiddenWord.length && inputLetter !== null)
+      }
+
+      const guessWord = guessTheWordByLetter(hiddenWord, oneLetter)
+
+      // console.log(letterIs())
+    </script>
+  </body>
+</html>

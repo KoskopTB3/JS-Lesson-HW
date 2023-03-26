@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 2. Нехай x_0 = x_1 = 1, x_i = x_i_1 + 2*x_i_2, де i=2,3,4.... Визначити x_n. Розв’язати з використанням рекурсивних і нерекурсивних
+      алгоритмів
+    </h2>
+
+    <script>
+      //функція з використанням рукурсії
+      function getRecursion(i) {
+        if (i === 0 || i === 1) return 1
+        else {
+          return getRecursion(i - 1) + 2 * getRecursion(i - 2)
+        }
+      }
+      console.log(getRecursion(5))
+      //функція з використанням for
+      function getFor(i) {
+        if (i === 0 || i === 1) return 1
+        let x_i_1 = 1
+        let x_i_2 = 1
+        let result
+        for (let j = 2; j <= i; j++) {
+          result = x_i_1 + 2 * x_i_2
+          x_i_2 = x_i_1
+          x_i_1 = result
+        }
+        return result
+      }
+      console.log(getFor(5))
+    </script>
+  </body>
+</html>

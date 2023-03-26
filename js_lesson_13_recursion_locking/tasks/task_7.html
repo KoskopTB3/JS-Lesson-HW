@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №7</title>
+  </head>
+
+  <body>
+    <h2>Задача 7. Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</h2>
+    <script>
+      let array = [5, 4, 3, 2, 1]
+      // console.log(array)
+      //===========================================
+      //функція сортування бульбашкой
+      // function getBulbSorting(array) {
+      //   let changed
+      //   let counter = 0
+      //   document.write(`Сортування бульбашкою, оригінальний масив: ${JSON.stringify(array)}<br>`)
+      //   do {
+      //     changed = false
+      //     for (let i = 1; i < array.length; i++) {
+      //       if (array[i - 1] > array[i]) {
+      //         counter++
+      //         let temp = array[i]
+      //         array[i] = array[i - 1]
+      //         array[i - 1] = temp
+      //         changed = true
+      //         document.write(`${JSON.stringify(array)}<br>`)
+      //       }
+      //     }
+      //   } while (changed)
+      //   console.log(`счетчик перестановок: ${counter}`)
+      //   return array
+      // }
+
+      // let bulb = getBulbSorting(array)
+      // console.log(bulb)
+      //===========================================
+      //функція сортування змішуванням (шейкер)
+      // function getShakeSorting(array) {
+      //   document.write(`Сортування змішуванням, оригінальній масив: ${JSON.stringify(array)}<br>`)
+
+      //   let numberPermutationCounter = 0
+      //   let leftIndex = 0
+      //   let rigtnIndex = array.length - 1
+      //   while (leftIndex < rigtnIndex) {
+      //     //идем от 0 до конца массива, если последние значения не больше
+      //     for (let i = leftIndex; i < rigtnIndex; i++) {
+      //       if (array[i] > array[i + 1]) {
+      //         numberPermutationCounter++
+      //         let temp = array[i]
+      //         array[i] = array[i + 1]
+      //         array[i + 1] = temp
+      //         document.write(`${JSON.stringify(array)}<br>`)
+      //       }
+      //     }
+      //     rigtnIndex-- //знайшли максимальне на почтаку масиву і переставили його в кінець і вичеркнули останній індекс, т.к. ми знаємо шо там точно максимальне значення
+
+      //     //идем от конца массива до начала массаива, если начальные значения не меньше
+      //     for (let j = rigtnIndex; j > leftIndex; j--) {
+      //       if (array[j] < array[j - 1]) {
+      //         numberPermutationCounter++
+      //         let temp = array[j]
+      //         array[j] = array[j - 1]
+      //         array[j - 1] = temp
+      //         document.write(`${JSON.stringify(array)}<br>`)
+      //       }
+      //     }
+
+      //     leftIndex++ //знайшли мінімальне в кінці масиву і переставили його на почтаток і вичеркнули останній перший індекс, т.к. ми знаємо шо там точно мінімальне значення
+      //   }
+      //   console.log(`счетчик перестановок = ${numberPermutationCounter}`)
+      //   return array
+      // }
+
+      // const shakeSorting = getShakeSorting(array)
+      // console.log(shakeSorting)
+      //===========================================
+      //функція сортування вставками
+      // function getInsertSorting(array) {
+      //   document.write(`Сортування вставками, оригінальній масив: ${JSON.stringify(array)}<br>`)
+      //   let counter = 0
+      //   for (let k = 1; k < array.length; k++) {
+      //     let currentElement = array[k]
+      //     let i = k - 1 //в первом цикле будет нулевой индекс K0
+      //     while (i >= 0 && array[i] > currentElement) {
+      //       array[i + 1] = array[i] //в первом цикле, индексу 1 присваиваем значение индекса 0 (предыдущего значения)
+      //       i = i - 1 // в первом цикле i = -1 (индекс меньше нуля, выходим из цикла while)
+      //       counter++
+      //     }
+      //     array[i + 1] = currentElement //array[-1+1] - в первом цикле индексу 0, присвоено значение индекса 1
+      //     document.write(`${JSON.stringify(array)}<br>`)
+      //   }
+      //   console.log(`перестановок було: ${counter}`)
+      //   return array
+      // }
+
+      // const insertSorting = getInsertSorting(array)
+      // console.log(insertSorting)
+      //===========================================
+      //функція сортування вибором
+      // function getChoiceSorting(array) {
+      //   let prevLastIndex = array.length - 1
+      //   for (let i = 0; i < prevLastIndex; i++) {
+      //     let minNum = i
+      //     for (let j = i + 1; j < array.length; j++) {
+      //       if (array[j] < array[minNum]) minNum = j
+      //     }
+      //     if (i != minNum) {
+      //       let temp = array[i]
+      //       array[i] = array[minNum]
+      //       array[minNum] = temp
+      //     }
+      //   }
+      //   return array
+      // }
+
+      // const choiceSorting = getChoiceSorting(array)
+      // console.log(choiceSorting)
+      //===========================================
+      //найти сумму парный ряд / непарная колонка, непарный ряд / парная колонка
+      // let array_2D = [
+      //   [5, 4, 3, 2, 1], // четн row, неч col 4+2
+      //   [5, 4, 3, 2, 1], // неч row, четн col 5+3+1
+      //   [5, 4, 3, 2, 1], // четн row, неч col 4+2
+      //   [5, 4, 3, 2, 1], // неч row, четн col 5+3+1
+      // ]
+
+      // let sum_RowEven_ColumnOdd = 0
+      // let sum_RowOdd_ColumnEven = 0
+      // for (let rowIndex = 0; rowIndex < array_2D.length; rowIndex++) {
+      //   // ----- варіант 1
+      //   //   let startIndex
+      //   //   if (rowIndex % 2 === 0) startIndex = 1
+      //   //   else startIndex = 0
+      //   // for (let columnIndex = startIndex; columnIndex < array_2D[rowIndex].length; columnIndex += 2) {
+      //   // ----- варіант 2
+      //   for (let columnIndex = 1 - (rowIndex % 2); columnIndex < array_2D[rowIndex].length; columnIndex += 2) {
+      //     if (columnIndex % 2 === 0) sum_RowEven_ColumnOdd += array_2D[rowIndex][columnIndex]
+      //     else sum_RowOdd_ColumnEven += array_2D[rowIndex][columnIndex]
+      //   }
+      // }
+
+      // console.log(sum_RowEven_ColumnOdd)
+      // console.log(sum_RowOdd_ColumnEven)
+
+      //===========================================
+      //відсортувати масив за максимальним числом
+      // let array_2D = [
+      //   [5, 14, 3, 2, 1],
+      //   [5, 4, 13, 2, 1],
+      //   [5, 4, 23, 2, 1],
+      //   [5, 4, 3, 12, 1],
+      // ]
+      // let maxNumRow = array_2D.map((row) =>
+      //   // row.reduce((prevMax, columnEl) => (prevMax > columnEl ? prevMax : columnEl)))
+      //   Math.max(...row)
+      // )
+      // console.log(maxNumRow)
+      // //функція сортування вибором
+      // function getChoiceSorting(maxNumRow, array_2D) {
+      //   for (let i = 0; i < array.length; i++) {
+      //     let currentMinNum = i
+      //     for (let j = i + 1; j < array.length; j++) {
+      //       if (maxNumRow[j] < maxNumRow[currentMinNum]) currentMinNum = j
+      //     }
+      //     if (i != currentMinNum) {
+      //       let temp = maxNumRow[i]
+      //       maxNumRow[i] = maxNumRow[currentMinNum]
+      //       maxNumRow[currentMinNum] = temp
+
+      //       let tmp = array_2D[i]
+      //       array_2D[i] = array_2D[currentMinNum]
+      //       array_2D[currentMinNum] = tmp
+      //     }
+      //   }
+      // }
+      // getChoiceSorting(maxNumRow, array_2D)
+      // console.table(array_2D)
+      //===========================================
+
+      //фунцкія факторіала з рекурсією //1*2*3*4*5 = 4!*5
+      // function factorial(n) {
+      //   if (n === 1) return 1
+      //   else return factorial(n - 1) * n
+      // }
+      // let factorialNum = factorial(3)
+      // console.log(factorialNum)
+
+      // ----фунцкія факторіала з for
+      // function factorial(n) {
+      //   let result = 1
+      //   for (let i = 2; i <= n; i++) {
+      //     result *= i
+      //   }
+      //   return result
+      // }
+      // let factorialNum = factorial(5)
+      // console.log(factorialNum)
+      //===========================================
+      //функція Фібоначчі з рекурсією //1+1+2+3+5+8...
+      // function fibonachi(n) {
+      //   if (n === 1 || n === 2) return 1
+      //   else return fibonachi(n - 1) + fibonachi(n - 2)
+      // }
+      // console.log(fibonachi(5))
+      // -----функція Фібоначчі з for
+      // function fibonachi(n) {
+      //   let f_n
+      //   if (n === 1 || n === 2) return 1
+      //   else {
+      //     let f_n_1 = 1,
+      //       f_n_2 = 1
+      //     for (let i = 3; i <= n; i++) {
+      //       f_n = f_n_1 + f_n_2
+      //       f_n_2 = f_n_1
+      //       f_n_1 = f_n
+      //     }
+      //     return f_n
+      //   }
+      // }
+
+      // let fibonachiNum = fibonachi(3)
+      // console.log(fibonachiNum)
+      //
+      //===================ТАЙМЕРИ========================
+      //выведет 0,1,2
+      // for (let i = 0; i < 3; i++) {
+      //   let timeoutId = setInterval(() => alert(i), 2000)
+      //   setTimeout(() => clearInterval(timeoutId), 10000)
+      // }
+      //===========================================
+      //выведет только 3, т.к. после цикла i=3, а i это внешняя переменная
+      // let i
+      // for (i = 0; i < 3; i++) {
+      //   let timeoutId = setInterval(() => alert(i), 2000)
+      //   setTimeout(() => clearInterval(timeoutId), 10000)
+      // }
+      //===========================================
+      // let num = 0
+      // let myTimer = setInterval(() => {
+      //   if (num === 5) {
+      //     alert("Stop")
+      //     clearInterval(myTimer)
+      //   } else alert(num++)
+      // }, 2000)
+      //===========================================
+      //витримка буде чітко 2 сек, тому що після alert функці визове сама себе ще раз
+      function myFunction(num) {
+        setTimeout(() => {
+          if (num < 5) {
+            alert(num)
+            myFunction(num + 1)
+          }
+        }, 2000)
+      }
+      myFunction(1)
+    </script>
+  </body>
+</html>

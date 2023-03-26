@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>Задача 5. Тренажер додавання. Кожні 10 секунд користувачу задають випадковий приклад з додавання двох цифр і робиться перевірка</h2>
+    <script>
+      //функція рандомного числа
+      function getRandomNum(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+
+      //функція порівняння відповіді користувача з результатом додавання
+      function comparisonOfResults(sum, userAnswer) {
+        if (sum === userAnswer) return alert(`Вірна відповідь`)
+        else return alert(`Не вірно! Правильна відповідь ${sum}`)
+      }
+
+      //функція з таймінгом, запиту задачі і відповіді користувача
+      function getTask(minNum, maxNum) {
+        setTimeout(() => {
+          num1 = getRandomNum(minNum, maxNum)
+          num2 = getRandomNum(minNum, maxNum)
+          const userAnswer = parseInt(prompt(`Скільки буде ${num1} + ${num2}?`))
+          const sum = num1 + num2
+          comparisonOfResults(sum, userAnswer)
+          getTask(minNum, maxNum)
+        }, 10000)
+      }
+
+      const task = getTask(1, 50)
+    </script>
+  </body>
+</html>
