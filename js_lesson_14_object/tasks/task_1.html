@@ -183,10 +183,10 @@
 
       //7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
 
-      let sitePriceOver_10k = website.filter((site) => site.price > 10000)
+      let sitePriceOver_10k = JSON.parse(JSON.stringify(website)).filter((site) => site.price > 10000)
       console.log(sitePriceOver_10k)
 
-      let sitePriceLess_10k = website.filter((site) => site.price < 10000)
+      let sitePriceLess_10k = JSON.parse(JSON.stringify(website)).filter((site) => site.price < 10000)
       console.log(sitePriceLess_10k)
     </script>
   </body>
