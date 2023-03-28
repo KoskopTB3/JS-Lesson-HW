@@ -17,14 +17,15 @@
         date: 15,
       }
 
-      function getWhatYear({ year }, N, minNum, maxNum) {
+      // ------1
+      function getWhatYear({ year }, N) {
         let currentYearPlusMonths = Math.floor((year * 12 + N) / 12)
         return currentYearPlusMonths
       }
 
       const N = parseInt(prompt("Введіть кількість місяців", "12"))
-      const whatYear = getWhatYear(date, N, 1, 12)
-      console.log(whatYear)
+      const whatYear = getWhatYear(date, N)
+      console.log(`Через ${N} місяців буде ${whatYear} рік`)
     </script>
   </body>
 </html>
