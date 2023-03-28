@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 1. Нехай x_0 = 1, x_i = x_i_1 + 2*i, де i = 1,2,... Визначити x_10. Розв’язати з використанням рекурсивних і нерекурсивних алгоритмів
+    </h2>
+
+    <script>
+      let website = [
+        {
+          tempTitle: "company 3",
+          owner: "Tom&Jerry",
+          sponsors: [
+            {
+              surname: "Jaffa",
+              name: "Rick",
+              investment: 1000,
+            },
+            {
+              surname: "Silver",
+              name: "Amanda ",
+              investment: 1500,
+            },
+            {
+              surname: "Friedman",
+              name: "Josh",
+              investment: 2750,
+            },
+            {
+              surname: "Butler",
+              name: "Gerard",
+              investment: 500,
+            },
+            {
+              surname: "Colter",
+              name: "Mike",
+              investment: 1000,
+            },
+          ],
+          year: 2004,
+          price: 7000,
+        },
+        {
+          tempTitle: "company 1",
+          owner: "Frodo Baggins",
+          sponsors: [
+            {
+              surname: "Lang",
+              name: "Stephen",
+              investment: 5000,
+            },
+            {
+              surname: "Cameron",
+              name: "James",
+              investment: 1500,
+            },
+            {
+              surname: "Saldana",
+              name: "Zoe",
+              investment: 3500,
+            },
+            {
+              surname: "Weaver",
+              name: "Sigourney",
+              investment: 2000,
+            },
+          ],
+          year: 2000,
+          price: 25000,
+        },
+        {
+          tempTitle: "company 2",
+          owner: "Ilon Musk",
+          sponsors: [
+            {
+              surname: "Winslet",
+              name: "Kate",
+              investment: 1000,
+            },
+            {
+              surname: "Curtis",
+              name: "Cliff ",
+              investment: 1500,
+            },
+            {
+              surname: "Moore",
+              name: "Joel",
+              investment: 2750,
+            },
+            {
+              surname: "Falco",
+              name: "Edie",
+              investment: 1700,
+            },
+            {
+              surname: "Cowell",
+              name: "Brendan",
+              investment: 1000,
+            },
+          ],
+          year: 2003,
+          price: 15000,
+        },
+      ]
+      //1) загальну вартість усіх сайтів
+      let totalPriceAllSites = website.reduce((prevSum, site) => prevSum + site.price, 0)
+      console.log(`загальна вартість усіх сайтів = ${totalPriceAllSites}`)
+
+      //2) кількість сайтів, що було зроблено між 2000 та 2009 рр.
+      let quantityWebsites_2000_2009 = website.reduce((prevSum, site) => (site.year > 2000 && site.year < 2009 ? prevSum + 1 : prevSum), 0)
+      console.log(`кількість сайтів, що було зроблено між 2000 та 2009 рр = ${quantityWebsites_2000_2009}`)
+
+      //3) кількість сайтів, де сума спонсорських вкладень була більшою за 10000
+      let sponsorInvestmentMore_10000 = website.reduce(
+        (prevSum, site) => (site.sponsors.reduce((prevSum, money) => prevSum + money.investment, 0) > 10000 ? prevSum + 1 : prevSum),
+        0
+      )
+      console.log(`кількість сайтів, де сума спонсорських вкладень була більшою за 10000 = ${sponsorInvestmentMore_10000}`)
+
+      //4) створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+
+      // for (let i = 0; i < website.length; i++) {
+      //   for (let j = 0; j < website[i].sponsors.length; j++) {
+      //     sponsorList.push(website[i].sponsors.surname)
+      //     sponsorList.push(website[i].sponsors.name)
+      //   }
+      // }
+      let sponsorList = []
+      for (const element of website) {
+        for (const sponsor of element.sponsors) {
+          sponsorList.push(`${sponsor.surname} ${sponsor.name}`)
+        }
+      }
+      console.log(sponsorList)
+
+      //5) знайти рік, коли прибуток був найбільшим
+      //знаходимо максимальний прибуток
+      function getMaxProfitOfAllTime(website) {
+        let maxProfitOfAllTime = -Infinity
+        for (let i = 0; i < website.length; i++) {
+          if (website[i].price > maxProfitOfAllTime) maxProfitOfAllTime = website[i].price
+        }
+        return maxProfitOfAllTime
+      }
+      const maxProfitOfAllTime = getMaxProfitOfAllTime(website)
+      console.log(maxProfitOfAllTime)
+
+      //порівнюємо максимальний прибуток з усіма, і при співпадінні виводимо в якому це році
+      for (let i = 0; i < website.length; i++) {
+        if (maxProfitOfAllTime === website[i].price) console.log(`рік, коли прибуток був найбільшим: ${website[i].year}`)
+      }
+
+      //6) упорядкувати список за спаданням прибутку
+
+      let priceList = website.map((price) => price.price)
+      console.log(priceList)
+      let copyWebsite = JSON.parse(JSON.stringify(website))
+      for (let i = 0; i < priceList.length; i++) {
+        let maxNum = i
+        for (let j = i + 1; j < priceList.length; j++) {
+          if (priceList[j] > priceList[maxNum]) maxNum = j
+        }
+        if (maxNum !== i) {
+          let temp = priceList[i]
+          priceList[i] = priceList[maxNum]
+          priceList[maxNum] = temp
+
+          let temp2 = copyWebsite[i]
+          copyWebsite[i] = copyWebsite[maxNum]
+          copyWebsite[maxNum] = temp2
+        }
+      }
+      console.log(priceList)
+      console.log(copyWebsite)
+
+      //7) Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+      let sitePriceOver_10k = website.filter((site) => site.price > 10000)
+      console.log(sitePriceOver_10k)
+
+      let sitePriceLess_10k = website.filter((site) => site.price < 10000)
+      console.log(sitePriceLess_10k)
+    </script>
+  </body>
+</html>
