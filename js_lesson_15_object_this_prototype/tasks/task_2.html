@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <h2>Задача 1. Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.</h2>
+
+    <script>
+      function Battlefield(numCell, rabbits) {
+        // ----- Властивості -------
+        this.numCell = numCell
+        this.rabbits = rabbits
+        this.battlefieldWithRabbits = this.getRandomPositionRabbit()
+      }
+      // ----- Методи ----------
+      //метод рандомного індекса
+      Battlefield.prototype.getRandomIndex = function (minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+      //метод рандомної розстановки зайців
+      Battlefield.prototype.getRandomPositionRabbit = function () {
+        let fillBattlefield = new Array(this.numCell).fill(0)
+
+        for (let i = 0; i < this.rabbits; i++) {
+          let randomIndex
+          randomIndex = this.getRandomIndex(0, this.numCell - 1)
+          //перевірка на повторне заповнення індесу
+          while (fillBattlefield[randomIndex]) {
+            randomIndex = this.getRandomIndex(0, this.numCell - 1)
+          }
+          fillBattlefield[randomIndex] = 1
+        }
+        console.log(fillBattlefield)
+        return fillBattlefield
+      }
+      //метод гри
+      Battlefield.prototype.getGame = function () {
+        let shot
+        do {
+          shot = parseInt(prompt(`Введіть значення від 1 до ${this.numCell} `))
+          if (this.battlefieldWithRabbits[shot - 1] === 1) {
+            this.rabbits--
+            console.log(this.rabbits)
+            alert(`Ви попали в зайця`)
+            this.battlefieldWithRabbits[shot - 1] = 0
+            if (this.rabbits === 0) alert("Ви підстрелили усіх зайців")
+          } else alert("Мимо!")
+        } while (this.rabbits > 0)
+      }
+      //метод виведення ігрового поля
+      Battlefield.prototype.print = function () {
+        document.write(`<table>`)
+        for (let i = 0; i < this.battlefieldWithRabbits.length; i++) {
+          document.write(`<td>${this.battlefieldWithRabbits[i]}</td>`)
+        }
+        document.write(`</table>`)
+      }
+
+      let game = new Battlefield(5, 2)
+      // game.getRandomPositionRabbit()
+
+      game.print()
+      game.getGame()
+      game.print()
+    </script>
+  </body>
+</html>

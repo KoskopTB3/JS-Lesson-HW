@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №6</title>
+  </head>
+
+  <body>
+    <h2>Задача 6. Розробити клас «Керівник танців»</h2>
+
+    <script>
+      // ----Поля----
+      // Масив імен хлопців
+      // Масив імен дівчат
+      // ----Методи----
+      // Метод випадкового вибору імені хлопця
+      // Метод випадкового вибору імені дівчини
+      // Метод виведення пари для танців
+      // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+
+      class Dance {
+        constructor(initBoys, initGirls) {
+          this.boys = initBoys
+          this.girls = initGirls
+        }
+
+        // Метод випадкового вибору імені хлопця
+        getRandomBoy() {
+          let randomBoy = Math.floor(Math.random() * this.boys.length)
+          return this.boys[randomBoy]
+        }
+
+        // Метод випадкового вибору імені дівчини
+        getRandomGirl() {
+          let randomGirl = Math.floor(Math.random() * this.girls.length)
+          return this.girls[randomGirl]
+        }
+
+        // Метод виведення пари для танців
+        getDance() {
+          return `Зараз танцюють ${this.getRandomBoy()} з ${this.getRandomGirl()}`
+        }
+
+        // Метод run , який ініціює через кожні 5 секунд виведення нової пари для танців
+        run() {
+          let timer = setInterval(() => {
+            alert(`${this.getDance()}`)
+          }, 3000)
+          setTimeout(() => clearInterval(timer), 15000)
+        }
+      }
+
+      let boysArr = ["Kolya", "Petro", "Artem", "Nikita", "Alex"]
+      let girlsArr = ["Anna", "Mariya", "Olga", "Nastya", "Sveta"]
+
+      let myDance = new Dance(boysArr, girlsArr)
+      myDance.run()
+    </script>
+  </body>
+</html>

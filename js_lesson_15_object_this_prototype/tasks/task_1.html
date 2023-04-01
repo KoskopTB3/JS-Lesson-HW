@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 0. Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у іншому – функція для
+      знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням. Використати обидва методи стосовно обидвох об’єктів
+      (використати call, apply)
+    </h2>
+
+    <script>
+      let objectOne = {
+        numArr: [1, 2, 3, 4, 5],
+        getSum: function () {
+          return this.numArr.reduce((prevSum, number) => prevSum + number, 0)
+        },
+      }
+      //отсортировать и взять первое +1 и последнее -1
+      let objectTwo = {
+        numArr: [2, 7, 3, 1, 10],
+        getMultiplication: function (minNum, maxNum) {
+          this.numArr.sort((el1, el2) => el1 - el2)
+          //  -------1
+          let multiplication = 1
+          for (const element of this.numArr) {
+            if (element > minNum && element < maxNum) multiplication *= element
+          }
+          return multiplication
+          //  -------2
+          //  return this.numArr.reduce((prevNum, el, index, arr) => (el > minNum && el < maxNum ? prevNum * el : prevNum), 1)
+        },
+      }
+
+      document.write(`Сума першого обєкта = ${objectOne.getSum()} <br>`)
+      document.write(`Добуток другого обєкта = ${objectTwo.getMultiplication(1, 10)}<br>`)
+
+      document.write(`(call) Сума другого обєкта = ${objectOne.getSum.call(objectTwo)} <br>`)
+      document.write(`(call) Добуток першого обєкта = ${objectTwo.getMultiplication.call(objectOne, 1, 5)} <br>`)
+
+      document.write(`(apply) Сума другого обєкта = ${objectOne.getSum.apply(objectTwo)} <br>`)
+      document.write(`(apply) Добуток першого обєкта = ${objectTwo.getMultiplication.apply(objectOne, [1, 5])} <br>`)
+    </script>
+  </body>
+</html>

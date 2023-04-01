@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>Розробити клас MultChecker для перевірки таблиці множення</h2>
+    <script>
+      // -----поля-----
+      // Число, яке перевіряємо (наприклад, перевірка частини таблиці множення на 7)
+      // Кількість правильних відповідей
+      // Кількість неправильних відповідей
+      // -----методи-----
+      // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+      // Перевірка правильності вказаної відповіді
+      // render - виведення інформації про тестування на екран
+
+      class MultChecker {
+        constructor(initNum) {
+          // -----поля-----
+          this.checkNum = initNum
+          this.correctAnswer = 0
+          this.incorrectAnswer = 0
+        }
+        // -----методи-----
+        // Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)
+        getExample() {
+          let secondRandomNum = 1 + Math.floor(Math.random() * 10)
+          alert(`Скільки буде ${this.checkNum} * ${secondRandomNum} ?`)
+          return this.checkNum * secondRandomNum
+        }
+        // Перевірка правильності вказаної відповіді
+        getCheck() {
+          for (let i = 0; i < 3; i++) {
+            let answer = this.getExample()
+            const inputAnswer = parseInt(prompt("Введіть значення"))
+            if (inputAnswer === answer) this.correctAnswer++
+            else this.incorrectAnswer++
+          }
+        }
+
+        // render - виведення інформації про тестування на екран
+        render() {
+          document.write(
+            `перевірка частини таблиці множення на ${this.checkNum}<br>Кількість правильних відповідей = ${this.correctAnswer}<br>Кількість неправильних відповідей = ${this.incorrectAnswer}`
+          )
+        }
+      }
+
+      let checker = new MultChecker(7)
+      checker.getCheck()
+      checker.render()
+    </script>
+  </body>
+</html>

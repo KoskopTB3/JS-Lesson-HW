@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №7</title>
+  </head>
+
+  <body>
+    <h2>Задача 7. Дано масив цін. Змінити цей масив так, що на ціни товарів, які більші за 1000 грн. дати 30% знижки.</h2>
+    <script>
+      // let m
+      // do {
+      //   m = parseInt(prompt("Введіть значення", "10"))
+      // } while (m < 20 && m !== NaN)
+
+      // let newArr = [2, 3, 4]
+
+      // function arr(newArr) {
+      //   let sum = 0
+      //   for (let i = 0; i < newArr.length; i++) {
+      //     sum += newArr[i]
+      //   }
+      //   return sum
+      // }
+
+      // document.write(arr(newArr))
+
+      // let obj = {
+      //   wheit: 20,
+
+      //   getProc: function (proc) {
+      //     this.wheit = this.wheit + (this.wheit * proc) / 100
+      //     return this.wheit
+      //   },
+      // }
+
+      // obj.getProc(20)
+      // console.log(obj.wheit)
+      //===========================================
+      let obj = {
+        myVar: 77, //эту не увидит
+        method: function () {
+          let myVar = 77 //console.log(this.myVar) увидит только эту переменную
+          let func = function () {
+            console.log(this) //this = window
+            console.log(this.myVar) // this = myVar =77 (внутри method)
+          }
+          return func
+        },
+      }
+
+      let go = obj.method()
+      go()
+      // ---------------стрелочная функция указывает на тот объект в котором находится!!!
+      let obj_1 = {
+        myVar: 77,
+        method: function () {
+          let func = () => {
+            console.log(this) //this = obj_1
+            console.log(this.myVar) //this = obj_1.myVar=77
+          }
+          return func
+        },
+      }
+
+      let go_1 = obj_1.method()
+      go_1()
+    </script>
+  </body>
+</html>
