@@ -11,6 +11,101 @@
   <body>
     <h2>Задача 2. Створити об’єкт «Авто».</h2>
     <script>
+      // //Поля(властивості)
+      // // Марка
+      // // Розмір бака
+      // // Кількість наявних літрів
+      // // Кількість місць
+      // // Кількість пасажирів
+      // // Методи (дії)
+      // // Заправка на вказану кількість літрів
+      // // Виведення кількості пасажирів
+      // // Додавання пасажирів
+      // // Висадка пасажирів
+
+      // let auto = {
+      //   //Поля(властивості)
+      //   brand: "BMW",
+      //   tankVolume: 60,
+      //   actualNumLiters: 7,
+      //   numSeats: 4,
+      //   numPassenger: 0,
+
+      //   // Методи (дії)
+      //   //==========================================
+
+      //   //метод Заправка на вказану кількість літрів та витрата пального в часі
+      //   getFuelConsumption: function () {
+      //     let timer = setInterval(() => {
+      //       let question
+      //       this.actualNumLiters--
+      //       console.log(this.actualNumLiters)
+      //       if (this.actualNumLiters === 5) {
+      //         question = confirm(`Треба заправити авто?`)
+      //         if (question === true) {
+      //           const fuel = parseInt(prompt("Введіть скільки літрів треба заправити", "10"))
+      //           this.actualNumLiters += fuel
+      //           if (this.actualNumLiters >= this.tankVolume) {
+      //             alert("заправили до повного баку")
+      //             this.actualNumLiters = this.tankVolume
+      //           }
+      //         }
+      //       } else {
+      //         if (this.actualNumLiters === 0) {
+      //           alert("У вас закінчилося паливо")
+      //           clearInterval(timer)
+      //         }
+      //       }
+      //     }, 1000)
+      //     console.log(this.actualNumLiters)
+      //     //  return this.actualNumLiters
+      //   },
+
+      //   //===========================================
+      //   // Виведення кількості пасажирів
+      //   toString: function () {
+      //     return `Кількість пасажирів в машині = ${this.numPassenger}`
+      //   },
+      //   //===========================================
+      //   // Додавання пасажирів
+      //   getAddingPassengers: function () {
+      //     let timerAddPassanger = setTimeout(() => {
+      //       if (this.numPassenger < this.numSeats) {
+      //         const takeOnBoardPassanger = parseInt(prompt(`З собою можна взяти ще пасажирів, але не більше ${this.numSeats - this.numPassenger}`))
+      //         this.numPassenger += takeOnBoardPassanger
+      //       }
+
+      //       if (this.actualNumLiters === 0) clearInterval(timerAddPassanger)
+      //       else this.getAddingPassengers()
+      //       document.write(`${this.toString()}<br>`)
+      //     }, 5000)
+
+      //     //  if (this.numPassenger === this.numSeats) clearInterval(timerAddPassanger)
+      //     return this.numPassenger
+      //   },
+
+      //   //===========================================
+      //   // Висадка пасажирів
+      //   getLandingPassenger: function () {
+      //     let timerLandingPassenger = setTimeout(() => {
+      //       const passengerGotOut = parseInt(prompt("Введіть скільки пасажирів вийшли із авто"))
+      //       this.numPassenger -= passengerGotOut
+      //       if (this.actualNumLiters === 0) clearInterval(timerLandingPassenger)
+      //       else this.getLandingPassenger()
+      //       document.write(`${this.toString()}<br>`)
+      //     }, 8000)
+
+      //     return this.numPassenger
+      //   },
+      // }
+
+      // auto.getFuelConsumption()
+      // document.write(auto)
+      // auto.getAddingPassengers()
+      // auto.getLandingPassenger()
+      //===========================================
+      //===========================================
+      //===========================================
       //Поля(властивості)
       // Марка
       // Розмір бака
@@ -23,86 +118,84 @@
       // Додавання пасажирів
       // Висадка пасажирів
 
-      let auto = {
+      function Taxi(initBrand, initTankVolume, initActualNumLiters, initNumSeats, initNumPassenger) {
         //Поля(властивості)
-        brand: "BMW",
-        tankVolume: 60,
-        actualNumLiters: 7,
-        numSeats: 4,
-        numPassenger: 0,
+        this.brand = initBrand
+        this.tankVolume = initTankVolume
+        this.actualNumLiters = initActualNumLiters
+        this.numSeats = initNumSeats
+        this.numPassenger = initNumPassenger
+      }
+      // Методи (дії)
+      //==========================================
 
-        // Методи (дії)
-        //==========================================
-
-        //метод Заправка на вказану кількість літрів та витрата пального в часі
-        getFuelConsumption: function () {
-          let timer = setInterval(() => {
-            let question
-            this.actualNumLiters--
-            console.log(this.actualNumLiters)
-            if (this.actualNumLiters === 5) {
-              question = confirm(`Треба заправити авто?`)
-              if (question === true) {
-                const fuel = parseInt(prompt("Введіть скільки літрів треба заправити", "10"))
-                this.actualNumLiters += fuel
-                if (this.actualNumLiters >= this.tankVolume) {
-                  alert("заправили до повного баку")
-                  this.actualNumLiters = this.tankVolume
-                }
-              }
-            } else {
-              if (this.actualNumLiters === 0) {
-                alert("У вас закінчилося паливо")
-                clearInterval(timer)
-              }
-            }
-          }, 1000)
+      //метод Заправка на вказану кількість літрів та витрата пального в часі
+      Taxi.prototype.getFuelConsumption = function () {
+        let timer = setInterval(() => {
+          let question
+          this.actualNumLiters--
           console.log(this.actualNumLiters)
-          //  return this.actualNumLiters
-        },
-
-        //===========================================
-        // Виведення кількості пасажирів
-        toString: function () {
-          return `Кількість пасажирів в машині = ${this.numPassenger}`
-        },
-        //===========================================
-        // Додавання пасажирів
-        getAddingPassengers: function () {
-          let timerAddPassanger = setTimeout(() => {
-            if (this.numPassenger < this.numSeats) {
-              const takeOnBoardPassanger = parseInt(prompt(`З собою можна взяти ще пасажирів, але не більше ${this.numSeats - this.numPassenger}`))
-              this.numPassenger += takeOnBoardPassanger
+          if (this.actualNumLiters === 5) {
+            question = confirm(`Треба заправити авто?`)
+            if (question === true) {
+              const fuel = parseInt(prompt("Введіть скільки літрів треба заправити", "10"))
+              this.actualNumLiters += fuel
+              if (this.actualNumLiters >= this.tankVolume) {
+                alert("заправили до повного баку")
+                this.actualNumLiters = this.tankVolume
+              }
             }
+          } else {
+            if (this.actualNumLiters === 0) {
+              alert("У вас закінчилося паливо")
+              clearInterval(timer)
+            }
+          }
+        }, 1000)
+        console.log(this.actualNumLiters)
+        //  return this.actualNumLiters
+      }
+      //===========================================
+      // Виведення кількості пасажирів
+      Taxi.prototype.toString = function () {
+        return `Кількість пасажирів в машині = ${this.numPassenger}`
+      }
+      //===========================================
+      // Додавання пасажирів
+      Taxi.prototype.getAddingPassengers = function () {
+        let timerAddPassanger = setTimeout(() => {
+          if (this.numPassenger < this.numSeats) {
+            const takeOnBoardPassanger = parseInt(prompt(`З собою можна взяти ще пасажирів, але не більше ${this.numSeats - this.numPassenger}`))
+            this.numPassenger += takeOnBoardPassanger
+          }
 
-            if (this.actualNumLiters === 0) clearInterval(timerAddPassanger)
-            else this.getAddingPassengers()
-            document.write(`${this.toString()}<br>`)
-          }, 5000)
+          if (this.actualNumLiters === 0) clearInterval(timerAddPassanger)
+          else this.getAddingPassengers()
+          document.write(`${this.toString()}<br>`)
+        }, 5000)
 
-          //  if (this.numPassenger === this.numSeats) clearInterval(timerAddPassanger)
-          return this.numPassenger
-        },
+        //  if (this.numPassenger === this.numSeats) clearInterval(timerAddPassanger)
+        return this.numPassenger
+      }
+      //===========================================
+      // Висадка пасажирів
+      Taxi.prototype.getLandingPassenger = function () {
+        let timerLandingPassenger = setTimeout(() => {
+          const passengerGotOut = parseInt(prompt("Введіть скільки пасажирів вийшли із авто"))
+          this.numPassenger -= passengerGotOut
+          if (this.actualNumLiters === 0) clearInterval(timerLandingPassenger)
+          else this.getLandingPassenger()
+          document.write(`${this.toString()}<br>`)
+        }, 8000)
 
-        //===========================================
-        // Висадка пасажирів
-        getLandingPassenger: function () {
-          let timerLandingPassenger = setTimeout(() => {
-            const passengerGotOut = parseInt(prompt("Введіть скільки пасажирів вийшли із авто"))
-            this.numPassenger -= passengerGotOut
-            if (this.actualNumLiters === 0) clearInterval(timerLandingPassenger)
-            else this.getLandingPassenger()
-            document.write(`${this.toString()}<br>`)
-          }, 8000)
-
-          return this.numPassenger
-        },
+        return this.numPassenger
       }
 
-      auto.getFuelConsumption()
-      document.write(auto)
-      auto.getAddingPassengers()
-      auto.getLandingPassenger()
+      let myTaxi = new Taxi("BMW", 60, 10, 4, 0)
+      myTaxi.getFuelConsumption()
+      document.write(myTaxi)
+      myTaxi.getAddingPassengers()
+      myTaxi.getLandingPassenger()
     </script>
   </body>
 </html>
