@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body>
+    <h2>
+      <!-- Задача 2. Створити клас TMoney для роботи з грошовими сумами. 
+		Сума повинна зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+      додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, 
+		та визначення курсу долара, при якому сума у гривнях збільшиться на 100.
+      Курс долара зберігати в окремому полі. -->
+    </h2>
+    <script>
+      // class TMoney {
+      //   #balance = 0
+      //   #exchangeRate
+      //   constructor(initUah, initExchangeRate) {
+      //     this.Balance = initUah
+      //     this.#exchangeRate = initExchangeRate
+      //   }
+      //   get Balance() {
+      //     return this.#balance / this.ExchangeRate
+      //   }
+      //   get ExchangeRate() {
+      //     return this.#exchangeRate
+      //   }
+      //   set Balance(newValue) {
+      //     if (this.#balance + newValue < 0) throw new Error("not enough money on balance")
+      //     this.#balance += newValue
+      //   }
+
+      //   newExchangeRate() {
+      //     let balanceInUah = this.Balance * this.ExchangeRate
+      //     return ((balanceInUah + 100) * this.ExchangeRate) / balanceInUah
+
+      //     //  return value / (this.exchangeRate + this.exchangeRate / 100)
+      //   }
+
+      //   toString() {
+      //     return `Баланс у доларах: ${this.Balance} USD<br>Курс 1USD = ${
+      //       this.ExchangeRate
+      //     } UAH<br>Курс долара, при якому сума у гривнях збільшиться на 100: ${this.newExchangeRate().toFixed(2)} UAH`
+      //   }
+      // }
+
+      // let moneyExchange = new TMoney(1000, 40)
+      // moneyExchange.Balance = 300
+      // document.write(`${moneyExchange} <br>`)
+
+      //===========================================
+      //================= STATIC ==========================
+      // class TMoney {
+      //   static exchangeRate
+      //   #balance = 0
+
+      //   constructor(initUah, initExchangeRate) {
+      //     this.Balance = initUah
+      //     TMoney.exchangeRate = initExchangeRate
+      //   }
+      //   get Balance() {
+      //     return this.#balance / TMoney.exchangeRate
+      //   }
+
+      //   set Balance(newValue) {
+      //     if (this.#balance + newValue < 0) throw new Error("not enough money on balance")
+      //     this.#balance += newValue
+      //   }
+
+      //   newExchangeRate() {
+      //     let balanceInUah = this.Balance * TMoney.exchangeRate
+      //     return ((balanceInUah + 100) * TMoney.exchangeRate) / balanceInUah
+      //   }
+
+      //   toString() {
+      //     return `Баланс у доларах: ${this.Balance} USD<br>Курс 1USD = ${
+      //       TMoney.exchangeRate
+      //     } UAH<br>Курс долара, при якому сума у гривнях збільшиться на 100: ${this.newExchangeRate().toFixed(2)} UAH`
+      //   }
+      // }
+
+      // let moneyExchange = new TMoney(1000, 40)
+      // moneyExchange.Balance = 300
+
+      // let moneyExchange2 = new TMoney(1000, 40)
+      // moneyExchange2.Balance = 300
+      // TMoney.exchangeRate = 20
+      // document.write(`${moneyExchange} <br>`)
+      // document.write(`${moneyExchange2} <br>`)
+      //===========================================
+      //=================== STATIC -set-get ========================
+      class TMoney {
+        static #exchangeRate
+        #balance = 0
+
+        constructor(initUah, initExchangeRate) {
+          this.Balance = initUah
+          TMoney.ExchangeRate = initExchangeRate
+        }
+        get Balance() {
+          return this.#balance / TMoney.#exchangeRate
+        }
+        static get ExchangeRate() {
+          return TMoney.#exchangeRate
+        }
+
+        static set ExchangeRate(newValue) {
+          if (newValue < 0) throw new Error("incorrect Value")
+          TMoney.#exchangeRate = newValue
+        }
+        set Balance(newValue) {
+          if (this.#balance + newValue < 0) throw new Error("not enough money on balance")
+          this.#balance += newValue
+        }
+
+        newExchangeRate() {
+          let balanceInUah = this.Balance * TMoney.ExchangeRate
+          return ((balanceInUah + 100) * TMoney.ExchangeRate) / balanceInUah
+        }
+
+        toString() {
+          return `Баланс у доларах: ${this.Balance.toFixed(2)} USD<br>Курс 1USD = ${
+            TMoney.ExchangeRate
+          } UAH<br>Курс долара, при якому сума у гривнях збільшиться на 100: ${this.newExchangeRate().toFixed(2)} UAH`
+        }
+      }
+
+      let moneyExchange = new TMoney(1000, 40)
+      moneyExchange.Balance = 300
+      let moneyExchange2 = new TMoney(1000, 40)
+      moneyExchange2.Balance = 300
+
+      TMoney.ExchangeRate = 30
+
+      document.write(`${moneyExchange} <br>`)
+      document.write(`${moneyExchange2} <br>`)
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>Задача 5. Розробити клас Baner</h2>
+    <!-- <a href="https://www.asus.com/">
+      <img width="150" src="../img/asus.png" alt="" />
+    </a> -->
+    <script>
+      // ----поля----
+      // Масив об’єктів ( графічних зображень та посилань на сайти)
+      // ----методи----
+      // Метод випадкового вибору об’єкта (графічного зображення та посилання)
+      // Метод виведення випадкового банера
+
+      class Banner {
+        constructor(bannerList) {
+          this.banners = bannerList
+        }
+
+        // ----методи----
+        // Метод випадкового вибору об’єкта (графічного зображення та посилання)
+        getRandomBanner() {
+          let randomBanner = Math.floor(Math.random() * this.banners.length)
+          return this.banners[randomBanner]
+        }
+        // Метод виведення випадкового банера
+        getPrintBanner() {
+          let bannerRandom = this.getRandomBanner()
+          document.write(`<a href="${bannerRandom.link}"><img width="250" src="${bannerRandom.image}" alt="logo" />  </a>`)
+        }
+      }
+      //===========================================
+      let bannersData = [
+        {
+          image: "../img/asus.png",
+          link: "https://www.asus.com/",
+        },
+        {
+          image: "../img/google.png",
+          link: "https://www.google.com/",
+        },
+        {
+          image: "../img/microsoft.png",
+          link: "https://www.microsoft.com/uk-ua",
+        },
+      ]
+      let myBanner = new Banner(bannersData)
+      myBanner.getPrintBanner()
+    </script>
+  </body>
+</html>

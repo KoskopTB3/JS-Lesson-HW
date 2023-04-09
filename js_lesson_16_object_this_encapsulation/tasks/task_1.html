@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 1. Створити клас TDate для роботи із датами у форматі “день.місяць.рік”. Дата представляється структурою із
+      трьома полями. Реалізувати методи збільшення/зменшення дати на певну кількість днів, місяців чи років. Введення та
+      виведення дати реалізувати за допомогою методу toString.
+    </h2>
+
+    <script>
+      // ----поля----
+      // день
+      // місяць
+      // рік
+      // ---методи---
+      // збільшення/зменшення років
+      // збільшення/зменшення місяців
+      // збільшення/зменшення днів
+      // виведення дати реалізувати за допомогою методу toString
+
+      //===========================================
+      class TDate {
+        #day
+        #month
+        #year
+        constructor(initDay, initMonth, initYear) {
+          this.Day = initDay
+          this.Month = initMonth
+          this.Year = initYear
+          this.minNumDay = 1
+          this.minNumMonth = 1
+          this.maxNumMonth = 12
+        }
+
+        get Day() {
+          return this.#day
+        }
+        set Day(newValue) {
+          if (newValue < this.minNumDay || newValue > this.dayInMonth(this.Month) || newValue % 1 !== 0)
+            throw new Error("incorrect day value")
+          this.#day = newValue
+        }
+        get Month() {
+          return this.#month
+        }
+        set Month(newValue) {
+          if (newValue < this.minNumMonth || newValue > this.maxNumMonth || newValue % 1 !== 0)
+            throw new Error("incorrect month value")
+          this.#month = newValue
+        }
+        get Year() {
+          return this.#year
+        }
+        set Year(newValue) {
+          if (newValue <= 0 || newValue % 1 !== 0) throw new Error("incorrect year value")
+          this.#year = newValue
+        }
+        // ------------ Методи (функіональні можливості) -------------
+        //функція визначення високосного року
+        isLeapYear(year) {
+          return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)
+        }
+
+        //функція визначення днів у місяці
+        dayInMonth(month) {
+          let days
+          switch (month) {
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+              days = 31
+              break
+            case 2:
+              if (this.isLeapYear(this.Year)) days = 29
+              else days = 28
+              break
+
+            default:
+              days = 31
+              break
+          }
+          return days
+        }
+
+        toString() {
+          return `${this.Day} / ${this.Month} / ${this.Year}`
+        }
+
+        // метод збільшення років
+        increaseYear(value) {
+          this.Year += value
+        }
+
+        // метод зменшення років
+        decreaseYear(value) {
+          this.Year += value //+ тому що значення передаються відємні
+        }
+
+        // метод збільшення місяців
+        increaseMonths(value) {
+          this.increaseYear(Math.floor((this.Month + value - 1) / this.maxNumMonth))
+          this.Month = ((this.Month - this.minNumMonth + value) % this.maxNumMonth) + this.minNumMonth
+        }
+
+        // метод зменшення місяців
+        decreaseMonths(value) {
+          this.decreaseYear(Math.floor((this.Month - value - 1) / 12))
+          //  this.decreaseYear(Math.abs(Math.ceil((this.Month - value - this.minNumMonth) / this.maxNumMonth)))
+          this.Month = ((this.Month - (value % 12) + 11) % 12) + 1
+        }
+
+        // метод збільшення днів
+        increaseDay(value) {
+          let currentDay = this.Day
+          let currentDayInMonth = this.dayInMonth(this.Month)
+          currentDay += value
+          while (currentDay > currentDayInMonth) {
+            currentDay -= currentDayInMonth
+            this.increaseMonths(1)
+            currentDayInMonth = this.dayInMonth(this.Month)
+          }
+          this.Day = currentDay
+        }
+
+        // метод зменшення днів
+        decreaseDays(value) {
+          let currentDay = this.Day
+          currentDay -= value
+          while (currentDay < 1) {
+            this.decreaseMonths(1)
+            let currentDayInMonth = this.dayInMonth(this.Month)
+            currentDay += currentDayInMonth
+          }
+          this.Day = currentDay
+        }
+
+        // виведення дати
+        toString() {
+          return `день: ${this.Day}, місяць: ${this.Month}, рік: ${this.Year}`
+        }
+      }
+
+      let myDate = new TDate(2, 3, 2000)
+      // myDate.increaseYear(5)
+      // myDate.increaseMonths(12)
+      // myDate.increaseDay(1500)
+      // myDate.decreaseMonths(4)
+      myDate.decreaseDays(2)
+      document.write(myDate)
+    </script>
+  </body>
+</html>

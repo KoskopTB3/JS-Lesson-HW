@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Створити клас TBankomat, який моделює роботу банкомата. Клас повинен містити поля для зберігання кількості купюр
+      кожного із номіналів від 5 до 200 гривень. Реалізувати методи знаходження максимальної та мінімальної сум, які
+      може видати банкомат, та метод зняття деякої суми.
+    </h2>
+    <script>
+      // class Banknote {
+      //   constructor(nominal, quantityBanknote) {
+      //     this.nominal = nominal
+      //     this.quantityBanknote = quantityBanknote
+      //   }
+
+      //   toString() {
+      //     return `${this.nominal} - ${this.quantityBanknote}`
+      //   }
+      // }
+
+      // class TBankomat {
+      //   #cashWithdrawal
+      //   constructor(banknoteList) {
+      //     this.banknoteList = banknoteList
+      //   }
+      //   get maxSumBankomat() {
+      //     let maxSum = this.banknoteList.reduce((prevSum, el) => prevSum + el.quantityBanknote * el.nominal, 0)
+      //     return maxSum
+      //   }
+
+      //   get minSumBankomat() {
+      //     const minSum = this.banknoteList.reduce(
+      //       (prevNum, el) => (prevNum > el.nominal ? el.nominal : prevNum),
+      //       Infinity
+      //     )
+      //     return minSum
+      //   }
+
+      //   set CashWithdrawal(withdrawalMoney) {
+      //     if (
+      //       withdrawalMoney > this.maxSumBankomat ||
+      //       withdrawalMoney < this.minSumBankomat ||
+      //       withdrawalMoney % 5 !== 0
+      //     )
+      //       throw new Error(`incorrect value`)
+      //     this.#cashWithdrawal = withdrawalMoney
+      //   }
+
+      //   get currentSumInBankomat() {
+      //     let currentSum = this.maxSumBankomat - this.#cashWithdrawal
+      //     return currentSum
+      //   }
+
+      //   toString() {
+      //     return `сума в банкоматі: ${this.maxSumBankomat}<br>Поточна сума в банкоматі: ${this.currentSumInBankomat}<br> Мінамальна сума яку може видати банкомат: ${this.minSumBankomat}`
+      //   }
+      // }
+
+      // let banknoteList = [
+      //   new Banknote(5, 20),
+      //   new Banknote(10, 20),
+      //   new Banknote(20, 20),
+      //   new Banknote(50, 20),
+      //   new Banknote(100, 20),
+      //   new Banknote(200, 20),
+      // ]
+
+      // let bankomat = new TBankomat(banknoteList)
+      // // document.write(bankomat)
+      // console.log(bankomat.maxSumBankomat)
+      // console.log(bankomat.minSumBankomat)
+      // // console.log((bankomat.CashWithdrawal = 1000))
+      // console.log(bankomat.currentSumInBankomat)
+      // document.write(bankomat)
+      //===========================================//===========================================
+      //===========================================//===========================================
+      class Banknote {
+        constructor(nominal, quantityBanknote) {
+          this.nominal = nominal
+          this.quantityBanknote = quantityBanknote
+        }
+
+        toString() {
+          return `${this.nominal} - ${this.quantityBanknote}`
+        }
+      }
+
+      class TBankomat {
+        #cashWithdrawal = 0
+        constructor(banknoteList) {
+          this.banknoteList = banknoteList
+        }
+        maxSumBankomat() {
+          let maxSum = this.banknoteList.reduce((prevSum, el) => prevSum + el.quantityBanknote * el.nominal, 0)
+          return maxSum
+        }
+
+        get minSumBankomat() {
+          const minSum = this.banknoteList.reduce(
+            (prevNum, el) => (prevNum > el.nominal ? el.nominal : prevNum),
+            Infinity
+          )
+          return minSum
+        }
+
+        set cashWithdrawal(withdrawalMoney) {
+          if (
+            withdrawalMoney > this.maxSumBankomat() ||
+            withdrawalMoney < this.minSumBankomat
+            // || withdrawalMoney % 5 !== 0
+          )
+            throw new Error(`incorrect value`)
+          this.#cashWithdrawal = withdrawalMoney
+        }
+
+        get currentSum() {
+          let currentSum = this.maxSumBankomat() - this.#cashWithdrawal
+          console.log(this.maxSumBankomat())
+          console.log(this.#cashWithdrawal)
+          return currentSum
+        }
+
+        toString() {
+          return `сума в банкоматі: ${this.currentSum}<br> Мінамальна сума яку може видати банкомат: ${this.minSumBankomat}<br>`
+        }
+      }
+
+      let banknoteList = [
+        new Banknote(5, 20),
+        new Banknote(10, 20),
+        new Banknote(20, 20),
+        new Banknote(50, 20),
+        new Banknote(100, 20),
+        new Banknote(200, 20),
+      ]
+
+      let bankomat = new TBankomat(banknoteList)
+      document.write(bankomat)
+      console.log(bankomat.maxSumBankomat())
+      console.log(bankomat.minSumBankomat)
+
+      // console.log((bankomat.cashWithdrawal = 1000))
+      document.write(`Знята сума = ${(bankomat.cashWithdrawal = 5000)}<br>`)
+      document.write(bankomat)
+    </script>
+  </body>
+</html>

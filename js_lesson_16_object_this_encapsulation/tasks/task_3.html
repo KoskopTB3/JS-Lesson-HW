@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>Задача 3. Об’єкт “Фірма” (використати члени-класи)</h2>
+    <script>
+      // ----поля----
+      // назва фірми;
+      // дата заснування (рік, місяць);
+      // послуги (назва послуги, вартість, термін виконання);
+      // адреси філіалів (країна, місто, вулиця, номер будинку);
+      // ---методи---
+      // визначення кількості років існування фірми;
+      // виведення всіх філіалів фірми у вказаному місті;
+      // виведення на екран послуг, що можуть бути виконані за вказану
+      // суму грошей та вказаний термін часу;
+
+      //================== дата заснування (рік, місяць) =========================
+      class Firm {
+        #title
+        constructor(initName, creationDate, companyService, adressBranch) {
+          this.Title = initName
+          this.creationDate = creationDate
+          this.companyService = companyService
+          this.adressBranch = adressBranch
+        }
+        get Title() {
+          return this.#title
+        }
+
+        set Title(newValue) {
+          if (newValue === 0) throw new Error("incorrect value")
+          this.#title = newValue
+        }
+        //   ----методи----
+        // визначення кількості років існування фірми;
+        firmYears() {
+          let day_1 = new Date()
+          let day_2 = new Date(this.creationDate.Year, this.creationDate.Month - 1) //місяці в Date йдуть від 0 до 11
+          let allDays = (day_1 - day_2) / (60 * 60 * 24 * 1000)
+          console.log(allDays)
+          let years = Math.floor(allDays / 365)
+          let months = Math.floor((allDays % 365) / 12) % 12
+          return { years, months }
+        }
+
+        // виведення всіх філіалів фірми у вказаному місті;
+        printBranch(city) {
+          for (const branch of this.adressBranch) {
+            if (city === branch.City) console.log(branch)
+          }
+        }
+
+        // виведення на екран послуг, що можуть бути виконані за вказану
+        // суму грошей та вказаний термін часу;
+
+        service(money, time) {
+          for (const service of this.companyService) {
+            if (money >= service.Price && time >= service.Deadlines) console.log(service)
+          }
+        }
+
+        toString() {
+          return `Назва фірми: '${this.Title}'<br>${this.creationDate}<br>${this.companyService}<br>${this.adressBranch}<br>`
+        }
+      }
+      //=================== дата заснування (рік, місяць) ========================
+      class DateOfCreation {
+        #year
+        #month
+        constructor(initYear, initMonth) {
+          this.Year = initYear
+          this.Month = initMonth
+        }
+        get Year() {
+          return this.#year
+        }
+        get Month() {
+          return this.#month
+        }
+
+        set Year(newValue) {
+          if (newValue < 0) throw new Error("incorrect value")
+          this.#year = newValue
+        }
+        set Month(newValue) {
+          if (newValue < 0) throw new Error("incorrect value")
+          this.#month = newValue
+        }
+        toString() {
+          return `Рік заснування ${this.Year} місяць ${this.Month}`
+        }
+      }
+
+      let creationDate = new DateOfCreation(2000, 8)
+      // document.write(creationDate)
+
+      //==================== послуги (назва послуги, вартість, термін виконання) =======================
+      class Services {
+        #service
+        #price
+        #deadlines
+        constructor(initServiсe, initPrice, initDeadlines) {
+          this.Service = initServiсe
+          this.Price = initPrice
+          this.Deadlines = initDeadlines
+        }
+        get Service() {
+          return this.#service
+        }
+        get Price() {
+          return this.#price
+        }
+        get Deadlines() {
+          return this.#deadlines
+        }
+
+        set Service(newValue) {
+          if (newValue.length === 0) throw new Error("incorrect value")
+          this.#service = newValue
+        }
+        set Price(newValue) {
+          if (newValue < 0) throw new Error("incorrect value")
+          this.#price = newValue
+        }
+        set Deadlines(newValue) {
+          if (newValue < 0) throw new Error("incorrect value")
+          this.#deadlines = newValue
+        }
+        toString() {
+          return `Послуга: ${this.Service}<br>Ціна: ${this.Price} USD<br>Термін виконання: ${this.Deadlines} днів<br>`
+        }
+      }
+
+      let companyService = [
+        new Services("Site development", 1000, 10),
+        new Services("Button development", 20, 1),
+        new Services("Banner development", 100, 2),
+      ]
+      // document.write(companyService)
+
+      //==================== адреси філіалів (країна, місто, вулиця, номер будинку) =======================
+      class BranchAddress {
+        #counry
+        #city
+        #street
+        #houseNum
+        constructor(initCounry, initCity, initStreet, initHouseNum) {
+          this.Counry = initCounry
+          this.City = initCity
+          this.Street = initStreet
+          this.HouseNum = initHouseNum
+        }
+        get Counry() {
+          return this.#counry
+        }
+        get City() {
+          return this.#city
+        }
+        get Street() {
+          return this.#street
+        }
+        get HouseNum() {
+          return this.#houseNum
+        }
+
+        set Counry(newValue) {
+          if (newValue.length === 0) throw new Error("incorrect value")
+          this.#counry = newValue
+        }
+        set City(newValue) {
+          if (newValue.length === 0) throw new Error("incorrect value")
+          this.#city = newValue
+        }
+        set Street(newValue) {
+          if (newValue.length === 0) throw new Error("incorrect value")
+          this.#street = newValue
+        }
+        set HouseNum(newValue) {
+          if (newValue <= 0) throw new Error("incorrect value")
+          this.#houseNum = newValue
+        }
+        toString() {
+          return `Країна: ${this.Counry}<br>Місто: ${this.City}<br>Вулиця: ${this.Street}<br>Номер будинку: ${this.HouseNum}<br>`
+        }
+      }
+
+      let adressBranch = [
+        new BranchAddress("Україна", "Харків", "Шевченко", 1),
+        new BranchAddress("Україна", "Харків", "Сумська", 21),
+        new BranchAddress("Україна", "Київ", "Грушевського", 3),
+        new BranchAddress("Україна", "Ужгород", "Незалежності", 5),
+        new BranchAddress("Україна", "Ужгород", "Шевченко", 31),
+      ]
+      // document.write(adressBranch)
+      //===========================================
+      let someFirm = new Firm("Abibas", creationDate, companyService, adressBranch)
+      document.write(someFirm)
+      console.log(someFirm.firmYears())
+      someFirm.printBranch("Харків")
+      someFirm.service(500, 3)
+    </script>
+  </body>
+</html>
