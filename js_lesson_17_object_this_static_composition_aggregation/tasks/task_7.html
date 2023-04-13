@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Задача №7</title>
+  </head>
+
+  <body>
+    <h2>Задача 7. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!.</h2>
+    <script>
+      // class MaxYungAge {
+      //   static yungAge = 45
+      //   static counter = 0
+      //   constructor(name, age) {
+      //     this.name = name
+      //     this.age = age
+      //   }
+      //   isUserYung() {
+      //     return this.age <= MaxYungAge.yungAge
+      //   }
+
+      //   static compare(user1, user2) {
+      //     MaxYungAge.counter++
+      //     return user1.name === user2.name
+      //   }
+
+      //   toString() {
+      //     return `Імя: ${this.name}, вік: ${this.age}`
+      //   }
+      // }
+
+      // let u1 = new MaxYungAge("Ivan", 43)
+      // let u2 = new MaxYungAge("Ivan", 50)
+
+      // MaxYungAge.yungAge = 45
+      // document.write(`${u1}<br>`)
+      // document.write(`${MaxYungAge.yungAge}<br>`)
+      // document.write(`${u1.isUserYung()}<br>`)
+      // document.write(`${u2.isUserYung()}<br>`)
+
+      // document.write(`${MaxYungAge.compare(u1, u2)}<br>`)
+      // document.write(`${MaxYungAge.compare(u1, u2)}<br>`)
+
+      // document.write(MaxYungAge.counter)
+      //===========================================
+      // Задача. Розробити "Рекламний агент". Випадковим чином у зададному діапазоні задається інтервал,
+      // і через згенеровану кількість секунд виводиться деяка реклама. Після цього знову генерується випадковий інтервал.
+      // У процесі роботи для усіх раніше створених об"єктів - рекламних агентів мінімальне/максимальне значення інтевалу можуть змінюватись.
+      //Мінмальне і максимальне значення інтервалу - статичні
+      // class Reklama {
+      //   static minInterval
+      //   static maxInterval
+
+      //   constructor(initBanner, initMinInterval, initMaxInterval) {
+      //     this.banner = initBanner
+      //     Reklama.minInterval = initMinInterval
+      //     Reklama.maxInterval = initMaxInterval
+      //   }
+
+      //   static interval() {
+      //     let randomInterval =
+      //       Reklama.minInterval + Math.floor(Math.random() * (Reklama.maxInterval - Reklama.minInterval + 1))
+      //     console.log(randomInterval)
+      //     return randomInterval
+      //   }
+
+      //   randomBanner() {
+      //     let randomIndex = Math.floor(Math.random() * this.banner.length)
+      //     return this.banner[randomIndex]
+      //   }
+
+      //   timer() {
+      //     setTimeout(() => {
+      //       document.write(this.randomBanner())
+      //       this.timer()
+      //     }, Reklama.interval() * 1000)
+      //   }
+
+      //   toString() {
+      //     return `${this.banner}`
+      //   }
+      // }
+
+      // let showBanner = new Reklama(["Hellow", "World", "Money"], 0, 3)
+      // // document.write(showBanner)
+      // // document.write(showBanner.randomBanner())
+      // // Reklama.interval(0, 3)
+      // Reklama.minInterval = 4
+      // Reklama.maxInterval = 5
+      // showBanner.timer()
+
+      // setTimeout(() => {
+      //   Reklama.minInterval = 4
+      //   Reklama.maxInterval = 7
+      // }, 10000)
+      //===========================================
+      //Задача. Статистика методів.Дано клас Масив, який зберігає масив і має методи для знаходження суми, добутку, максимального.
+      // Користувач може створити довільну кількість об’єктів даного класу. Підрахувати загальну кількість викликів
+      // кожного із  методів (незалежно від об’єкта)
+      //Потрібно описати статичні каунтери для кожного метода
+      // class Array_1 {
+      //   static counterSum = 0
+      //   static counterMult = 0
+      //   static counterMaxNum = 0
+      //   static counterConstructor = 0
+      //   constructor(initArr) {
+      //     this.arr = [...initArr]
+      //     Array_1.counterConstructor++
+      //   }
+      //   getSum() {
+      //     Array_1.counterSum++
+      //     return this.arr.reduce((prevSum, el) => prevSum + el)
+      //   }
+
+      //   getMultiply() {
+      //     Array_1.counterMult++
+      //     return this.arr.reduce((prevVal, el) => prevVal * el, 1)
+      //   }
+
+      //   getMaxNum() {
+      //     Array_1.counterMaxNum++
+      //     //  return this.arr.reduce((prevNum, el) => (el > prevNum ? el : prevNum))
+      //     //  return Math.max(...this.arr)
+      //     let maxNum = -Infinity
+      //     for (const element of this.arr) {
+      //       if (element > maxNum) maxNum = element
+      //     }
+      //     return maxNum
+      //   }
+      //   static getStatistics() {
+      //     return `counterConstructor = ${Array_1.counterConstructor}\ncounterSum = ${Array_1.counterSum}\ncounterMult = ${Array_1.counterMult}\ncounterMaxNum = ${Array_1.counterMaxNum}`
+      //   }
+      // }
+
+      // let someObj = new Array_1([3, 7, -1, 8, 15])
+      // console.log(`Сума = ${someObj.getSum()}`)
+      // console.log(`Добуток = ${someObj.getMultiply()}`)
+      // console.log(`Максимальне число = ${someObj.getMaxNum()}`)
+
+      // let someObj2 = new Array_1([3, 7, -1, 8])
+      // console.log(`Добуток = ${someObj2.getMultiply()}`)
+
+      // let someObj3 = new Array_1([3, 7, -1, 8])
+      // let someObj4 = new Array_1([3, 7, -1, 8])
+      // let someObj5 = new Array_1([3, 7, -1, 8])
+
+      // console.log(Array_1.getStatistics())
+      //===========================================
+
+      //Задача. Черговий. Дано список студентів одного курсу (ПІБ). Розробити менеджер чергових, який
+      // дозволяє випадковим чином обирати і запам’ятовувати обраного чергового студента
+      //SINGLETON
+      // class RegularStudent {
+      //   static currentRegularStudentObj //поле яке зберігає адресу обєкту, спочатку undefined
+      //   constructor(studentList) {
+      //     if (RegularStudent.currentRegularStudentObj)
+      //       //якщо undefined (false), ствооюємо обєкт, а якщо обєкт вже був створений раніше в ноьму вже буде адреса обєкта,
+      //       //то він її повертає і новий обєкт не створється
+      //       return RegularStudent.currentRegularStudentObj
+      //     // ----створення обєкту-----
+      //     this.studentList = studentList
+      //     this.currentStudent = this.getRandomStudent()
+
+      //     RegularStudent.currentRegularStudentObj = this //записуємо адресу обєкта
+      //   }
+      //   getRandomStudent() {
+      //     let randomIndex = Math.floor(Math.random() * this.studentList.length)
+      //     return this.studentList[randomIndex]
+      //   }
+      //   toString() {
+      //     return `Черговий студент: ${this.currentStudent}<br>`
+      //   }
+      // }
+
+      // let studentList = ["Olga", "Ivan", "Artem", "Anna", "Petro"]
+
+      // let regular = new RegularStudent(studentList)
+      // document.write(regular) //однаковий студент
+      // let regular2 = new RegularStudent(studentList)
+      // document.write(regular) //однаковий студент
+      // let regular3 = new RegularStudent(studentList)
+      // document.write(regular) //однаковий студент
+      //===========================================
+      //===========================================
+
+      //Задача. Дано список учнів школи. У школі проводиться декілька гуртків.
+      //учень може брати участь у декількох гуртках. Реалізувати додавання/відраховування учнів з гуртків.
+      // ----УЧЕНЬ----
+      // class Student {
+      //   constructor(surname, name, classNum) {
+      //     this.surname = surname
+      //     this.name = name
+      //     this.classNum = classNum
+      //   }
+      //   toString() {
+      //     return `Прізвище ${this.surname}<br>Імя ${this.name}<br>Клас ${this.classNum}<br>`
+      //   }
+      // }
+      // // ----ГУРТОК----
+      // class Workshop {
+      //   constructor(title, lessonDay) {
+      //     this.title = title
+      //     this.lessonDay = lessonDay
+      //     this.participantsList = []
+      //   }
+      //   // --додавання учня--
+      //   addStudent(newStudent) {
+      //     this.participantsList.push({ id: new Date().getTime(), dataStudent: newStudent })
+      //   }
+      //   //---видадення учня---
+      //   removeStudent(studentToRemove) {
+      //     this.participantsList = this.participantsList.filter((student) => student !== studentToRemove)
+      //   }
+
+      //   //   ---перевірка належності учня до гуртка---
+      //   isStudentIncludesWorkshop(studentIsIncludes) {
+      //     return this.participantsList.includes(studentIsIncludes)
+      //   }
+      //   toString() {
+      //     return `${this.title}<br> ${this.participantsList.map((el) => el.toString() + "<br>")}`
+      //   }
+      // }
+
+      // let students = [
+      //   new Student("Ivanov", "Ivan", 7),
+      //   new Student("Petrova", "Olga", 8),
+      //   new Student("Romanov", "Kolja", 6),
+      //   new Student("Bauman", "Vasya", 4),
+      //   new Student("Saul", "Sasha", 5),
+      //   new Student("Subota", "Elena", 6),
+      //   new Student("Devo", "Artem", 9),
+      // ]
+      // let newSt = new Student("Koporov", "Nikita", 3)
+
+      // let s1 = new Student("Ivanov", "Ivan", 7)
+      // let workshop = new Workshop(Math, 2)
+      // // workshop.addStudent(students[1])
+      // console.log(workshop.participantsList)
+
+      //===========================================
+
+      //===========================================
+      // class Student {
+      //   // constructor({ firstName, surname, classNum }) {
+      //   //   this.firstName = firstName
+      //   //   this.surname = surname
+      //   //   this.classNum = classNum
+      //   // }
+      //   constructor(initData) {
+      //     Object.assign(this, initData)
+      //   }
+
+      //   toString() {
+      //     return `${this.firstName} ${this.surname} - ${this.classNum}`
+      //   }
+      // }
+
+      // class Workshop {
+      //   // constructor({title, workingDay}) {
+      //   //   this.title=title
+      //   //   this.workingDay=workingDay
+      //   //   this.participants = []
+      //   // }
+      //   constructor(initData) {
+      //     Object.assign(this, initData)
+      //     this.participants = []
+      //   }
+      //   addStudent(newStudent) {
+      //     this.participants.push({
+      //       id: new Date().getTime(),
+      //       data: newStudent,
+      //     })
+      //   }
+      //   removeStudentById(studentIdToRemove) {
+      //     this.participants = this.participants.filter((item) => item.id !== studentIdToRemove)
+      //   }
+      //   removeStudent(studentToRemove) {
+      //     this.participants = this.participants.filter((item) => item !== studentToRemove)
+      //   }
+      //   isStudentVisitingWorkshop(student) {
+      //     return this.participants.includes(student)
+      //   }
+      //   toString() {
+      //     return `${this.title} : <br> ${this.participants.map((item) => item.toString() + "<br>")}`
+      //   }
+      // }
+
+      // class WorkshopManager {
+      //   constructor(studentsList, workshops) {
+      //     this.studentsList = studentsList
+      //     this.workshops = workshops
+      //   }
+      //   addStudentsToWorkshop() {
+      //     let workshopsNames = Object.keys(workshops)
+      //     for (const student of this.studentsList) {
+      //       const selectedWorkshopNumbers = prompt(
+      //         `Виберіть через кому номери гуртків для\n${student} \n \n1. Math\n2.History\n3. Geography`
+      //       )
+      //         .split(",")
+      //         .map((item) => parseInt(item) - 1)
+
+      //       for (const workshopIndex of selectedWorkshopNumbers) {
+      //         const workshopKey = workshopsNames[workshopIndex]
+      //         this.workshops[workshopKey].participants.push(student)
+      //       }
+      //     }
+      //   }
+      //   printData() {
+      //     for (const workshopKey in this.workshops) {
+      //       document.write(workshops[workshopKey])
+      //     }
+      //   }
+      // }
+
+      // let studentsList = [
+      //   new Student({ firstName: "Ivan", surname: "Sirko", classNum: 7 }),
+      //   new Student({ firstName: "Petro", surname: "Sich", classNum: 8 }),
+      //   new Student({ firstName: "Olga", surname: "Kazka", classNum: 3 }),
+      // ]
+
+      // let workshops = {
+      //   math: new Workshop({ title: "Math", workingDay: 3 }),
+      //   history: new Workshop({ title: "History", workingDay: 4 }),
+      //   geography: new Workshop({
+      //     title: "Geography",
+      //     workingDay: 1,
+      //   }),
+      // }
+
+      // let workshopManager = new WorkshopManager(studentsList, workshops)
+      // workshopManager.addStudentsToWorkshop()
+      // workshopManager.printData()
+
+      // workshopManager.workshops["math"].removeStudent(studentsList[0])
+      // workshopManager.printData()
+
+      //===========================================
+      //===========================================
+      //Команда. Дано список студентів (ім"я, кількість балів). По черзі випадковим чином вибирають дві команди. Виграє той, у кого середній бал менше
+      //Порівняння статичний метод
+
+      // class Student {
+      //   constructor(name, score) {
+      //     this.name = name
+      //     this.score = score
+      //   }
+      //   static getAvarageScore(student1, student2) {
+      //     return (student1.score + student2.score) / 2
+      //   }
+      //   toString() {
+      //     return `${this.name} - ${this.score}`
+      //   }
+      // }
+
+      // class Team {
+      //   constructor(student1, student2) {
+      //     this.student1 = student1
+      //     this.student2 = student2
+      //   }
+      //   get avaregeScoreTeam() {
+      //     return Student.getAvarageScore(this.student1, this.student2)
+      //   }
+
+      //   static getWinner(team1, team2) {
+      //     if (team1.avaregeScoreTeam < team2.avaregeScoreTeam) return team1.toString()
+      //     if (team1.avaregeScoreTeam > team2.avaregeScoreTeam) return team2.toString()
+      //     return `Нічия`
+      //   }
+
+      //   toString() {
+      //     return `team: <br> ${this.student1}<br> ${this.student2}`
+      //   }
+      // }
+
+      // class Game {
+      //   constructor(studentList) {
+      //     this.studentList = studentList
+      //   }
+
+      //   getRandomStudent(currentStudentList) {
+      //     let randomIndex = Math.floor(Math.random() * currentStudentList.length)
+      //     const student = currentStudentList[randomIndex]
+      //     currentStudentList.splice(randomIndex, 1)
+      //     return student
+      //   }
+
+      //   play() {
+      //     let currentStudentList = [...this.studentList]
+      //     let stud1 = this.getRandomStudent(currentStudentList)
+      //     let stud2 = this.getRandomStudent(currentStudentList)
+      //     let team1 = new Team(stud1, stud2)
+      //     stud1 = this.getRandomStudent(currentStudentList)
+      //     stud2 = this.getRandomStudent(currentStudentList)
+      //     let team2 = new Team(stud1, stud2)
+      //     console.log(team1)
+      //     console.log(team2)
+
+      //     const winTeam = Team.getWinner(team1, team2)
+      //     document.write(winTeam)
+      //   }
+      // }
+
+      // let studentList = [
+      //   new Student("Ivan", 20),
+      //   new Student("Anna", 30),
+      //   new Student("Kolja", 25),
+      //   new Student("Kos", 31),
+      //   new Student("Inna", 22),
+      //   new Student("Artem", 27),
+      // ]
+
+      // let g1 = new Game(studentList)
+      // g1.play()
+      //===========================================
+      //   Shipment(productTitle, value) {
+      //     this.listOfRegisteredProducts.find((el) =>
+      //       el.titleProduct === productTitle ? el.quantity - value : el.quantity
+      //     )
+      //   }
+      // class ProductBase {
+      //   constructor() {
+      //     this.listOfRegisteredProducts = []
+      //   }
+
+      //   addProduct(newProduct) {
+      //     this.listOfRegisteredProducts.push(newProduct)
+      //   }
+
+      //   Shipment(product) {
+
+      //   }
+
+      //   toString() {
+      //     return `${this.registrationProduct}`
+      //   }
+      // }
+      //===========================================
+      // let arr = [
+      //   { name: `Vasya`, age: 15 },
+      //   { name: `Anna`, age: 20 },
+      // ]
+
+      // // let finded = arr.find((el) => el.age === 20)
+      // // console.log(finded)
+      // // console.log(arr)
+
+      // let names = Object.keys(arr)
+      // console.log(names) //['0','1']
+
+      let randomNum = Math.random()
+      console.log(randomNum)
+    </script>
+  </body>
+</html>

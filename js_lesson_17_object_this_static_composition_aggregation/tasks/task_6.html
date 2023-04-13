@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №6</title>
+  </head>
+
+  <body>
+    <h2>
+      Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно
+      генеруються числа, які треба перемножати), AddChecker (клас для перевірки додавання
+      - рандомно генеруються числа у заданому діапазоні, які треба додавати). Обидва класи
+      надсилають результати тестування об'єкту класу Hystory, який зберігає історію
+      тестування у масиві у вигляді об'єктів
+    </h2>
+
+    <script>
+      //===========================================
+      class MultChecker {
+        constructor(minNum, maxNum) {
+          this.firstNum
+          this.secondNum
+          this.operation = "*"
+          this.userAnswer
+          this.correctAnswer
+          this.minNum = minNum
+          this.maxNum = maxNum
+        }
+
+        getRandomNum() {
+          return this.minNum + Math.floor(Math.random() * (this.maxNum - this.minNum + 1))
+        }
+
+        multiplication() {
+          this.firstNum = this.getRandomNum()
+          this.secondNum = this.getRandomNum()
+          this.correctAnswer = this.firstNum * this.secondNum
+          this.userAnswer = parseInt(
+            prompt(`Скільки буде ${this.firstNum} * ${this.secondNum}?`)
+          )
+        }
+        toString() {
+          return `firstNum: ${this.firstNum}, secondNum: ${this.secondNum},opration: '${this.operation}', userAnswer: ${this.userAnswer}, correctAnswer: ${this.correctAnswer}`
+        }
+      }
+      //===========================================
+      class AddChecker {
+        constructor(minNum, maxNum) {
+          this.firstNum
+          this.secondNum
+          this.operation = "+"
+          this.userAnswer
+          this.correctAnswer
+          this.minNum = minNum
+          this.maxNum = maxNum
+        }
+
+        getRandomNum() {
+          return this.minNum + Math.floor(Math.random() * (this.maxNum - this.minNum + 1))
+        }
+
+        addition() {
+          this.firstNum = this.getRandomNum()
+          this.secondNum = this.getRandomNum()
+          this.correctAnswer = this.firstNum + this.secondNum
+          this.userAnswer = parseInt(
+            prompt(`Скільки буде ${this.firstNum} + ${this.secondNum}?`)
+          )
+        }
+        toString() {
+          return `  firstNum: ${this.firstNum}, secondNum: ${this.secondNum},opration: '${this.operation}', userAnswer: ${this.userAnswer}, correctAnswer: ${this.correctAnswer}`
+        }
+      }
+      //===========================================
+
+      class History {
+        static historyObj
+        constructor() {
+          if (History.historyObj) return History.historyObj
+          this.historyArr = []
+
+          History.historyObj = this
+        }
+
+        addHistory(newResult) {
+          this.historyArr.push(newResult)
+        }
+
+        toString() {
+          return `${this.historyArr}`
+        }
+      }
+
+      //===========================================
+      class TestData {
+        constructor({ firstNum, secondNum, operation, userAnswer, correctAnswer }) {
+          this.firstNum = firstNum
+          this.secondNum = secondNum
+          this.operation = operation
+          this.userAnswer = userAnswer
+          this.correctAnswer = correctAnswer
+        }
+
+        toString() {
+          return `firstNum: ${this.firstNum}, secondNum: ${this.secondNum},opration: '${this.operation}', userAnswer: ${this.userAnswer}, correctAnswer: ${this.correctAnswer}<br>`
+        }
+      }
+      //===========================================
+
+      class TestManager {
+        constructor(minNum, maxNum, testQuantity) {
+          this.minNum = minNum
+          this.maxNum = maxNum
+          this.testQuantity = testQuantity
+          this.historyTest = new History()
+        }
+
+        testPlay() {
+          let counter = this.testQuantity
+          let timer = setInterval(() => {
+            if (counter === 0) {
+              clearInterval(timer)
+              this.showResult()
+            } else {
+              console.log(counter)
+              let test
+              let randomNum = Math.random()
+              if (randomNum > 0.5) {
+                test = new MultChecker(this.minNum, this.maxNum)
+                test.multiplication()
+                //  console.log(test)
+              } else {
+                test = new AddChecker(this.minNum, this.maxNum)
+                test.addition()
+                //  console.log(test)
+              }
+              let dataTest = new TestData(test)
+              //   document.write(dataTest)
+              this.historyTest.addHistory(dataTest)
+              console.log(this.historyTest)
+              //   document.write(this.historyTest)
+            }
+            counter--
+          }, 1500)
+        }
+
+        showResult() {
+          document.write(this.historyTest)
+        }
+
+        toString() {
+          return `${this.historyTest}`
+        }
+      }
+
+      //===========================================
+
+      let testM = new TestManager(1, 10, 3)
+      testM.testPlay()
+
+      document.write(testM) //НЕ МОЖУ ЗРОЗУМІТИ ЧОМУ НЕ ВИВОДИТЬСЯ toString
+
+      let history = new History()
+      document.write(history) //НЕ МОЖУ ЗРОЗУМІТИ ЧОМУ НЕ ВИВОДИТЬСЯ toString
+    </script>
+  </body>
+</html>

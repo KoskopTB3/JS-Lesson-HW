@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Склад. База товарів, які зберігаються на складі: назва товару, одиниця виміру, кількість, фірма виробник (назва,
+      реєстраційний номер). Організувати реєстрацію/відвантаження товарів, фільтрація за назвою товару, фільтрація за
+      назвою фірми
+    </h2>
+    <script>
+      // ---поля---
+      // title
+      // unit
+      //quantity
+      //madeFirm
+      // title
+      // id
+      // ---методи---
+      // registration (add product)
+      // Shipment
+      // titleProductFilter
+      // titleFirmFilter
+      //===========================================
+
+      class Manufacturer {
+        constructor(title) {
+          this.title = title
+          this.registrationNum = Math.random().toFixed(3)
+        }
+
+        toString() {
+          return `Фірма - ${this.title}<br>Реєстраційний номер: ${this.registrationNum}<br>`
+        }
+      }
+
+      class Product {
+        constructor(titleProduct, unit, quantity, title) {
+          this.titleProduct = titleProduct
+          this.unit = unit
+          this.quantity = quantity
+          this.firm = new Manufacturer(title)
+        }
+
+        toString() {
+          return `<br>Назва продукту: ${this.titleProduct},<br>Одиниця виміру: ${this.unit}, <br>Кількість = ${this.quantity} <br> ${this.firm} `
+        }
+      }
+
+      class ProductBase {
+        constructor() {
+          this.listOfRegisteredProducts = []
+        }
+
+        addProduct(newProduct) {
+          this.listOfRegisteredProducts.push(newProduct)
+        }
+
+        shipment(productTitle, value) {
+          this.listOfRegisteredProducts.find((el) => el.titleProduct === productTitle).quantity -= value
+        }
+
+        titleProductFilter(productTitle) {
+          let filterProducts = this.listOfRegisteredProducts.filter((el) => el.titleProduct === productTitle)
+          return filterProducts
+        }
+
+        titleFirmFilter(firmTitle) {
+          let firmFilter = this.listOfRegisteredProducts.filter((el) => el.firm.title === firmTitle)
+          return firmFilter
+        }
+
+        toString() {
+          return `${this.listOfRegisteredProducts}`
+        }
+      }
+
+      let base = new ProductBase()
+      base.addProduct(new Product("fuel", "liters", 500, "Shell"))
+      base.addProduct(new Product("Milk", "pack", 2500, "Milka"))
+      base.addProduct(new Product("Glases", "pack", 1000, "Good Vision"))
+      base.addProduct(new Product("Wheels", "pack", 80, "Michelin"))
+      base.addProduct(new Product("Wheels", "pack", 60, "Good Year"))
+      base.addProduct(new Product("Chocolate", "pack", 700, "Milka"))
+
+      base.shipment("Milk", 1000)
+      document.write(base.titleProductFilter("Wheels"))
+      document.write(base.titleFirmFilter("Milka"))
+
+      console.log(base)
+    </script>
+  </body>
+</html>

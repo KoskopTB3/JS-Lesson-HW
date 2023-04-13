@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 3. Створити клас Нагадувач. Кожні вказані кількості секунд (використати setInterval) програма нагадує про
+      якусь подію (це просто текст) і також виводиться порядковий номер скільки раз вже нагадування було. Зробити так,
+      щоб неможна було зробити одночасно декілька об’єктів-нагадувачів. Методи зупинки таймера, метод зміни повідомлення
+      без зупинки таймера.
+    </h2>
+    <script>
+      class Reminder {
+        static reminderObj
+
+        constructor(initRemindMessage, initTime) {
+          if (Reminder.reminderObj) return Reminder.reminderObj
+          this.remindMessage = initRemindMessage
+          this.time = initTime
+          this.counter = 0
+          this.timer
+          Reminder.reminderObj = this
+        }
+
+        timer() {
+          this.timer = setInterval(() => {
+            this.counter++
+            document.write(`${this.remindMessage} ${this.counter} <br>`)
+          }, this.time * 1000)
+        }
+
+        stopTimer(timeValue) {
+          setTimeout(() => {
+            clearInterval(this.timer)
+          }, timeValue * 1000)
+        }
+
+        newMassege(message, timeValue) {
+          setTimeout(() => {
+            this.remindMessage = message
+          }, timeValue * 1000)
+        }
+      }
+
+      let myReminder = new Reminder("Зробити прижок-кувирок", 2)
+      // let myReminder2 = new Reminder("аааааа", 2000)
+      // myReminder2.timer()
+      myReminder.timer()
+      myReminder.stopTimer(12)
+      myReminder.newMassege("Чихнути з відкритими очима", 7)
+    </script>
+  </body>
+</html>

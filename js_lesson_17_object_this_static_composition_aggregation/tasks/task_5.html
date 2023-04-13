@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 5. Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори
+      (піб, рік народження, короткий опис), назва книги, жанр, видавництво (назва,
+      реєстраційний номер, рік засування)). Реалізувати розділи бібліотеки (спеціальна
+      література, хобі, домашнє господарство і т.д.), походження книги і наявність на
+      даний час. Організувати додавання/вилучення книг та вибір книг за назвою, за ПІБ
+      автора, за видавництвом.
+    </h2>
+
+    <script>
+      // ---поля---
+      //author: name, surname, yearOfBirth, description
+      //publishingHouse: ph_title, registerNum, creationYear
+      // bookTitle, genre, originBook, availability
+
+      //
+      //===========================================
+      class Author {
+        constructor(name, surname, yearOfBirth, description) {
+          this.name = name
+          this.surname = surname
+          this.yearOfBirth = yearOfBirth
+          this.description = description
+        }
+
+        toString() {
+          return `Автор: ${this.name} ${this.surname}<br>Дата народження:${this.yearOfBirth}<br>Стислий опис: ${this.description}`
+        }
+      }
+      class PublishingHouse {
+        constructor(ph_title, creationYear) {
+          this.ph_title = ph_title
+          this.creationYear = creationYear
+          this.registerNum = new Date().getTime()
+        }
+        toString() {
+          return `Видавництво: ${this.ph_title}<br>Рік заснування ${this.creationYear}<br>Реєстраційний номер: ${this.registerNum}<br>`
+        }
+      }
+      class Book {
+        constructor(bookTitle, genre, originBook, author, publishingHouse) {
+          this.bookTitle = bookTitle
+          this.genre = genre
+          this.originBook = originBook
+          this.author = author
+          this.publishingHouse = publishingHouse
+        }
+        toString() {
+          return `Назва книги: ${this.bookTitle}<br>Жанр: ${this.genre}<br>Походження: ${this.originBook}<br>${this.author}<br>${this.publishingHouse}<br>`
+        }
+      }
+
+      class LibrarySection {
+        constructor(sectionTitle) {
+          this.sectionTitle = sectionTitle
+          this.section = []
+        }
+
+        addBook(newBook) {
+          this.section.push(newBook)
+        }
+
+        removeBook(bookToRemove) {
+          this.section = this.section.filter((book) => book !== bookToRemove)
+        }
+
+        toString() {
+          return `Розділ: ${this.sectionTitle} <br>${this.section}<br> `
+        }
+      }
+
+      class Library {
+        constructor(librarySections, books) {
+          this.librarySections = librarySections
+          this.books = books
+        }
+
+        //розносимо книги по розділам
+        addBooktoSection() {
+          //беремо всі назви розділів, робимо масив ['0','1','2' ...]
+          let librarySectionsTitles = Object.keys(this.librarySections)
+          //перебираємо по черзі книги, і питаємо в який розділ додати
+          for (const book of this.books) {
+            const librarySectionNumber = prompt(
+              `Виберіть через кому номери розділів для ${book.bookTitle} \n \n1. Детектив\n2. Дитяча література\n3. Історичні`
+            )
+              //прибираємо коми, робимо масив з чисел нашого вибору розділу
+              .split(",")
+              //робимо новий масив з переведенням в тип number,
+              // для того щоб наш вибір розділу дорівнював індексу назви розділу
+              // віднімаємо одиницю
+              .map((indexNum) => parseInt(indexNum) - 1)
+
+            for (const index of librarySectionNumber) {
+              //привязуємо наш вибір розділу(індекс) до назви розділу
+              //тобто вибираємо ключ розділу
+              const librarySectionsKey = librarySectionsTitles[index]
+              //беремо один із розділов і пушимо туди книгу
+              this.librarySections[librarySectionsKey].section.push(book)
+            }
+          }
+        }
+        //наявність книги на даний час
+        isBookInLibryary(titleBook) {
+          return this.books.some((book) => book.bookTitle === titleBook)
+        }
+
+        //додавання книги
+        addNewBook(newBook) {
+          this.books.push(newBook)
+        }
+
+        ///вилучення книги
+        removeBook(titleBook) {
+          return (this.books = this.books.filter((book) => book.bookTitle !== titleBook))
+        }
+
+        //вибір книг за назвою
+        choiceBookByTitle(titleBook) {
+          return this.books.filter((book) => book.bookTitle === titleBook)
+        }
+
+        //за ПІБ автора
+        choiceBookByAuthor(authorSurname) {
+          return this.books.filter((book) => book.author.surname.includes(authorSurname))
+        }
+        //за видавництвом
+        choiceBookByPublishingHouse(publishingTitle) {
+          return this.books.filter((book) =>
+            book.publishingHouse.ph_title.includes(publishingTitle)
+          )
+        }
+
+        printData() {
+          for (const key in this.librarySections) {
+            document.write(this.librarySections[key])
+          }
+        }
+      }
+
+      let books = [
+        new Book(
+          "Історія світу від найдавніших часів до сьогодення",
+          "Історія",
+          "куплена",
+          new Author("Джеремі", "Блек", 1972, "Сучасний письменник"),
+          new PublishingHouse("Vivat", 2010)
+        ),
+        new Book(
+          "Код Да Вінчі",
+          "Детектив",
+          "куплена",
+          new Author("Ден", "Браун", 1950, "Сучасний американський письменник"),
+          new PublishingHouse("Клуб сімейного дозвілля", 2001)
+        ),
+
+        new Book(
+          "Шерлок Голмс. Повне видання у 2 томах. Том 2",
+          "Детектив",
+          "подарована",
+
+          new Author(
+            "Артур",
+            "Конан Дойл",
+            1947,
+            "Цей автор став класиком англійської літератури ще за життя"
+          ),
+
+          new PublishingHouse("А-ба-ба-га-ла-ма-га", 2005)
+        ),
+
+        new Book(
+          "Гаррі Поттер і філософський камінь",
+          "Фентезі",
+          "подарована",
+
+          new Author(
+            "Джоан",
+            "Роулінг",
+            1962,
+            "Англійська письменниця, лауреат премії Х'юго, кавалер Ордена Почесного легіону, автор серії романів про Гаррі Поттера"
+          ),
+          new PublishingHouse("А-ба-ба-га-ла-ма-га", 2005)
+        ),
+
+        new Book(
+          "Гаррі Поттер і орден фенікса",
+          "Фентезі",
+          "подарована",
+
+          new Author(
+            "Джоан",
+            "Роулінг",
+            1962,
+            "Англійська письменниця, лауреат премії Х'юго, кавалер Ордена Почесного легіону, автор серії романів про Гаррі Поттера"
+          ),
+          new PublishingHouse("А-ба-ба-га-ла-ма-га", 2005)
+        ),
+
+        new Book(
+          "Карти на стіл",
+          "Детектив",
+          "куплена",
+
+          new Author(
+            "Агата",
+            "Крісті",
+            1971,
+            "Мабуть, немає в світі людини, якій ні разу в житті не довелося купити книги Агати Крісті"
+          ),
+
+          new PublishingHouse("Клуб сімейного дозвілля", 2001)
+        ),
+        new Book(
+          "Мавка.Лісова пісня",
+          "Сказка",
+          "куплена",
+
+          new Author(
+            "Леся",
+            "Українка",
+            1871,
+            "Леся Українка - відома українська поетеса, драматург і культурний діяч."
+          ),
+
+          new PublishingHouse("Ранок", 1995)
+        ),
+        new Book(
+          "Фактор Черчилля. Як одна людина змінила історію",
+          "Історична література",
+          "куплена",
+          new Author("Борис", "Джонсон", 1963, "Відомий політичний діяч"),
+          new PublishingHouse("Vivat", 2010)
+        ),
+      ]
+
+      let librarySections = {
+        detective: new LibrarySection("Детектив"),
+        childrenLiterature: new LibrarySection("Дитяча література"),
+        history: new LibrarySection("Історичні"),
+      }
+      //===========================================
+
+      // console.log(books)
+      let library = new Library(librarySections, books)
+
+      console.log(library.isBookInLibryary("Код Да Вінчі"))
+      library.addNewBook(
+        new Book(
+          "Якась книга",
+          "Історія",
+          "куплена",
+          new Author("Якийсь", "Письменник", 2000, "Сучасний письменник"),
+          new PublishingHouse("Тру-ля-ля", 2010)
+        )
+      )
+      // library.removeBook("Код Да Вінчі")
+      console.log(
+        library.choiceBookByTitle("Історія світу від найдавніших часів до сьогодення")
+      )
+      console.log(library.choiceBookByAuthor("Роулінг"))
+      console.log(library.choiceBookByPublishingHouse("Ранок"))
+      library.addBooktoSection()
+      library.printData()
+    </script>
+  </body>
+</html>

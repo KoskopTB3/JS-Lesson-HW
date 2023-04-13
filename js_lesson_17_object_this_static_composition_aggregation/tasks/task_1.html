@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 1.Створити клас, що дозволяє виконувати такі операції над масивами: знаходження кількості додатних,
+      кількості від’ємних, кількість входжень деякого числа (статичні методи)
+    </h2>
+
+    <script>
+      class Operation {
+        static positiveNum = 0
+        static negativeNum = 0
+        static someNum = 0
+        constructor(initArr) {
+          this.arr = initArr
+        }
+        static positiveNumFinder(someArr) {
+          for (const element of someArr) {
+            if (element >= 0) Operation.positiveNum++
+          }
+        }
+
+        static negativeNumFinder(someArr) {
+          for (const element of someArr) {
+            if (element < 0) Operation.negativeNum++
+          }
+        }
+
+        static findSomeNum(someArr, num) {
+          for (const element of someArr) {
+            if (element === num) Operation.someNum++
+          }
+        }
+
+        static toString() {
+          return `Кількість додатніх = ${Operation.positiveNum}<br>Кількість відємних = ${Operation.negativeNum}<br>Кількість деякого числа = ${Operation.someNum}<br>`
+        }
+      }
+
+      let someArr = [-5, 4, 0, -25, 11, 1, 17, -15, 0, 2]
+      let someArr2 = [-11, 10, 0, 25, -5, 9, 2, -15, -1]
+
+      Operation.positiveNumFinder(someArr)
+      Operation.positiveNumFinder(someArr2)
+
+      Operation.negativeNumFinder(someArr)
+      Operation.negativeNumFinder(someArr2)
+
+      Operation.findSomeNum(someArr, 0)
+      Operation.findSomeNum(someArr2, 0)
+
+      document.write(Operation)
+    </script>
+  </body>
+</html>
