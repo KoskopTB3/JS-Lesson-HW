@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
+  </head>
+
+  <body>
+    <h2>Задача №2. Зробити конвертер валют (курси валют – константи у скрипті)</h2>
+    <label
+      >Сума у гривнях
+      <input
+        type="text"
+        placeholder="введіть кількість гривень"
+        class="inputGRN"
+        value=""
+      />
+    </label>
+    <div><button class="button">Конвертувати</button></div>
+    <label
+      >Сума в євро
+      <input type="text" placeholder="0" class="euro" value="" />
+    </label>
+    <div>
+      <label
+        >Сума у доларах
+        <input type="text" placeholder="0" class="usd" value="" />
+      </label>
+    </div>
+
+    <script>
+      function converter(dollarExchangeRate, euroExchangeRate) {
+        const grivnaValue = parseFloat(document.querySelector(".inputGRN").value)
+
+        //   let dollar = grivnaValue / dollarExchangeRate
+        //   let euro = grivnaValue / euroExchangeRate
+
+        document.querySelector(".usd").value = (grivnaValue / dollarExchangeRate).toFixed(
+          2
+        )
+        document.querySelector(".euro").value = (grivnaValue / euroExchangeRate).toFixed(
+          2
+        )
+      }
+
+      const dollarExchangeRate = 38
+      const euroExchangeRate = 41
+
+      document.querySelector(".button").onclick = () =>
+        converter(dollarExchangeRate, euroExchangeRate)
+    </script>
+  </body>
+</html>

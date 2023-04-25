@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
+
+    <title>Задача №7</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 7. Подорож складається з 3 етапів. На кожному етапі користувач може вибрати
+      один з видів транспорту (авто, автобус, літак - випадаючий список), харчування
+      (сніданок, обід, вечеря – checkbоx) та одного з 3-х гідів(використати - radio
+      buttons). Ціни визначте самі. Підрахувати загальну вартість.
+    </h2>
+
+    <div class="first_trip">
+      <h2>Перший етап подорожі</h2>
+      <div class="select">
+        Виберіть транспорт для подорожі:
+        <select name="transport">
+          <option value="3000">авто - 3000</option>
+          <option value="1500">автобус - 1500</option>
+          <option value="2000">літак - 2000</option>
+        </select>
+      </div>
+      <div class="checkbox">
+        Виберіть харчування:
+        <div>
+          <input id="c_1" class="checkbox__input" type="checkbox" value="100" />
+          <label for="c_1" class="checkbox__label"
+            ><span class="checkbox__text">Сніданок - 100</span></label
+          >
+        </div>
+        <div>
+          <input id="c_2" class="checkbox__input" type="checkbox" value="250" />
+          <label for="c_2" class="checkbox__label"
+            ><span class="checkbox__text">Обід - 250</span></label
+          >
+        </div>
+        <div>
+          <input id="c_3" class="checkbox__input" type="checkbox" value="300" />
+          <label for="c_3" class="checkbox__label"
+            ><span class="checkbox__text">Вечеря - 300</span></label
+          >
+        </div>
+      </div>
+      <div class="options">
+        Виберіть гіда:
+        <div class="options__item">
+          <input id="o_1" class="options__input" type="radio" value="50" name="option" />
+          <label for="o_1" class="options__label"
+            ><span class="options__text">Гід Валера - 50</span></label
+          >
+        </div>
+        <div class="options__item">
+          <input id="o_2" class="options__input" type="radio" value="55" name="option" />
+          <label for="o_2" class="options__label"
+            ><span class="options__text">Гід Ольга - 55</span></label
+          >
+        </div>
+        <div class="options__item">
+          <input id="o_2" class="options__input" type="radio" value="65" name="option" />
+          <label for="o_2" class="options__label"
+            ><span class="options__text">Гід Абдула - 65</span></label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="second_trip">
+      <h2>Другий етап подорожі</h2>
+      <div class="select">
+        Виберіть транспорт для подорожі:
+        <select name="transport">
+          <option value="3000">авто - 3000</option>
+          <option value="1500">автобус - 1500</option>
+          <option value="2000">літак - 2000</option>
+        </select>
+      </div>
+      <div class="checkbox">
+        Виберіть харчування:
+        <div>
+          <input id="c_1" class="checkbox__input" type="checkbox" value="100" />
+          <label for="c_1" class="checkbox__label"
+            ><span class="checkbox__text">Сніданок - 100</span></label
+          >
+        </div>
+        <div>
+          <input id="c_2" class="checkbox__input" type="checkbox" value="250" />
+          <label for="c_2" class="checkbox__label"
+            ><span class="checkbox__text">Обід - 250</span></label
+          >
+        </div>
+        <div>
+          <input id="c_3" class="checkbox__input" type="checkbox" value="300" />
+          <label for="c_3" class="checkbox__label"
+            ><span class="checkbox__text">Вечеря - 300</span></label
+          >
+        </div>
+      </div>
+      <div class="options">
+        Виберіть гіда:
+        <div class="options__item">
+          <input id="o_1" class="options__input" type="radio" value="50" name="option1" />
+          <label for="o_1" class="options__label"
+            ><span class="options__text">Перший - 50</span></label
+          >
+        </div>
+        <div class="options__item">
+          <input id="o_2" class="options__input" type="radio" value="55" name="option1" />
+          <label for="o_2" class="options__label"
+            ><span class="options__text">Другий - 55</span></label
+          >
+        </div>
+        <div class="options__item">
+          <input id="o_2" class="options__input" type="radio" value="65" name="option1" />
+          <label for="o_2" class="options__label"
+            ><span class="options__text">Третій - 65</span></label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="third_trip">
+      <h2>Третій етап подорожі</h2>
+      <div class="select">
+        Виберіть транспорт для подорожі:
+        <select name="transport">
+          <option value="3000">авто - 3000</option>
+          <option value="1500">автобус - 1500</option>
+          <option value="2000">літак - 2000</option>
+        </select>
+      </div>
+      <div class="checkbox">
+        Виберіть харчування:
+        <div>
+          <input id="c_1" class="checkbox__input" type="checkbox" value="100" />
+          <label for="c_1" class="checkbox__label"
+            ><span class="checkbox__text">Сніданок - 100</span></label
+          >
+        </div>
+        <div>
+          <input id="c_2" class="checkbox__input" type="checkbox" value="250" />
+          <label for="c_2" class="checkbox__label"
+            ><span class="checkbox__text">Обід - 250</span></label
+          >
+        </div>
+        <div>
+          <input id="c_3" class="checkbox__input" type="checkbox" value="300" />
+          <label for="c_3" class="checkbox__label"
+            ><span class="checkbox__text">Вечеря - 300</span></label
+          >
+        </div>
+      </div>
+      <div class="options">
+        Виберіть гіда:
+        <div class="options__item">
+          <input id="o_1" class="options__input" type="radio" value="50" name="option2" />
+          <label for="o_1" class="options__label"
+            ><span class="options__text">Перший - 50</span></label
+          >
+        </div>
+        <div class="options__item">
+          <input id="o_2" class="options__input" type="radio" value="55" name="option2" />
+          <label for="o_2" class="options__label"
+            ><span class="options__text">Другий - 55</span></label
+          >
+        </div>
+        <div class="options__item">
+          <input id="o_2" class="options__input" type="radio" value="65" name="option2" />
+          <label for="o_2" class="options__label"
+            ><span class="options__text">Третій - 65</span></label
+          >
+        </div>
+      </div>
+    </div>
+    <div>
+      <button>Розрахувати ціну</button>
+    </div>
+    <div>
+      загальна сума =
+      <span id="total"></span>
+    </div>
+
+    <script>
+      function getSumStage(sectorSelector) {
+        let sum = 0
+        const select = parseFloat(
+          document.querySelector(`${sectorSelector} select`).value
+        )
+        const inputs = document.querySelectorAll(`${sectorSelector} input`)
+        sum += select
+        for (const input of inputs) {
+          if (input.checked) sum += parseFloat(input.value)
+        }
+        return sum
+      }
+
+      function getTotalSum() {
+        const totalSum =
+          getSumStage(`.first_trip`) +
+          getSumStage(`.second_trip`) +
+          getSumStage(`.third_trip`)
+        document.getElementById("total").innerText = totalSum
+      }
+
+      document.querySelector("button").onclick = getTotalSum
+    </script>
+  </body>
+</html>

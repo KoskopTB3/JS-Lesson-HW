@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 4. Наперед задано у скрипті масив зі списком бажань. Після завантаження
+      сторінки випадковим чином вибираються 3 і відображаються у окремих div (їх треба
+      створити і додати на сторінку)
+    </h2>
+    <script>
+      // let div = document.createElement("div")
+      // div.innerText = "hellow"
+      // title.after(div)
+
+      function getRandom(arrWhishes) {
+        return Math.floor(Math.random() * arrWhishes.length)
+      }
+
+      function getWhishes(arrWhishes, whishesNum) {
+        //   const title = document.querySelector("h2")
+        for (let index = 0; index < whishesNum; index++) {
+          let randomIndex = getRandom(arrWhishes)
+          let div = document.createElement("div")
+          div.innerText = arrWhishes[randomIndex]
+          arrWhishes.splice(randomIndex, 1)
+          //  title.after(div)
+          document.body.append(div)
+          console.log(arrWhishes)
+        }
+      }
+
+      let whishes = [
+        "whish_1",
+        "whish_2",
+        "whish_3",
+        "whish_4",
+        "whish_5",
+        "whish_6",
+        "whish_7",
+      ]
+      window.onload = function () {
+        getWhishes(whishes, 3)
+      }
+    </script>
+  </body>
+</html>

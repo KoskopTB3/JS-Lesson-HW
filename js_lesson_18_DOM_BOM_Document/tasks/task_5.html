@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 5.Відобразити таблицю 3*4 з випадковими числами (її треба динамічно створити
+      і вставити на сторінку)
+    </h2>
+
+    <script>
+      // function getRandomNum(minNum, maxNum) {
+      //   return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      // }
+
+      // function getTable(rows, columns, minNum, maxNum) {
+      //   let table = document.createElement("table")
+      //   table.style.border = "5px solid black"
+      //   document.body.append(table)
+      //   for (let i = 0; i < rows; i++) {
+      //     let row = document.createElement("tr")
+      //     document.body.append(row)
+      //     for (let j = 0; j < columns; j++) {
+      //       let column = document.createElement("td")
+      //       column.innerText = getRandomNum(minNum, maxNum)
+      //       document.body.append(column)
+      //     }
+      //   }
+      // }
+      // getTable(3, 4, 10, 100)
+      //===========================================
+      function getRandomNum(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+
+      function getTable(rows, columns, minNum, maxNum) {
+        const table = document.createElement("table")
+        table.style.border = "2px solid black"
+        document.body.append(table)
+        for (let i = 0; i < rows; i++) {
+          let row = document.createElement("tr")
+          table.prepend(row)
+          for (let j = 0; j < columns; j++) {
+            let column = document.createElement("td")
+            column.innerText = getRandomNum(minNum, maxNum)
+            row.prepend(column)
+          }
+        }
+      }
+      window.onload = function () {
+        getTable(3, 4, 10, 50)
+      }
+    </script>
+  </body>
+</html>

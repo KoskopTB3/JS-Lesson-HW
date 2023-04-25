@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="../css/style.css" /> -->
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 3. Користувач задає рік народження. Визначити кількість років користувача.
+    </h2>
+    <label
+      >Введіть рік народження
+      <input type="text" value="" class="year" />
+    </label>
+    <div><button>Знайти кількість років</button></div>
+    <label
+      >Результат:
+      <input type="text" value="" id="result" />
+    </label>
+
+    <script>
+      function getDate() {
+        const birthYear = parseInt(document.querySelector(".year").value)
+        document.getElementById("result").value = new Date().getFullYear() - birthYear
+      }
+
+      document.querySelector("button").onclick = getDate
+    </script>
+  </body>
+</html>
