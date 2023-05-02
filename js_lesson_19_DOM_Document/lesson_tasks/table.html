@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Задача. Розробити клас, що дозволяє відображати таблицю вказаної розмірності з випадковими числами (0-10). 
+		При цьому мінімальні значення мають червоний колір, максимальні – зелений. -->
+    <style>
+      .min {
+        background-color: red;
+      }
+
+      .max {
+        background-color: green;
+      }
+    </style>
+
+    <div id="container"></div>
+
+    <script>
+      class TableColour {
+        constructor(rowsNumber, columnsNumber, minValue = 1, maxValue = 10) {
+          this.rowsNumber = rowsNumber
+          this.columnsNumber = columnsNumber
+          this.minValue = minValue
+          this.maxValue = maxValue
+          this.arr = this.getRandomArray()
+        }
+
+        getRandomNum() {
+          return (
+            this.minValue +
+            Math.floor(Math.random() * (this.maxValue - this.minValue + 1))
+          )
+        }
+
+        getRandomArray() {
+          let arr = []
+          for (let r = 0; r < this.rowsNumber; r++) {
+            const row = []
+            for (let c = 0; c < this.columnsNumber; c++) {
+              const randomNum = this.getRandomNum()
+              row.push(randomNum)
+            }
+            arr.push(row)
+          }
+          return arr
+        }
+
+        get maxNum() {
+          return Math.max(...this.arr.flat())
+        }
+
+        get minNum() {
+          return Math.min(...this.arr.flat())
+        }
+
+        render(containerId) {
+          const targetContainer = document.getElementById(containerId)
+          const table = document.createElement("table")
+          targetContainer.append(table)
+
+          for (const row of this.arr) {
+            const tr = document.createElement("tr")
+
+            for (const element of row) {
+              const td = document.createElement("td")
+              td.innerText = element
+              if (element === this.minNum) td.className = "min"
+              if (element === this.maxNum) td.className = "max"
+
+              tr.append(td)
+            }
+            table.append(tr)
+          }
+        }
+      }
+
+      new TableColour(3, 5).render("container")
+    </script>
+  </body>
+</html>

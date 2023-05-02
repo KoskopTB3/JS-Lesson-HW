@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Задача. Розробити клас, що дозволяє створювати текстове поле з написом для введення віку працівника. 
+		Якщо введений вік буде виходити за межі, тоді колір фону червоний, якщо в межах – зелений. -->
+    <style>
+      .green {
+        background-color: green;
+      }
+      .red {
+        background-color: red;
+      }
+    </style>
+    <div id="container"></div>
+    <script>
+      class CheckRange {
+        constructor(title, minAge, maxAge) {
+          this.title = title
+          this.minAge = minAge
+          this.maxAge = maxAge
+        }
+
+        checkAge() {
+          const currentValue = parseInt(this.input.value)
+          if (currentValue <= this.maxAge && currentValue >= this.minAge)
+            this.input.className = "green"
+          else this.input.className = "red"
+        }
+        render(containerId) {
+          const targetElement = document.getElementById(containerId)
+          const label = document.createElement("label")
+          label.innerText = this.title
+          targetElement.append(label)
+          this.input = document.createElement("input")
+          this.input.onchange = this.checkAge.bind(this)
+          label.append(this.input)
+        }
+      }
+
+      new CheckRange("Вік школяра", 7, 17).render("container")
+    </script>
+  </body>
+</html>

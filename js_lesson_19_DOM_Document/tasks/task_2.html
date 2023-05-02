@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+    <link rel="stylesheet" href="../css/style_2.css" />
+  </head>
+
+  <body>
+    <h2>
+      Задача 2. Дано список спортсменів. Потрібно сформувати список тих, які будуть брати
+      участь у змаганні. При цьому є два стовпці. В одному відображені всі спортсмени, в
+      іншому – список тих, хто був вибраний. При натисканні на зелену стрілку спортсмен
+      переміщається у список для змагань. При натисканні на червону стрілку спортсмен
+      переміщається у загальний список.
+    </h2>
+
+    <div class="container"></div>
+
+    <script>
+      // class SportTeam {
+      //   constructor(arrTeam) {
+      //     this.arrTeam = arrTeam
+      //     this.choicePlayerTeam = []
+      //   }
+
+      //   replacePlayer(playerGO) {
+      //     const choicePlayer = this.arrTeam.find((player) => player === playerGO)
+      //     this.arrTeam.splice(choicePlayer, 1)
+      //     console.log(this.arrTeam)
+      //     console.log(choicePlayer)
+      //     this.choicePlayerTeam.push(choicePlayer)
+      //     console.log(`Вибрані гравці :${this.choicePlayerTeam}`)
+      //     this.getActiveListPlayers(choicePlayer)
+      //     return this.choicePlayerTeam
+      //   }
+
+      //   getGeneralListPlayers() {
+      //     const generalTablePlayers = document.createElement("div")
+      //     generalTablePlayers.className = "general-table-players"
+      //     this.targetElement.append(generalTablePlayers)
+      //     for (const player of this.arrTeam) {
+      //       this.playerBlock = document.createElement("div")
+      //       this.playerBlock.className = "player-block"
+      //       const playerName = document.createElement("p")
+      //       playerName.innerText = player
+      //       this.arrow = document.createElement("img")
+      //       this.arrow.className = "arrow-green"
+      //       this.arrow.src = "/img/arrow_green.png"
+
+      //       generalTablePlayers.append(this.playerBlock)
+      //       this.playerBlock.append(playerName)
+      //       this.playerBlock.append(this.arrow)
+
+      //       this.arrow.onclick = () => this.replacePlayer(player)
+      //     }
+      //   }
+
+      //   getActiveListPlayers() {
+      //     const activeListPlayers = document.createElement("div")
+      //     activeListPlayers.className = "active-list-players"
+      //     this.targetElement.append(activeListPlayers)
+      //     for (const palyer of this.choicePlayerTeam) {
+      //       const playerBlock = document.createElement("div")
+      //       playerBlock.className = "player-block"
+      //       const playerName = document.createElement("p")
+      //       playerName.innerText = palyer
+      //       this.arrow = document.createElement("img")
+      //       this.arrow.className = "arrow-red"
+      //       this.arrow.src = "/img/arrow_red.png"
+
+      //       activeListPlayers.append(playerBlock)
+      //       playerBlock.append(playerName)
+      //       playerBlock.append(this.arrow)
+      //     }
+      //   }
+
+      //   render(containerClass) {
+      //     this.targetElement = document.querySelector(containerClass)
+      //     this.getGeneralListPlayers()
+      //     this.getActiveListPlayers()
+      //   }
+      // }
+
+      // const teamList = ["Коля", "Оля", "Василь", "Анна", "Нікіта", "Сергій", "Юля"]
+
+      // let t1 = new SportTeam(teamList).render(".container")
+      //===========================================
+      //=================СПРОБА 2==========================
+      class SportTeam {
+        constructor(arrTeam) {
+          this.arrTeam = arrTeam
+          this.choicePlayerTeam = [] //робимо пустий масив для переміщення гравців у другу колонку
+        }
+
+        //робимо дві колонки
+        getPlayerColumns() {
+          this.playerColumnOne = document.createElement("div")
+          this.playerColumnOne.className = "player-column"
+
+          this.playerColumnTwo = document.createElement("div")
+          this.playerColumnTwo.className = "player-column"
+
+          this.targetElement.append(this.playerColumnOne)
+          this.targetElement.append(this.playerColumnTwo)
+        }
+
+        //створюємо блок гравця, передаючи з массиву його імя і колір стрілки(в якій він колонці)
+        //створюємо дію по кліку, переміщення гравця в іншу колонку
+        createPlayer(player, arrowColor) {
+          this.playerBlock = document.createElement("div")
+          this.playerBlock.className = "player-block"
+
+          const playerName = document.createElement("p")
+          playerName.innerText = player
+
+          const arrow = document.createElement("img")
+          arrow.className = `arrow-button-${arrowColor}`
+          if (arrow.className === "arrow-button-green") arrow.src = "/img/arrow_green.png"
+          if (arrow.className === "arrow-button-red") arrow.src = "/img/arrow_red.png"
+
+          arrow.onclick = this.changeColumn.bind(this, player, arrowColor)
+
+          this.playerBlock.append(playerName)
+          this.playerBlock.append(arrow)
+
+          return this.playerBlock
+        }
+
+        //змінюємо колонку для гравця, і після переміщення генеруємо заново усі колонки
+        changeColumn(player, arrowColor) {
+          if (arrowColor === "green") {
+            this.choicePlayerTeam.push(player)
+            const choicePlayer = this.arrTeam.indexOf(player) //саме indexOF який знаходить індекс елемента на який клікнули, а не find який знаходить перший елемент
+            // console.log(choicePlayer)
+            this.arrTeam.splice(choicePlayer, 1) // видаляємо найдений елемент з масиву
+          }
+
+          if (arrowColor === "red") {
+            this.arrTeam.push(player)
+            const choicePlayer = this.choicePlayerTeam.indexOf(player)
+            this.choicePlayerTeam.splice(choicePlayer, 1)
+          }
+          this.getAllPlayers()
+        }
+
+        getAllPlayers() {
+          this.clearColumn()
+
+          for (const player of this.arrTeam) {
+            this.playerColumnOne.append(this.createPlayer(player, "green"))
+          }
+
+          for (const player of this.choicePlayerTeam) {
+            this.playerColumnTwo.append(this.createPlayer(player, "red"))
+          }
+        }
+        //видалити все з колонок
+        clearColumn() {
+          this.playerColumnOne.innerHTML = ""
+          this.playerColumnTwo.innerHTML = ""
+        }
+
+        render(containerClass) {
+          this.targetElement = document.querySelector(containerClass)
+          this.getPlayerColumns()
+          this.getAllPlayers()
+        }
+      }
+
+      const teamList = ["Коля", "Оля", "Василь", "Анна", "Нікіта", "Сергій", "Юля"]
+
+      new SportTeam(teamList).render(".container")
+    </script>
+  </body>
+</html>

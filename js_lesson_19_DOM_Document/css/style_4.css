@@ -1,0 +1,43 @@
+@import "null.css";
+
+body {
+  background-color: rgb(14, 5, 54);
+  position: relative;
+  overflow: hidden;
+  animation: morning 10s linear infinite alternate forwards;
+}
+
+@keyframes morning {
+  0% {
+    background-color: rgb(14, 5, 54);
+  }
+  100% {
+    background-color: rgb(240, 237, 195);
+  }
+}
+
+h2 {
+  color: white;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  width: 0px;
+  height: 0px;
+  border-radius: 50%;
+}
+
+@keyframes shine {
+  0% {
+    opacity: 50%;
+    width: 0px;
+    height: 0px;
+  }
+  100% {
+    opacity: 100%;
+    width: 10px;
+    height: 10px;
+    filter: blur(4px);
+  }
+}

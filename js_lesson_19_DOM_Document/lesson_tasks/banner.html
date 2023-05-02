@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Задача. Дано масив з даними про сайти (графічне зображення, назва, посилання). 
+		Розробити клас LinkCard, що дозволяє генерувати картку за зразком. -->
+
+    <div class="container"></div>
+    <script>
+      class LinkCard {
+        constructor({ imageSrc, title, link }) {
+          this.imageSrc = imageSrc
+          this.title = title
+          this.link = link
+        }
+
+        render(containerId) {
+          const targetElement = document.querySelector(containerId)
+          const mainContainer = document.createElement("a")
+          mainContainer.href = this.link
+          targetElement.append(mainContainer)
+
+          const imageContainer = document.createElement("div")
+          imageContainer.className = "image-container"
+          mainContainer.append(imageContainer)
+
+          const image = document.createElement("img")
+          image.src = this.imageSrc
+          imageContainer.append(image)
+
+          const title = document.createElement("div")
+          title.className = "title-name"
+          title.innerText = this.title
+          mainContainer.append(title)
+        }
+      }
+
+      const banners = [
+        {
+          imageSrc: "/img/bmw.png",
+          title: "BMW",
+          link: "https://www.bmw.com/en/index.html",
+        },
+        {
+          imageSrc: "/img/instagram.png",
+          title: "Instagram",
+          link: "https://www.instagram.com/",
+        },
+        {
+          imageSrc: "/img/volkswagen.png",
+          title: "Volkswagen",
+          link: "https://www.volkswagen.de/de.html",
+        },
+      ]
+      for (const el of banners) {
+        new LinkCard(el).render(".container")
+      }
+    </script>
+  </body>
+</html>

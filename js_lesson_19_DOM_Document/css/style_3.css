@@ -1,0 +1,41 @@
+@import "null.css";
+
+body {
+  background-color: rgb(14, 5, 54);
+  position: relative;
+  overflow: hidden;
+}
+
+h2 {
+  color: white;
+}
+
+.snow-block {
+  display: inline-block;
+}
+
+.snow-image {
+  position: absolute;
+}
+
+@keyframes letItSnow {
+  0% {
+    top: -20%;
+
+    transform: translateX(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateX(30px) rotate(90deg);
+  }
+  60% {
+    transform: translateX(0px) rotate(-90deg);
+  }
+  100% {
+    top: 100%;
+    transform: translateX(30px) rotate(40deg);
+  }
+}
+
+img {
+  width: 100%;
+}

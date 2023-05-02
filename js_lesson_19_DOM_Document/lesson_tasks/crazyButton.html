@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Задача. Crazy button. При наведенні кнопка повинна змінювати свій колір і позицію випадковим чином зміщаючись у деякому напрямку. -->
+    <div class="container"></div>
+
+    <script>
+      class CrazyButton {
+        constructor(title) {
+          this.title = title
+        }
+
+        getColourButton() {
+          const colour = ["yellow", "green", "red"]
+          const randomIndex = Math.floor(Math.random() * colour.length)
+          return colour[randomIndex]
+        }
+
+        randomShift(value) {
+          return -value + Math.floor(Math.random() * 2 * value)
+        }
+
+        onHover() {
+          const top = parseInt(this.btn.style.top) + this.randomShift(40) + "px"
+          const left = parseInt(this.btn.style.left) + this.randomShift(40) + "px"
+          this.btn.style.top = top
+          this.btn.style.left = left
+          this.btn.style.backgroundColor = this.getColourButton()
+        }
+
+        onLeave() {
+          this.btn.style.backgroundColor = "white"
+        }
+
+        render(containerClass) {
+          const targetElement = document.querySelector(containerClass)
+          this.btn = document.createElement("button")
+          this.btn.className = "button"
+          this.btn.innerText = this.title
+          this.btn.onmouseover = this.onHover.bind(this)
+          this.btn.onmouseleave = this.onLeave.bind(this)
+
+          this.btn.style.top = "250px"
+          this.btn.style.left = "150px"
+
+          targetElement.append(this.btn)
+        }
+      }
+
+      new CrazyButton("Catch me").render(".container")
+    </script>
+  </body>
+</html>

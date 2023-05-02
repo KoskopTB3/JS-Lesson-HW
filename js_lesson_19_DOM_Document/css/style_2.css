@@ -1,0 +1,44 @@
+@import "null.css";
+
+h2 {
+  padding: 30px;
+  margin-bottom: 15px;
+}
+.container {
+  display: flex;
+  gap: 30px;
+  padding-left: 30px;
+}
+.player-column {
+  padding: 5px;
+  border: 2px solid black;
+  min-width: 160px;
+}
+
+.player-block {
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  outline: 2px solid black;
+  max-width: 150px;
+}
+.player-block:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.arrow-button-green {
+  max-width: 30px;
+}
+
+/* ============================== */
+
+.active-list-players {
+  border: 2px solid black;
+  width: 150px;
+}
+
+.arrow-button-red {
+  max-width: 30px;
+}

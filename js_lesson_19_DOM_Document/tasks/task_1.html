@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_1.css" />
+    <title>Задача №1</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 1. Відображаємо картки товарів, які користувач може вибирати. Вибраний товар
+      має зелену рамку
+    </h2>
+    <div class="container"></div>
+    <script>
+      class Laptop {
+        constructor(data) {
+          Object.assign(this, data)
+        }
+
+        getBorder() {
+          this.elementContainer.classList.toggle("green_border")
+        }
+
+        render(containerClass) {
+          const targetElement = document.querySelector(containerClass)
+          this.elementContainer = document.createElement("div")
+          this.elementContainer.className = "element-container"
+          targetElement.append(this.elementContainer)
+          const label = document.createElement("div")
+          label.className = "label"
+          label.innerText = this.label
+          this.elementContainer.append(label)
+          const imageContainer = document.createElement("div")
+          imageContainer.className = "image-container"
+          this.elementContainer.append(imageContainer)
+          const img = document.createElement("img")
+          img.src = this.imgSrs
+          imageContainer.append(img)
+          const title = document.createElement("div")
+          title.className = "title"
+          title.innerText = this.title
+          this.elementContainer.append(title)
+          const price = document.createElement("div")
+          price.className = "price"
+          price.innerText = this.price
+          this.elementContainer.append(price)
+
+          this.elementContainer.onclick = this.getBorder.bind(this)
+        }
+      }
+
+      const laptopList = [
+        {
+          label: "Хіт продажів",
+          imgSrs: "/img/laptop_1.png",
+          title: "Ноутбук samsung",
+          price: 31000,
+        },
+        {
+          label: "Акція",
+          imgSrs: "/img/laptop_2.png",
+          title: "Ноутбук macbook",
+          price: 27000,
+        },
+        {
+          label: "Хіт продажів",
+          imgSrs: "/img/laptop_3.png",
+          title: "Ноутбук HP",
+          price: 44000,
+        },
+      ]
+
+      for (const laptop of laptopList) {
+        new Laptop(laptop).render(".container")
+      }
+    </script>
+  </body>
+</html>

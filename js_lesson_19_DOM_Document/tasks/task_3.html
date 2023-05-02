@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_3.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 3. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану і
+      з випадковою швидкістю рухається вниз. Як тільки сніжинка досягає нижньої частини
+      екрану вона знову повинна з’явитись у верхній частині екрану.
+    </h2>
+    <div class="container"></div>
+    <script>
+      console.log(innerHeight)
+      console.log(innerWidth)
+
+      class Snow {
+        constructor(snowNum, imgSrc) {
+          this.snowNum = snowNum
+          this.imgSrc = imgSrc
+        }
+
+        getRandomNum(minNum, maxNum) {
+          return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+        }
+
+        createSnow(body) {
+          for (let i = 0; i < this.snowNum; i++) {
+            const imgSnow = document.createElement("img")
+            imgSnow.className = "snow-image"
+            imgSnow.src = this.imgSrc
+
+            this.targetElement.append(imgSnow)
+
+            imgSnow.style.maxWidth = this.getRandomNum(10, 100) + "px"
+            imgSnow.style.animationName = "letItSnow"
+            imgSnow.style.animationDuration = this.getRandomNum(4, 12) + "s"
+            imgSnow.style.animationTimingFunction = "linear"
+            imgSnow.style.animationIterationCount = "infinite"
+            imgSnow.style.animationDirection = "normal"
+            imgSnow.style.animationDelay = this.getRandomNum(0, 2) + "s"
+            imgSnow.style.animationFillMode = "forwards"
+
+            imgSnow.style.left = this.getRandomNum(0, this.windowWidthValue) + "px"
+            // imgSnow.style.transform = "translate (20px, 0)"
+          }
+        }
+
+        render(containerClass) {
+          this.targetElement = document.querySelector(containerClass)
+          this.windowWidthValue = innerWidth
+          this.createSnow()
+        }
+      }
+      const imgSrc = "/img/snow.png"
+      new Snow(150, imgSrc).render(".container")
+    </script>
+  </body>
+</html>

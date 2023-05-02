@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_4.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 4. Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій
+      частині екрану. Кожна зірка з певним кроком і інтервалом збільшується від
+      мінімального до максимального розміру. Як тільки досягнути максимального розміру
+      зірочка повинна з’являтися у іншій випадковій позиції.
+    </h2>
+    <div class="container"></div>
+    <script>
+      class Stars {
+        constructor(starsNum) {
+          this.starsNum = starsNum
+        }
+
+        getRandomNum(minNum, maxNum) {
+          return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+        }
+
+        createStar() {
+          for (let i = 0; i < this.starsNum; i++) {
+            const star = document.createElement("div")
+            star.className = "star"
+            this.targetElement.append(star)
+
+            star.style.animationName = "shine"
+            star.style.animationDuration = this.getRandomNum(2, 5) + "s"
+            star.style.animationTimingFunction = "linear"
+            star.style.animationIterationCount = "infinite"
+            star.style.animationDirection = "normal"
+            star.style.animationDelay = this.getRandomNum(2, 5) + "s"
+            star.style.animationFillMode = "forwards"
+
+            setInterval(() => {
+              star.style.left = this.getRandomNum(0, this.windowWidthValue) + "px"
+              star.style.top = this.getRandomNum(0, this.windowHeightValue) + "px"
+            }, parseInt(star.style.animationDuration) * 1000)
+          }
+        }
+
+        render(containerClass) {
+          this.targetElement = document.querySelector(containerClass)
+          this.windowWidthValue = innerWidth
+          this.windowHeightValue = innerHeight
+          this.createStar()
+        }
+      }
+
+      new Stars(30).render(".container")
+    </script>
+  </body>
+</html>
