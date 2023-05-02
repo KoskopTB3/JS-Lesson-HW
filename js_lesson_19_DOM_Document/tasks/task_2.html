@@ -20,75 +20,6 @@
     <div class="container"></div>
 
     <script>
-      // class SportTeam {
-      //   constructor(arrTeam) {
-      //     this.arrTeam = arrTeam
-      //     this.choicePlayerTeam = []
-      //   }
-
-      //   replacePlayer(playerGO) {
-      //     const choicePlayer = this.arrTeam.find((player) => player === playerGO)
-      //     this.arrTeam.splice(choicePlayer, 1)
-      //     console.log(this.arrTeam)
-      //     console.log(choicePlayer)
-      //     this.choicePlayerTeam.push(choicePlayer)
-      //     console.log(`Вибрані гравці :${this.choicePlayerTeam}`)
-      //     this.getActiveListPlayers(choicePlayer)
-      //     return this.choicePlayerTeam
-      //   }
-
-      //   getGeneralListPlayers() {
-      //     const generalTablePlayers = document.createElement("div")
-      //     generalTablePlayers.className = "general-table-players"
-      //     this.targetElement.append(generalTablePlayers)
-      //     for (const player of this.arrTeam) {
-      //       this.playerBlock = document.createElement("div")
-      //       this.playerBlock.className = "player-block"
-      //       const playerName = document.createElement("p")
-      //       playerName.innerText = player
-      //       this.arrow = document.createElement("img")
-      //       this.arrow.className = "arrow-green"
-      //       this.arrow.src = "/img/arrow_green.png"
-
-      //       generalTablePlayers.append(this.playerBlock)
-      //       this.playerBlock.append(playerName)
-      //       this.playerBlock.append(this.arrow)
-
-      //       this.arrow.onclick = () => this.replacePlayer(player)
-      //     }
-      //   }
-
-      //   getActiveListPlayers() {
-      //     const activeListPlayers = document.createElement("div")
-      //     activeListPlayers.className = "active-list-players"
-      //     this.targetElement.append(activeListPlayers)
-      //     for (const palyer of this.choicePlayerTeam) {
-      //       const playerBlock = document.createElement("div")
-      //       playerBlock.className = "player-block"
-      //       const playerName = document.createElement("p")
-      //       playerName.innerText = palyer
-      //       this.arrow = document.createElement("img")
-      //       this.arrow.className = "arrow-red"
-      //       this.arrow.src = "/img/arrow_red.png"
-
-      //       activeListPlayers.append(playerBlock)
-      //       playerBlock.append(playerName)
-      //       playerBlock.append(this.arrow)
-      //     }
-      //   }
-
-      //   render(containerClass) {
-      //     this.targetElement = document.querySelector(containerClass)
-      //     this.getGeneralListPlayers()
-      //     this.getActiveListPlayers()
-      //   }
-      // }
-
-      // const teamList = ["Коля", "Оля", "Василь", "Анна", "Нікіта", "Сергій", "Юля"]
-
-      // let t1 = new SportTeam(teamList).render(".container")
-      //===========================================
-      //=================СПРОБА 2==========================
       class SportTeam {
         constructor(arrTeam) {
           this.arrTeam = arrTeam
@@ -118,8 +49,9 @@
 
           const arrow = document.createElement("img")
           arrow.className = `arrow-button-${arrowColor}`
-          if (arrow.className === "arrow-button-green") arrow.src = "/img/arrow_green.png"
-          if (arrow.className === "arrow-button-red") arrow.src = "/img/arrow_red.png"
+          if (arrow.className === "arrow-button-green")
+            arrow.src = "../img/arrow_green.png"
+          if (arrow.className === "arrow-button-red") arrow.src = "../img/arrow_red.png"
 
           arrow.onclick = this.changeColumn.bind(this, player, arrowColor)
 
