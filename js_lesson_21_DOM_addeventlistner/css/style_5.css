@@ -1,0 +1,35 @@
+@import "null.css";
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.form-block {
+  width: 370px;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.input-block {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.label-title {
+}
+
+.input-block:not(:last-child) {
+  margin-bottom: 7px;
+}
+
+input {
+  outline: 1px solid black;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+input:hover {
+  background-color: rgb(223, 223, 223);
+}

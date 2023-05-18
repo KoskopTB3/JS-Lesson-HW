@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_5.css" />
+    <title>Задача №5</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 5. На формі вводять 7 числових значень (вік, зріст, вага, заробітна плата,
+      стаж, номер відділу, порядковий номер). Додати подію обробки події click на форму і
+      якщо клік на input, то автоматично замінювати значення його на 0.
+    </h2>
+    <div class="container"></div>
+
+    <script>
+      class Form {
+        constructor(data) {
+          this.data = data
+        }
+
+        createLabel(labelTitle) {
+          const inputBlock = document.createElement("div")
+          inputBlock.className = "input-block"
+
+          const label = document.createElement("label")
+          label.innerText = labelTitle
+          label.className = "label-title"
+          label.setAttribute("for", `label-${this.attr}`)
+
+          const input = document.createElement("input")
+          input.setAttribute("id", `label-${this.attr}`)
+
+          inputBlock.append(label)
+          inputBlock.append(input)
+
+          return inputBlock
+        }
+
+        changeInput(event) {
+          if (event.target.tagName === "INPUT") event.target.value = 0
+        }
+
+        render(targetSelector) {
+          const formBlock = document.createElement("form")
+          formBlock.addEventListener("click", this.changeInput)
+          formBlock.className = "form-block"
+          for (let i = 0; i < this.data.length; i++) {
+            this.attr = i
+            formBlock.append(this.createLabel(this.data[i]))
+          }
+
+          document.querySelector(targetSelector).append(formBlock)
+        }
+      }
+
+      const data = [
+        "вік",
+        "зріст",
+        "вага",
+        "заробітна плата",
+        "стаж",
+        "номер відділу",
+        "порядковий номер",
+      ]
+
+      new Form(data).render(".container")
+    </script>
+  </body>
+</html>

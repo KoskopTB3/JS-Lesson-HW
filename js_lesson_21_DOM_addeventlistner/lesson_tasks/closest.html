@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>Кількість кліків <span id="span_click"></span></div>
+    <div>
+      <h2>Нова задача</h2>
+      <div>
+        <label>
+          Текст задачі
+          <input id="title" type="text" value="task" />
+        </label>
+      </div>
+      <div>
+        <label>
+          Приорітетність
+          <input id="priority" type="number" value="10" />
+        </label>
+      </div>
+      <div>
+        <button id="add_task">Додати задачу</button>
+      </div>
+      <div>
+        <h2>Список задач</h2>
+        <div class="list">
+          <div>
+            <button id="clear_all">Clear all</button>
+          </div>
+          <div id="container"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let numClick = 0
+      document.captureEvents(Event.CLICK)
+      document.onclick = (e) => {
+        numClick++
+        span_click.innerText = numClick
+      }
+
+      function deleteAll() {
+        const button = this //this это непосредственно кнопка на которую нажимаем
+        const list = button.closest(".list") // пишемо селектор
+        list.lastElementChild.innerHTML = ""
+      }
+
+      function deleteButton() {
+        console.log(this)
+        this.parentElement.remove()
+      }
+
+      function addTask() {
+        const title = document.getElementById("title").value
+        const priority = document.getElementById("priority").value
+
+        const divContainer = document.createElement("div")
+        const span = document.createElement("span")
+        span.innerText = `${title} - ${priority}`
+        divContainer.append(span)
+
+        const btn = document.createElement("button")
+        btn.className = "btn_del"
+        btn.innerText = "Delete"
+        //   btn.onclick = deleteButton
+        btn.onclick = deleteButton
+        divContainer.append(btn)
+        container.append(divContainer)
+      }
+
+      add_task.onclick = addTask
+      clear_all.onclick = deleteAll
+    </script>
+  </body>
+</html>

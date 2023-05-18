@@ -1,0 +1,26 @@
+@import "null.css";
+
+.container {
+  max-width: 110px;
+  border: 1px solid black;
+  margin: 20px auto;
+}
+
+button {
+  width: 25px;
+  height: 25px;
+  background-color: rgb(233, 233, 233);
+  border-radius: 5px;
+  margin-bottom: 4px;
+}
+.num {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+input {
+  display: block;
+  max-width: 100px;
+  border: 1px solid black;
+  margin: 10px auto 10px;
+}

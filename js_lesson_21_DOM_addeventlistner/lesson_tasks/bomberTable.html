@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td mine="1"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="1"></td>
+      </tr>
+      <tr>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="1"></td>
+        <td mine="0"></td>
+      </tr>
+      <tr>
+        <td mine="1"></td>
+        <td mine="1"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+      </tr>
+      <tr>
+        <td mine="1"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="1"></td>
+      </tr>
+    </table>
+
+    <script>
+      // document.querySelector("table").onclick = (event) => {
+      function game(event) {
+        if (event.target.tagName === "TD") {
+          let td = event.target
+          console.log(td)
+          if (td.getAttribute("mine") === "1") td.style.backgroundColor = "red"
+          else {
+            td.style.backgroundColor = "green"
+            const copyTD = td
+
+            while (td.nextElementSibling) {
+              td = td.nextElementSibling
+              if (td.getAttribute("mine") === "1") break
+              td.style.backgroundColor = "green"
+            }
+            td = copyTD
+            while (td.previousElementSibling) {
+              td = td.previousElementSibling
+              if (td.getAttribute("mine") === "1") break
+              td.style.backgroundColor = "green"
+            }
+          }
+        }
+      }
+
+      document.querySelector("table").onclick = game
+    </script>
+  </body>
+</html>

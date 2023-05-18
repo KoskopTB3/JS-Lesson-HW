@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_4.css" />
+    <title>Задача №4</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 4. Дано 3 таблиці розмірності 3*3 з випадковими числами. Якщо відбувається
+      клік на якійсь із клітинок, то до відповідної таблиці додається червона рамка
+      (спробуйте додати можливість відображення кількості кліків біля назви таблиці з
+      використанням відповідно доданого для цього атрибута).
+    </h2>
+    <div class="container"></div>
+    <script>
+      class Tables {
+        constructor(tablesNum, rowsNum, columnsNum) {
+          this.tablesNum = tablesNum
+          this.rowsNum = rowsNum
+          this.columnsNum = columnsNum
+        }
+
+        getRandomNum(minNum, maxNum) {
+          return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+        }
+
+        counterClick(event) {
+          const td = event.target
+          const closestTable = td.closest("table")
+          let currentCounter = closestTable.getAttribute("click-counter")
+          closestTable.setAttribute("click-counter", `${++currentCounter}`)
+
+          const parentDiv = td.closest(".block-table")
+          const currentTable = parentDiv.firstElementChild
+          const tableCounter = parentDiv.lastElementChild
+          tableCounter.innerText = `Кількість кліків: ${currentTable.getAttribute(
+            "click-counter"
+          )}`
+        }
+
+        choiceTable(event) {
+          if (event.target.tagName === "TD") {
+            const td = event.target
+            let tableClosest = td.closest("table")
+            tableClosest.style.outline = "2px solid red"
+            let parentTable = tableClosest.parentElement
+            console.log(parentTable)
+            const copyParentTable = parentTable
+
+            while (parentTable.nextElementSibling) {
+              parentTable = parentTable.nextElementSibling
+              parentTable.firstElementChild.style.outline = "none"
+            }
+
+            parentTable = copyParentTable
+            while (parentTable.previousElementSibling) {
+              parentTable = parentTable.previousElementSibling
+              parentTable.firstElementChild.style.outline = "none"
+            }
+          }
+        }
+
+        createTable() {
+          const table = document.createElement("table")
+          table.setAttribute("click-counter", 0)
+
+          for (let i = 0; i < this.rowsNum; i++) {
+            table.append(this.createRows())
+            table.addEventListener("click", this.choiceTable)
+            table.addEventListener("click", this.counterClick)
+          }
+          return table
+        }
+
+        createRows() {
+          const rows = document.createElement("tr")
+          for (let c = 0; c < this.columnsNum; c++) {
+            const column = document.createElement("td")
+            column.innerText = this.getRandomNum(1, 10)
+            rows.append(column)
+          }
+          return rows
+        }
+
+        render(targetSelector) {
+          const tablesBlock = document.createElement("div")
+          tablesBlock.className = "tables-block"
+          for (let i = 0; i < this.tablesNum; i++) {
+            const blockTable = document.createElement("div")
+            blockTable.className = "block-table"
+            blockTable.append(this.createTable())
+            const divCounter = document.createElement("div")
+            divCounter.className = "div-counter"
+
+            blockTable.append(divCounter)
+            tablesBlock.append(blockTable)
+          }
+
+          document.querySelector(targetSelector).append(tablesBlock)
+        }
+      }
+
+      new Tables(3, 3, 3).render(".container")
+    </script>
+  </body>
+</html>

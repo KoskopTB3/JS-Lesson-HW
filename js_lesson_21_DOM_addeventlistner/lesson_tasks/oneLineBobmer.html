@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td mine="0"></td>
+        <td mine="1"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="1"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+        <td mine="0"></td>
+      </tr>
+    </table>
+
+    <script>
+      function getMine() {
+        let td = this
+        if (td.getAttribute("mine") === "1") td.style.background = "red"
+        else {
+          td.style.background = "green"
+
+          const copyTd = td
+
+          while (td.nextElementSibling) {
+            td = td.nextElementSibling
+            if (td.getAttribute("mine") === "1") break
+            td.style.background = "green"
+          }
+
+          td = copyTd
+          while (td.previousElementSibling) {
+            td = td.previousElementSibling
+            if (td.getAttribute("mine") === "1") break
+            td.style.background = "green"
+          }
+        }
+      }
+
+      const tr = document.querySelector("tr")
+      for (const td of tr.children) {
+        td.onclick = getMine
+      }
+    </script>
+  </body>
+</html>

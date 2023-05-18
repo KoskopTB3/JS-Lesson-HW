@@ -1,0 +1,37 @@
+@import "null.css";
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.list-block {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgb(175, 245, 216);
+  padding: 7px;
+}
+button:hover {
+  transition: all 0.3s ease 0s;
+  background-color: rgb(133, 231, 191);
+}
+
+.list-block {
+  margin-bottom: 10px;
+}
+
+.list {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px;
+  text-align: center;
+}

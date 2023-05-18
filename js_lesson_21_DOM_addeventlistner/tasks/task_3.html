@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_3.css" />
+    <title>Задача №3</title>
+  </head>
+
+  <body>
+    <h2>
+      Задача 3. Дано 5 випадковим чином згенерованих нумерованих списків з рандомними
+      числами (кількість елементів у списку випадкова від 1 до 10, елементи випадкові –
+      від 1 до 100). При натисненні на кнопку нумеровані списки з парною кількістю
+      елементів зафарбувати у зелений колір, інші у червоний.
+    </h2>
+    <div class="container"></div>
+    <script>
+      //listNum, minElNum, maxElNum, minNum, maxNum
+      class ColoredNumbers {
+        constructor(list) {
+          Object.assign(this, list)
+        }
+        getRandomNum(minValue, maxValue) {
+          return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+        }
+
+        createList() {
+          const ul = document.createElement("ul")
+          ul.className = "list"
+          const randomNumLi = this.getRandomNum(this.minElNum, this.maxElNum)
+
+          for (let i = 0; i < randomNumLi; i++) {
+            const li = document.createElement("li")
+            li.innerText = this.getRandomNum(this.minNum, this.maxNum)
+
+            ul.append(li)
+          }
+          return ul
+        }
+
+        changeColorList(event) {
+          if (event.target.tagName === "BUTTON") {
+            const allUl = document.querySelectorAll("ul")
+            for (let i = 0; i < allUl.length; i++) {
+              if (allUl[i].children.length % 2 === 0) allUl[i].style.color = "green"
+              else allUl[i].style.color = "red"
+            }
+          }
+        }
+
+        render(targetSelector) {
+          const listsBlock = document.createElement("div")
+          listsBlock.className = "list-block"
+
+          for (let i = 0; i < this.listNum; i++) {
+            // console.log(this.listNum)
+            listsBlock.append(this.createList())
+          }
+          document.querySelector(targetSelector).append(listsBlock)
+
+          const button = document.createElement("button")
+          button.addEventListener("click", this.changeColorList)
+          button.innerText = "Click me"
+          document.querySelector(targetSelector).append(button)
+        }
+      }
+
+      const list = {
+        listNum: 5,
+        minElNum: 1,
+        maxElNum: 10,
+        minNum: 1,
+        maxNum: 100,
+      }
+
+      new ColoredNumbers(list).render(".container")
+    </script>
+  </body>
+</html>

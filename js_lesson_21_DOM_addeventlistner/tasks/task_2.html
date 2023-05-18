@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача №2</title>
+    <link rel="stylesheet" href="../css/style_2.css" />
+  </head>
+
+  <body>
+    <h2>
+      Задача 2. Дано 5 елементів input. При введенні значення у якийсь із них необхідно
+      автоматично заповнювати інші (усі попередні у спадному порядку(кожен попередній має
+      значення на 1 менше за наступний), усі наступні на 1 більше (кожен наступне на 1
+      більше за попереднього)
+    </h2>
+
+    <div class="container"></div>
+
+    <script>
+      class InputAutoFill {
+        constructor(targetSelector, inputsNum) {
+          this.inputsNum = inputsNum
+          if (targetSelector) this.render(targetSelector, this.inputsNum)
+        }
+
+        onInput(event) {
+          console.log(event.target)
+          if (event.target.tagName === "INPUT") {
+            const inp = event.target
+            let valueInp = parseInt(inp.value)
+            let parentElement = inp.parentElement
+
+            const copyValueInp = valueInp
+            const copyParentElement = parentElement
+
+            while (parentElement.nextElementSibling) {
+              parentElement = parentElement.nextElementSibling
+              parentElement.lastElementChild.value = ++valueInp
+            }
+
+            valueInp = copyValueInp
+            parentElement = copyParentElement
+            while (parentElement.previousElementSibling) {
+              parentElement = parentElement.previousElementSibling
+              parentElement.lastElementChild.value = --valueInp
+            }
+          }
+        }
+
+        createInput(value, i) {
+          const label = document.createElement("label")
+          label.innerText = `${value} ${i++}`
+
+          this.inp = document.createElement("input")
+          label.append(this.inp)
+
+          return label
+        }
+
+        render(targetSelector, inputsNum) {
+          const div = document.createElement("div")
+          div.className = "block-labels"
+          div.addEventListener("input", this.onInput)
+
+          for (let i = 1; i <= inputsNum; i++) {
+            div.append(this.createInput("Value", i))
+          }
+          document.querySelector(targetSelector).append(div)
+        }
+      }
+
+      new InputAutoFill(".container", 7)
+    </script>
+  </body>
+</html>

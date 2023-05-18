@@ -1,0 +1,22 @@
+@import "null.css";
+
+/* ======================================================== */
+
+table {
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 3px;
+  border: 1px solid black;
+}
+
+tr {
+  /* outline: 1px solid black; */
+}
+
+td {
+  background-color: rgb(172, 171, 171);
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  font-size: 0px;
+}
