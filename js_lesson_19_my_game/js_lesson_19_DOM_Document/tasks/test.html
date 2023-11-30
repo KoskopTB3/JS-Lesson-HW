@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/style_lesson.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- задача з урока №1
+    <h2>перша таблиця</h2>
+    <div id="container"></div>
+    <h2>друга таблиця</h2>
+    <div id="container2"></div> -->
+    <!-- задача з урока №2-->
+    <!-- <div class="container"></div> -->
+    <!-- задача з урока №3-->
+    <!-- <div class="container"></div> -->
+    <!-- задача з урока №4-->
+    <div id="container"></div>
+    <script>
+      // Задача з урока №1. Розробити клас, що дозволяє відображати таблицю вказаної розмірності з випадковими числами (0-10).
+      // При цьому мінімальні значення мають червоний колір, максимальні – зелений.
+
+      // class randomColoredTable {
+      //   constructor(rowNum, colNum, minValue, maxValue) {
+      //     this.rowNum = rowNum
+      //     this.colNum = colNum
+      //     this.minValue = minValue
+      //     this.maxValue = maxValue
+      //     this.arr = this.getTable()
+      //   }
+
+      //   getRandomNum() {
+      //     return (
+      //       this.minValue +
+      //       Math.floor(Math.random() * (this.maxValue - this.minValue + 1))
+      //     )
+      //   }
+
+      //   getTable() {
+      //     let arr = []
+      //     for (let r = 0; r < this.rowNum; r++) {
+      //       let row = []
+      //       for (let c = 0; c < this.colNum; c++) {
+      //         row.push(this.getRandomNum())
+      //       }
+      //       arr.push(row)
+      //     }
+      //     return arr
+      //   }
+
+      //   get maxNum() {
+      //     return Math.max(...this.arr.flat())
+      //   }
+
+      //   get minNum() {
+      //     return Math.min(...this.arr.flat())
+      //   }
+
+      //   render(containerID) {
+      //     const table = document.createElement("table")
+      //     for (const row of this.arr) {
+      //       const tr = document.createElement("tr")
+      //       table.append(tr)
+      //       for (const el of row) {
+      //         const td = document.createElement("td")
+      //         td.innerText = el
+      //         if (el === this.maxNum) td.style.backgroundColor = "green"
+      //         if (el === this.minNum) td.style.backgroundColor = "red"
+      //         tr.append(td)
+      //       }
+      //     }
+      //     document.getElementById(containerID).append(table)
+      //   }
+      // }
+
+      // window.onload = function () {
+      //   let t1 = new randomColoredTable(3, 4, 0, 100)
+      //   t1.render("container")
+
+      //   let t2 = new randomColoredTable(5, 7, 100, 200)
+      //   t2.render("container2")
+      // }
+      //===========================================
+      //===========================================
+      //===========================================
+      // Задача з урока №2. Дано масив з даними про сайти (графічне зображення, назва, посилання). Розробити клас LinkCard, що дозволяє генерувати картку за зразком.
+      // class LinkCard {
+      //   constructor({ imgSrc, title, link }) {
+      //     this.imgSrc = imgSrc
+      //     this.title = title
+      //     this.link = link
+      //   }
+      //   render(selector) {
+      //     const containerCard = document.createElement("div")
+      //     containerCard.className = "container-card"
+
+      //     const containerCardLink = document.createElement("a")
+      //     containerCardLink.href = this.link
+      //     containerCardLink.setAttribute("target", "_blank")
+
+      //     const containerImage = document.createElement("div")
+      //     containerImage.className = "container-image"
+
+      //     const img = document.createElement("img")
+      //     img.className = "image"
+      //     img.src = this.imgSrc
+
+      //     const titleContainer = document.createElement("div")
+      //     titleContainer.className = "title-container"
+      //     titleContainer.innerText = this.title
+
+      //     document.querySelector(selector).append(containerCard)
+      //     containerCard.append(containerCardLink)
+      //     containerCardLink.append(containerImage)
+      //     containerImage.append(img)
+      //     containerCardLink.append(titleContainer)
+      //   }
+      // }
+
+      // let cards = [
+      //   {
+      //     imgSrc: "../img/bmw.png",
+      //     title: "BMW",
+      //     link: "https://bmw.com",
+      //   },
+      //   {
+      //     imgSrc: "../img/volkswagen.png",
+      //     title: "Volkswagen",
+      //     link: "https://Volkswagen.com",
+      //   },
+      //   {
+      //     imgSrc: "../img/instagram.png",
+      //     title: "Instagram",
+      //     link: "https://Instagram.com",
+      //   },
+      // ]
+
+      // window.onload = function () {
+      //   for (const card of cards) {
+      //     new LinkCard(card).render(".container")
+      //   }
+      // }
+      //===========================================
+      //===========================================
+      //===========================================
+      // Задача з урока №3. Тестер з історією. Є набір запитань з варіантами відповіді. Потрібно випадковим чином задавати питання і перевіряти відповіді.
+      // Загальний результат та історію (запитання, відповідь користувача та правильна відповідь) у формі таблиці виводити нижче.
+
+      // class Tester {
+      //   constructor(questionsList) {
+      //     this.questionsList = questionsList
+      //     this.currentQuestion = null
+      //     this.history = []
+      //     this.counter = 0
+      //   }
+
+      //   //вибір рандомного запитанння
+      //   randomQuestion() {
+      //     const randomIndex = Math.floor(Math.random() * this.questionsList.length)
+      //     const question = this.questionsList[randomIndex]
+      //     this.questionsList.splice(randomIndex, 1)
+      //     return question
+      //   }
+
+      //   //вибір відповіді користувача
+      //   userChoise(optID) {
+      //     //  alert(optID === this.currentQuestion.correctAnswer)
+      //     if (optID === this.currentQuestion.correctAnswer) this.counter++
+      //     let userAnswer = this.currentQuestion.options.find(
+      //       (option) => option.id === optID
+      //     ).answer
+      //     console.log(`вибір ${userAnswer}`)
+      //     let correctAnswer = this.currentQuestion.options.find(
+      //       (el) => el.id === this.currentQuestion.correctAnswer
+      //     ).answer
+
+      //     this.history.push({
+      //       question: this.currentQuestion.question,
+      //       userAnswer,
+      //       correctAnswer,
+      //     })
+      //     this.nextQuestion()
+      //   }
+
+      //   //формування одного рядка в формі історії
+      //   getRow(dataArray) {
+      //     const tr = document.createElement("tr")
+      //     for (const element of dataArray) {
+      //       const td = document.createElement("td")
+      //       td.innerText = element
+      //       tr.append(td)
+      //     }
+      //     return tr
+      //   }
+
+      //   //рендер форми з запитанням
+      //   renderQuestionForm() {
+      //     const questionContainer = document.createElement("div")
+      //     questionContainer.className = "question-container"
+
+      //     const questionHeader = document.createElement("h2")
+      //     questionHeader.innerText = this.currentQuestion.question
+      //     questionContainer.append(questionHeader)
+
+      //     const olQuestions = document.createElement("ol")
+      //     for (const option of this.currentQuestion.options) {
+      //       const liQuestion = document.createElement("li")
+      //       liQuestion.innerText = option.answer
+      //       liQuestion.onclick = this.userChoise.bind(this, option.id)
+      //       olQuestions.append(liQuestion)
+      //     }
+
+      //     questionContainer.append(olQuestions)
+      //     return questionContainer
+      //   }
+
+      //   // рендер таблиці з історією
+      //   renderResultTable() {
+      //     const resultTable = document.createElement("table")
+      //     const headerTable = this.getRow(["Запитання", "Відповідь", "Вірна відповідь"])
+      //     resultTable.append(headerTable)
+
+      //     for (const oneTestObject of this.history) {
+      //       const row = this.getRow([
+      //         oneTestObject.question,
+      //         oneTestObject.userAnswer,
+      //         oneTestObject.correctAnswer,
+      //       ])
+      //       resultTable.append(row)
+      //     }
+      //     return resultTable
+      //   }
+
+      //   //наступне запитання
+      //   nextQuestion() {
+      //     if (this.questionsList.length) {
+      //       this.currentQuestion = this.randomQuestion()
+      //       this.testHeader.innerHTML = ""
+      //       this.testHeader.append(this.renderQuestionForm())
+      //     } else {
+      //       this.testHeader.innerText = "Тестування закінчилося"
+      //       const resultOfTest = document.createElement("div")
+      //       resultOfTest.innerText = `Вірних відповідей ${this.counter}`
+      //       this.testHeader.append(resultOfTest)
+      //     }
+      //     this.testBody.innerHTML = ""
+      //     this.testBody.append(this.renderResultTable())
+      //   }
+
+      //   //загальний рендер
+      //   render(elementId) {
+      //     const testExercise = document.createElement("div")
+
+      //     this.testHeader = document.createElement("div")
+      //     this.testBody = document.createElement("div")
+
+      //     testExercise.append(this.testHeader)
+      //     testExercise.append(this.testBody)
+
+      //     document.querySelector(elementId).append(testExercise)
+      //     this.nextQuestion()
+      //   }
+      // }
+      // //===========================================
+      // let questionsList = [
+      //   {
+      //     question: "Столиця України?",
+      //     options: [
+      //       {
+      //         answer: "Харків",
+      //         id: 1,
+      //       },
+      //       {
+      //         answer: "Київ",
+      //         id: 2,
+      //       },
+      //       {
+      //         answer: "Ужгород",
+      //         id: 3,
+      //       },
+      //     ],
+      //     correctAnswer: 2,
+      //   },
+      //   {
+      //     question: "Столиця Франції?",
+      //     options: [
+      //       {
+      //         answer: "Париж",
+      //         id: 1,
+      //       },
+      //       {
+      //         answer: "Марсель",
+      //         id: 2,
+      //       },
+      //       {
+      //         answer: "Бордо",
+      //         id: 3,
+      //       },
+      //     ],
+      //     correctAnswer: 1,
+      //   },
+      //   {
+      //     question: "Столиця США?",
+      //     options: [
+      //       {
+      //         answer: "Чікаго",
+      //         id: 1,
+      //       },
+      //       {
+      //         answer: "Нью-Йорк",
+      //         id: 2,
+      //       },
+      //       {
+      //         answer: "Вашингтон",
+      //         id: 3,
+      //       },
+      //     ],
+      //     correctAnswer: 3,
+      //   },
+      // ]
+
+      // window.onload = function () {
+      //   let t1 = new Tester(questionsList)
+      //   t1.render(".container")
+      // }
+      //===========================================
+      //===========================================
+      //===========================================
+      // Задача з урока №4. Розробити клас, що дозволяє створювати текстове поле з написом для введення віку працівника. Якщо введений вік буде виходити за межі,
+      //тоді колір фону червоний, якщо в межах – зелений.
+
+      // class RangeColored {
+      //   constructor(minValue, maxValue, title) {
+      //     this.minValue = minValue
+      //     this.maxValue = maxValue
+      //     this.title = title
+      //   }
+
+      //   changeColor() {
+      //     const currentValue = parseInt(this.input.value)
+      //     if (currentValue >= this.minValue && currentValue <= this.maxValue)
+      //       this.input.style.backgroundColor = "green"
+      //     else this.input.style.backgroundColor = "red"
+      //   }
+
+      //   render(elementId) {
+      //     const label = document.createElement("label")
+      //     label.innerText = this.title
+
+      //     this.input = document.createElement("input")
+      //     //  this.input.setAttribute("type", "number")
+      //     this.input.oninput = this.changeColor.bind(this)
+
+      //     document.getElementById(elementId).append(label)
+      //     label.append(this.input)
+      //   }
+      // }
+
+      // let rc1 = new RangeColored(18, 65, "Вік працівника")
+      // rc1.render("container")
+      // let rc2 = new RangeColored(6, 17, "Вік школяра")
+      // rc2.render("container")
+
+      //===========================================
+      //===========================================
+      //===========================================
+      // Задача з урока №4. Crazy button
+
+      // class CrazyButton {
+      //   constructor(titleButton, colorArr) {
+      //     this.titleButton = titleButton
+      //     this.colorArr = colorArr
+      //   }
+
+      //   randomColor() {
+      //     const randomIndex = Math.floor(Math.random() * this.colorArr.length)
+      //     const colorRandom = this.colorArr[randomIndex]
+      //     return colorRandom
+      //   }
+
+      //   randomShift(value) {
+      //     return -value + Math.floor(Math.random() * 2 * value + 1)
+      //   }
+
+      //   mouseOver() {
+      //     let currentTop = parseInt(this.btn.style.top) + this.randomShift(30) + "px"
+      //     console.log(`Полученое значение ${currentTop}`)
+
+      //     if (parseInt(currentTop) < 0) this.btn.style.top = "0px"
+      //     else this.btn.style.top = currentTop
+
+      //     if (parseInt(currentTop) > 120) this.btn.style.top = "120px"
+      //     else this.btn.style.top = currentTop
+      //     console.log(`Где сейчас ${this.btn.style.top}`)
+
+      //     let currentLeft = parseInt(this.btn.style.left) + this.randomShift(30) + "px"
+      //     if (parseInt(currentLeft) < 0) this.btn.style.top = "0px"
+      //     if (parseInt(currentLeft) > 150) this.btn.style.top = "150px"
+      //     this.btn.style.left = currentLeft
+
+      //     this.btn.style.backgroundColor = this.randomColor()
+      //   }
+
+      //   mouseLeave() {
+      //     this.btn.style.backgroundColor = "white"
+      //   }
+
+      //   render(selectorId) {
+      //     this.btn = document.createElement("button")
+      //     this.btn.innerText = this.titleButton
+
+      //     this.btn.style.top = "100px"
+      //     this.btn.style.left = "100px"
+      //     this.btn.onmouseover = this.mouseOver.bind(this)
+      //     this.btn.onmouseleave = this.mouseLeave.bind(this)
+
+      //     document.getElementById(selectorId).append(this.btn)
+      //   }
+      // }
+
+      // colorArr = ["green", "yellow", "red"]
+      // let cb = new CrazyButton("click", colorArr)
+      // cb.render("container")
+      //===========================================
+      //===========================================
+      //===========================================
+      // **********************ДЗ************************
+      // Задача ДЗ№ 1. Відображаємо картки товарів, які користувач може вибирати. Вибраний товар має зелену рамку.
+
+      // class ChoiceItem {
+      //   constructor(itemsList) {
+      //     this.itemsList = itemsList
+      //   }
+
+      //   itemCard(item) {
+      //     this.itemDivContainer = document.createElement("div")
+      //     this.itemDivContainer.className = "item-container"
+      //     this.itemDivContainer.setAttribute(
+      //       "id",
+      //       `${(Math.random() + Math.random()).toFixed(2)}`
+      //     )
+
+      //     const labelHeader = document.createElement("h3")
+      //     labelHeader.innerText = item.topLabel
+      //     labelHeader.className = "header-label"
+      //     this.itemDivContainer.append(labelHeader)
+
+      //     const imgDivContainer = document.createElement("div")
+      //     imgDivContainer.className = "img-container"
+      //     const img = document.createElement("img")
+      //     img.src = item.imgLink
+      //     this.itemDivContainer.append(imgDivContainer)
+      //     imgDivContainer.append(img)
+
+      //     const title = document.createElement("p")
+      //     title.className = "title-item"
+      //     title.innerText = item.itemTitle
+      //     this.itemDivContainer.append(title)
+
+      //     const price = document.createElement("p")
+      //     price.className = "price-item"
+      //     price.innerText = item.price
+      //     this.itemDivContainer.append(price)
+
+      //     this.itemDivContainer.onclick = this.optionClick.bind(
+      //       this,
+      //       this.itemDivContainer.id
+      //     )
+
+      //     return this.itemDivContainer
+      //   }
+
+      //   optionClick(itemId) {
+      //     let checkedItem = document.querySelector(".green-border")
+      //     //  console.log(checkedItem)
+      //     if (checkedItem) {
+      //       checkedItem.classList.remove("green-border")
+      //     }
+      //     let currentItem = document.getElementById(itemId)
+      //     if (currentItem.id === itemId) currentItem.classList.toggle("green-border")
+      //   }
+
+      //   render(elementId) {
+      //     const targetContainer = document.getElementById(elementId)
+      //     for (const item of this.itemsList) {
+      //       let newItem = this.itemCard(item)
+
+      //       targetContainer.append(newItem)
+      //     }
+      //   }
+      // }
+
+      // let laptopList = [
+      //   {
+      //     topLabel: "топ продаж",
+      //     imgLink: "../img/laptop_1.png",
+      //     itemTitle: "Ноутбук Lenovo IdeaPad Slim 5 16IAH8 (83BG001ARA)",
+      //     price: "30546 грн",
+      //   },
+      //   {
+      //     topLabel: "акция",
+      //     imgLink: "../img/laptop_2.png",
+      //     itemTitle: "Ноутбук ASUS Vivobook 15 X1500EA-BQ3733 (90NB0TY6-M040W0)",
+      //     price: "45999 грн",
+      //   },
+      //   {
+      //     topLabel: "топ продаж",
+      //     imgLink: "../img/laptop_3.png",
+      //     itemTitle: "Ноутбук Lenovo IdeaPad Slim 5 16IAH8 (83BG001ARA)",
+      //     price: "37880 грн",
+      //   },
+      // ]
+
+      // let ci = new ChoiceItem(laptopList)
+      // ci.render("container")
+
+      //===========================================
+      //===========================================
+      //===========================================
+
+      // Задача 2. Дано список спортсменів. Потрібно сформувати список тих, які будуть брати участь у змаганні.
+      // При цьому є два стовпці. В одному відображені всі спортсмени, в іншому – список тих, хто був вибраний.
+      // При натисканні на зелену стрілку спортсмен переміщається у список для змагань. При натисканні на червону
+      // стрілку спортсмен переміщається у загальний список.
+
+      // class SportTeam {
+      //   constructor(playerList, imgArrowGreen, imgArrowRed) {
+      //     this.playerList = playerList
+      //     this.imgArrowGreen = imgArrowGreen
+      //     this.imgArrowRed = imgArrowRed
+      //     this.teamList = []
+      //   }
+
+      //   changeColumn(namePlayer, colorButton) {
+      //     if (colorButton === "green") {
+      //       let elIndex = this.playerList.findIndex((el) => el === namePlayer)
+      //       let splicePlayer = this.playerList.splice(elIndex, 1)
+      //       this.teamList.push(splicePlayer)
+      //     }
+
+      //     if (colorButton === "red") {
+      //       let elIndex = this.teamList.findIndex((el) => el === namePlayer)
+      //       let splicePlayer = this.teamList.splice(elIndex, 1)
+      //       this.playerList.push(splicePlayer)
+      //     }
+      //     this.renderPlayersList()
+      //   }
+
+      //   newPlayer(player, colorButton) {
+      //     const playerDiv = document.createElement("div")
+      //     playerDiv.classList = "player-block"
+      //     const playerName = document.createElement("p")
+      //     playerName.innerText = player
+
+      //     const btn = document.createElement("button")
+      //     if (colorButton === "green") {
+      //       btn.classList = `${colorButton}-button`
+      //       btn.src = this.imgArrowGreen
+      //     }
+      //     if (colorButton === "red") {
+      //       btn.classList = `${colorButton}-button`
+      //       btn.src = this.imgArrowRed
+      //     }
+      //     btn.onclick = this.changeColumn.bind(this, player, colorButton)
+
+      //     playerDiv.append(playerName)
+      //     playerDiv.append(btn)
+
+      //     return playerDiv
+      //   }
+
+      //   renderPlayersList() {
+      //     this.targetElement.innerHTML = ""
+      //     this.playersColumn("Загальний список", "Список команди")
+
+      //     let playersBlock = document.createElement("div")
+      //     playersBlock.className = "players-block"
+      //     this.firstContainerListDiv.append(playersBlock)
+
+      //     for (const player of this.playerList) {
+      //       let newPlayer = this.newPlayer(player, "green")
+      //       playersBlock.append(newPlayer)
+      //     }
+
+      //     let teamBlock = document.createElement("div")
+      //     teamBlock.className = "team-block"
+      //     this.secondContainerListDiv.append(teamBlock)
+
+      //     for (const player of this.teamList) {
+      //       let newPlayer = this.newPlayer(player, "red")
+      //       teamBlock.append(newPlayer)
+      //     }
+      //   }
+
+      //   playersColumn(title1, title2) {
+      //     this.firstContainerListDiv = document.createElement("div")
+      //     this.firstContainerListDiv.classList = "container-list"
+
+      //     const firstTitlePlayerList = document.createElement("h3")
+      //     firstTitlePlayerList.innerText = title1
+      //     this.firstContainerListDiv.append(firstTitlePlayerList)
+
+      //     this.secondContainerListDiv = document.createElement("div")
+      //     this.secondContainerListDiv.classList = "container-list"
+
+      //     const secondTitlePlayerList = document.createElement("h3")
+      //     secondTitlePlayerList.innerText = title2
+      //     this.secondContainerListDiv.append(secondTitlePlayerList)
+
+      //     this.targetElement.append(this.firstContainerListDiv)
+      //     this.targetElement.append(this.secondContainerListDiv)
+      //   }
+
+      //   render(elementId) {
+      //     this.targetElement = document.getElementById(elementId)
+
+      //     this.renderPlayersList()
+      //   }
+      // }
+
+      // let payersList = [
+      //   "Коля Іванов",
+      //   "Сергій Петров",
+      //   "Анна Нікольська",
+      //   "Олена Крюкова",
+      //   "Петро Івасюк",
+      // ]
+
+      // let st = new SportTeam(payersList, "../img/arrow_green.png", "../img/arrow_red.png")
+      // st.render("container")
+      //===========================================
+      //===========================================
+      //===========================================
+      //Задача 3. Відобразити падаючий сніг. Сніжинка з’являється у верхній частині екрану
+      //і з випадковою швидкістю рухається вниз. Як тільки сніжинка досягає нижньої частини екрану
+      //вона знову повинна з’явитись у верхній частині екрану.
+      // console.log(innerHeight)
+      // console.log(innerWidth)
+
+      // class Snow {
+      //   constructor(imgSrc, snowNum) {
+      //     this.imgSrc = imgSrc
+      //     this.snowNum = snowNum
+      //   }
+
+      //   getRandomNum(minNum, maxNum) {
+      //     return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      //   }
+
+      //   shiftSnow() {
+      //     const displayWidth = innerWidth
+
+      //     this.snowContainer.style.left = this.getRandomNum(0, displayWidth) + "px"
+
+      //     this.snowContainer.style.maxWidth = this.getRandomNum(10, 100) + "px"
+      //     this.snowContainer.style.animationName = "letItSnow"
+      //     this.snowContainer.style.animationDuration = this.getRandomNum(4, 12) + "s"
+      //     this.snowContainer.style.animationTimingFunction = "linear"
+      //     this.snowContainer.style.animationIterationCount = "infinite"
+      //     this.snowContainer.style.animationDirection = "normal"
+      //     this.snowContainer.style.animationDelay = this.getRandomNum(0, 2) + "s"
+      //     this.snowContainer.style.animationFillMode = "forwards"
+      //   }
+
+      //   createSnow() {
+      //     this.snowContainer = document.createElement("div")
+      //     this.snowContainer.className = "snow-container"
+      //     this.snowContainer.style.maxWidth = this.getRandomNum(10, 50) + "px"
+      //     const snowImg = document.createElement("img")
+      //     snowImg.style.maxWidth = "100%"
+      //     snowImg.src = this.imgSrc
+      //     this.snowContainer.append(snowImg)
+      //     this.targetContainer.append(this.snowContainer)
+      //     this.shiftSnow()
+      //   }
+
+      //   render(elementId) {
+      //     this.targetContainer = document.getElementById(elementId)
+      //     const displayHeight = innerHeight
+      //     this.targetContainer.style.height = displayHeight + "px"
+      //     this.targetContainer.style.backgroundColor = "black"
+
+      //     for (let index = 0; index < this.snowNum; index++) {
+      //       this.createSnow()
+      //     }
+      //   }
+      // }
+
+      // let s1 = new Snow("../img/snow.png", 50)
+      // s1.render("container")
+
+      //===========================================
+      //===========================================
+      //===========================================
+      // Задача 4. Сяючі зорі. Вказана кількість зірочок повинна з’являтися у випадковій частині екрану.
+      // Кожна зірка з певним кроком і інтервалом збільшується від мінімального до максимального розміру.
+      // Як тільки досягнути максимального розміру зірочка повинна з’являтися у іншій випадковій позиції.
+
+      // class Stars {
+      //   constructor(starsNum) {
+      //     this.starsNum = starsNum
+      //   }
+
+      //   getRandomNum(minNum, maxNum) {
+      //     return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      //   }
+
+      //   renderStar(starContainer) {
+      //     const windowWidth = innerWidth
+      //     const windowHight = innerHeight
+
+      //     starContainer.style.width = this.getRandomNum(2, 3) + "px"
+      //     starContainer.style.height = starContainer.style.width
+
+      //     this.star.style.animationName = "showStar"
+      //     this.star.style.animationDuration = this.getRandomNum(2, 5) + "s"
+      //     this.star.style.animationTimingFunction = "linear"
+      //     this.star.style.animationIterationCount = "infinite"
+      //     this.star.style.animationDirection = "normal"
+      //     this.star.style.animationDelay =
+      //       this.getRandomNum(0, 7) + this.getRandomNum(0, 7) + "s"
+      //     this.star.style.animationFillMode = "forwards"
+
+      //     setInterval(() => {
+      //       starContainer.style.left = this.getRandomNum(0, windowWidth) + "px"
+      //       starContainer.style.top = this.getRandomNum(0, windowHight) + "px"
+      //     }, parseInt(this.star.style.animationDuration) * 1000)
+      //   }
+
+      //   createStar() {
+      //     let starContainer = document.createElement("div")
+      //     starContainer.className = "star-container"
+      //     this.star = document.createElement("div")
+      //     this.star.className = "star"
+      //     starContainer.append(this.star)
+      //     this.targetElement.append(starContainer)
+      //     this.renderStar(starContainer)
+      //   }
+
+      //   render(elementId) {
+      //     this.targetElement = document.getElementById(elementId)
+      //     for (let i = 0; i < this.starsNum; i++) {
+      //       this.createStar()
+      //     }
+      //   }
+      // }
+
+      // new Stars(150).render("container")
+
+      //===========================================
+      //===========================================
+      //===========================================
+      // Задача 5. З верхньої частини екрану у випадковій позиції по горизонталі з’являються танки, які їдуть вниз. При кліку на танк він вибухає і зникає з екрану.
+
+      class Battlefield {
+        constructor(itemsNum, srcArr) {
+          this.itemsNum = itemsNum
+          this.srcArr = srcArr
+        }
+
+        getRandomNum(minNum, maxNum) {
+          return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+        }
+
+        itemMove(item) {
+          const displayWidth = innerWidth
+          const displayHeight = innerHeight
+
+          item.style.left = this.getRandomNum(0, displayWidth) + "px"
+
+          item.style.animationName = "move-item"
+          item.style.animationDuration = this.getRandomNum(5, 7) + "s"
+          item.style.animationTimingFunction = "linear"
+          item.style.animationIterationCount = "infinite"
+          item.style.animationDirection = "normal"
+
+          item.style.animationFillMode = "forwards"
+
+          setInterval(() => {
+            item.style.left = this.getRandomNum(0, displayWidth) + "px"
+            item.style.animationDelay = item.style.animationDuration
+          }, parseInt(item.style.animationDuration) * 1000)
+        }
+
+        createItem() {
+          const itemImageContainer = document.createElement("div")
+          itemImageContainer.className = "item-container"
+
+          const imageItem = document.createElement("img")
+          imageItem.className = "image-item"
+          let randomIndex = Math.floor(Math.random() * this.srcArr.length)
+          let choiceSrc = this.srcArr[randomIndex]
+
+          imageItem.src = choiceSrc
+          imageItem.onclick = this.removeItem.bind(this, itemImageContainer, imageItem)
+
+          itemImageContainer.append(imageItem)
+          this.allItemsContainer.append(itemImageContainer)
+          this.itemMove(itemImageContainer)
+        }
+
+        removeItem(itemImageContainer, imageItem) {
+          this.counter++
+          if (this.counter === 3) {
+            imageItem.src = "../img/monsters/slime.png"
+            setTimeout(() => {
+              let allItems = document.getElementsByClassName("image-item")
+              for (const item of allItems) {
+                item.src = "../img/monsters/slime.png"
+              }
+              setTimeout(() => {
+                this.allItemsContainer.innerHTML = ""
+              }, 2000)
+            }, 1000)
+
+            this.createBoss()
+          } else {
+            itemImageContainer.style.width = "150px"
+            imageItem.src = "../img/monsters/slime.png"
+            setTimeout(() => {
+              itemImageContainer.remove()
+            }, 1000)
+            this.createItem()
+          }
+        }
+
+        destroyBoss(imgBoss) {
+          this.clickCounter++
+          console.log(this.clickCounter)
+          if (this.clickCounter === 3) {
+            imgBoss.src = "../img/monsters/slime.png"
+            this.finalMessage()
+          }
+        }
+
+        finalMessage() {
+          const messageContainer = document.createElement("div")
+          messageContainer.className = "message-container"
+          messageContainer.style.animationName = "message-show"
+          messageContainer.style.animationFillMode = "forwards"
+          messageContainer.style.animationDuration = "1s"
+
+          const h3 = document.createElement("h3")
+          h3.className = "final-title"
+          h3.innerText = "YOU WIN!"
+          this.targetContainer.append(messageContainer)
+          messageContainer.append(h3)
+          this.counter = 0
+
+          setTimeout(() => {
+            messageContainer.remove()
+            this.targetContainer.innerHTML = ""
+          }, 3000)
+        }
+
+        bossMove(bossContainer) {
+          console.log(bossContainer)
+
+          bossContainer.style.animationName = "boss-move"
+          bossContainer.style.animationDuration = "10s"
+          bossContainer.style.animationFillMode = "forwards"
+          bossContainer.style.animationTimingFunction = "linear"
+          let bossHight = document.querySelector(".boss-container")
+
+          console.log(bossHight.offsetHeight)
+          //  let bossHight = bossContainer.currentStyle.height
+          //  console.log(bossHight)
+        }
+
+        createBoss() {
+          this.clickCounter = 0
+
+          const bossContainer = document.createElement("div")
+          bossContainer.className = "boss-container"
+
+          const imageBoss = document.createElement("img")
+          imageBoss.className = "image-boss"
+          imageBoss.src = "../img/monsters/boss.png"
+
+          bossContainer.onclick = this.destroyBoss.bind(this, imageBoss)
+
+          this.targetContainer.append(bossContainer)
+          bossContainer.append(imageBoss)
+
+          this.bossMove(bossContainer)
+        }
+
+        render(elementId) {
+          this.counter = 0
+
+          this.targetContainer = document.getElementById(elementId)
+          this.allItemsContainer = document.createElement("div")
+          this.targetContainer.append(this.allItemsContainer)
+
+          for (let i = 0; i < this.itemsNum; i++) {
+            this.createItem()
+          }
+        }
+      }
+      //===========================================
+      let srcPic = [
+        "../img/monsters/m1.png",
+        "../img/monsters/m2.png",
+        "../img/monsters/m3.png",
+        "../img/monsters/m4.png",
+        "../img/monsters/m5.png",
+        "../img/monsters/m6.png",
+      ]
+      new Battlefield(5, srcPic).render("container")
+    </script>
+  </body>
+</html>

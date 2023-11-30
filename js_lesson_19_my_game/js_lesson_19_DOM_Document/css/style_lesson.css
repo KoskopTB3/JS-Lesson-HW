@@ -1,0 +1,345 @@
+@import "null.css";
+
+/* задача №2 */
+/* .container {
+  display: flex;
+    text-align: center;
+}
+.container-card {
+  padding: 10px;
+  background-color: rgb(54, 54, 54);
+}
+.container-image {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(87, 87, 87);
+}
+.image {
+  max-width: 80%;
+}
+.title-container {
+  text-align: center;
+  color: white;
+} */
+/* =============================== */
+
+/* задача №3 */
+/* .question-container {
+  margin: 10px;
+  display: inline-block;
+  border: 1px solid green;
+  border-radius: 5px;
+  padding: 7px;
+}
+ol {
+  display: inline-block;
+}
+li {
+  cursor: pointer;
+}
+li:hover {
+  background-color: rgb(187, 197, 189);
+}
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(214, 20, 20);
+}
+
+td {
+  border: 1px solid black;
+  padding: 3px;
+}
+table {
+  margin: 10px;
+  border: 1px solid green;
+  border-radius: 5px;
+  border-collapse: collapse;
+} */
+
+/* задача №4 */
+/* input {
+  border: 1px solid black;
+} */
+
+/* задача №5*/
+/* button {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 3px;
+  position: absolute;
+  
+}
+
+#container {
+  position: relative;
+} */
+/* ============================================
+============================================ */
+
+/* задача ДЗ №1 */
+/* #container {
+  display: flex;
+}
+.item-container {
+  max-width: 150px;
+  padding: 7px;
+  border: 1px solid rgb(184, 182, 182);
+  cursor: pointer;
+}
+
+
+.header-label {
+  display: inline-block;
+  padding: 4px;
+  background-color: yellow;
+  border-radius: 4px;
+  text-align: center;
+  line-height: 10px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.header-label_color {
+  background-color: red;
+}
+
+.img-container {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.title-item {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+.price-item {
+  display: inline-block;
+  position: relative;
+}
+.price-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0%;
+  height: 1.5px;
+  background-color: green;
+  transition: all 0.5s;
+}
+.price-item:hover::after {
+  width: 100%;
+}
+
+.green-border {
+  outline: 2px solid green;
+} */
+
+/* задача ДЗ №2*/
+
+/* #container {
+  display: flex;
+  gap: 50px;
+  padding: 50px;
+}
+
+.container-list {
+}
+.players-list {
+  display: inline-block;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.player-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid black;
+  max-width: 150px;
+  padding: 3px;
+}
+
+.player-block:not(:last-child) {
+  margin-bottom: 5px;
+}
+.picture-container {
+  max-width: 20px;
+}
+.image-green-arrow {
+  width: 100%;
+}
+
+.green-button {
+  width: 20px;
+  height: 20px;
+  background: url("../img/arrow_green.png") 0 0 / auto 100% no-repeat;
+}
+
+.red-button {
+  width: 20px;
+  height: 20px;
+  background: url("../img/arrow_red.png") 0 0 / auto 100% no-repeat;
+} */
+
+/* задача ДЗ №3*/
+/* #container {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.snow-container {
+  position: absolute;
+}
+
+@keyframes letItSnow {
+  0% {
+    top: -20%;
+
+    transform: translateX(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateX(30px) rotate(180deg);
+    top: 10%;
+  }
+  60% {
+    transform: translateX(0px) rotate(-90deg);
+  }
+  100% {
+    top: 100%;
+    transform: translateX(30px) rotate(40deg);
+  }
+} */
+
+/* задача ДЗ №4*/
+/* body {
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(0, 5, 36);
+}
+
+.star-container {
+  display: inline-block;
+  position: absolute;
+}
+
+.star {
+  background-color: rgb(255, 253, 231);
+  border-radius: 50%;
+}
+
+@keyframes showStar {
+  0% {
+    width: 0%;
+    height: 0%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+    filter: blur(1px);
+  }
+} */
+
+/* задача ДЗ №5*/
+body {
+  position: relative;
+  overflow: hidden;
+  /* background-color: rgb(0, 5, 36); */
+  background: url("../img/monsters/microb.jpg") 0 0 / 100% 100% no-repeat;
+  cursor: url("../img/monsters/optica.png"), pointer;
+}
+
+.item-container {
+  position: absolute;
+  width: 100px;
+  visibility: hidden;
+  /* cursor: url("../img/arrow_green.png"), pointer; */
+  /* cursor: pointer; */
+}
+
+img {
+  max-width: 100%;
+}
+
+@keyframes move-item {
+  0% {
+    visibility: visible;
+    top: -70px;
+  }
+  20% {
+    transform: translateX(50px);
+  }
+  40% {
+    transform: translateX(-50px);
+  }
+  70% {
+    transform: translateX(50px);
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.message-container {
+  position: absolute;
+  top: 150px;
+}
+
+.final-title {
+  font-size: 100px;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  text-shadow: 1px 1px 5px rgb(0, 0, 0);
+}
+@keyframes message-show {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.boss-container {
+  position: absolute;
+  width: 300px;
+  /* height: 100%; */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.image-boss {
+  width: 100%;
+}
+
+@keyframes boss-move {
+  0% {
+    top: -150px;
+  }
+  100% {
+    top: 100%;
+  }
+}
